@@ -1,4 +1,4 @@
-/* LRAOR — hand-written overrides only */
+/* LRAOR, hand-written overrides only */
 
 /* ── Global body defaults ─────────────────────────────────────────────────── */
 body {
@@ -11,7 +11,7 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* Scope to main content only — footer/header paragraphs inherit from parent color class */
+/* Scope to main content only, footer/header paragraphs inherit from parent color class */
 main p { color: #3D3A35; }
 
 /* Body text size bump */
@@ -88,7 +88,7 @@ html { scroll-behavior: smooth; }
   mix-blend-mode: soft-light;
 }
 
-/* ── Button utilities (plain CSS — @apply unavailable in Play CDN) ────────── */
+/* ── Button utilities (plain CSS, @apply unavailable in Play CDN) ────────── */
 .btn-primary {
   display: inline-flex; align-items: center; gap: 0.5rem;
   padding: 0.75rem 1.75rem;
@@ -151,7 +151,7 @@ html { scroll-behavior: smooth; }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Ken Burns — subtle slow zoom on hero background */
+/* Ken Burns, subtle slow zoom on hero background */
 .hero-kenburns img {
   animation: kenburns 22s ease-out forwards;
   will-change: transform;
@@ -226,7 +226,7 @@ html { scroll-behavior: smooth; }
   to   { transform: translateX(-50%); }
 }
 
-/* ── Card hover — only on pointer devices ─────────────────────────────────── */
+/* ── Card hover, only on pointer devices ─────────────────────────────────── */
 @media (hover: hover) {
   .card-hover:hover {
     box-shadow: 0 25px 50px -12px rgba(30,42,94,0.18);
@@ -237,7 +237,7 @@ html { scroll-behavior: smooth; }
 .card-hover { transition: transform 0.5s, box-shadow 0.5s; }
 .card-img   { transition: transform 0.7s; }
 
-/* ── prefers-reduced-motion — disable everything ─────────────────────────── */
+/* ── prefers-reduced-motion, disable everything ─────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .hero-reveal { animation: none !important; opacity: 1; transform: none; }
   .hero-kenburns img { animation: none !important; }

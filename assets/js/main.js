@@ -1,4 +1,4 @@
-// LRAOR — Alpine components + shared utilities
+// LRAOR, Alpine components + shared utilities
 
 
 // ── AOS init ─────────────────────────────────────────────────────────────────
