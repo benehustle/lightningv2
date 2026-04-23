@@ -1,4 +1,4 @@
-// LRAOR — Alpine component helpers
+// LRAOR, Alpine component helpers
 // Alpine is loaded via CDN; this file holds any reusable data/component definitions.
 
 document.addEventListener('alpine:init', () => {

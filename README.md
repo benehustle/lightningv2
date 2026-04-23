@@ -1,4 +1,4 @@
-# Lightning Ridge Area Opal Reserve — Website
+# Lightning Ridge Area Opal Reserve, Website
 
 ## Overview
 
@@ -13,7 +13,7 @@ Pure static HTML site for the Lightning Ridge Area Opal Reserve (LRAOR/LROR). No
 | HTML | Pure static `.html` files, directory-based URLs (`/about/index.html` → `/about/`) |
 | CSS | Tailwind CSS via Play CDN + `/assets/css/styles.css` for custom overrides |
 | JS | Alpine.js v3 via CDN + `/assets/js/main.js` for site-wide behaviour |
-| Fonts | Google Fonts — Fraunces (headings) + Inter (body) |
+| Fonts | Google Fonts, Fraunces (headings) + Inter (body) |
 | Forms | Web3Forms (free tier, no backend required) |
 | Hosting | Cloudflare Pages |
 
@@ -46,13 +46,13 @@ wrangler pages deploy . --project-name=lror
 
 ## Editing the nav and footer
 
-The nav and footer are copy-pasted into every HTML file (no server-side includes or JS templating — intentional, for simplicity and zero JS dependencies).
+The nav and footer are copy-pasted into every HTML file (no server-side includes or JS templating, intentional, for simplicity and zero JS dependencies).
 
 When you need to change the nav or footer:
 
 1. Edit `HEADER-FOOTER.html` (the canonical source of truth).
 2. Bump the version comment: `<!-- NAV-VERSION: N -->` and `<!-- FOOTER-VERSION: N -->`.
-3. Find and replace the old nav/footer block across all `.html` files. Most editors (VS Code, etc.) support multi-file find-and-replace — search for the old block, replace with the new block.
+3. Find and replace the old nav/footer block across all `.html` files. Most editors (VS Code, etc.) support multi-file find-and-replace, search for the old block, replace with the new block.
 
 To find pages still on an old nav version:
 
@@ -75,11 +75,11 @@ grep -r "NAV-VERSION: 1" --include="*.html" .
 
 ## Forms setup
 
-Forms use [Web3Forms](https://web3forms.com/) — free, no account required, just an email address.
+Forms use [Web3Forms](https://web3forms.com/), free, no account required, just an email address.
 
 **To set up:**
 1. Go to https://web3forms.com/
-2. Enter `admin@lror.org` (confirm correct address — see TODO below)
+2. Enter `admin@lror.org` (confirm correct address, see TODO below)
 3. Copy the generated access key
 4. Replace `YOUR_WEB3FORMS_KEY_HERE` in these files:
    - `/contact/index.html`
@@ -100,25 +100,25 @@ Forms use [Web3Forms](https://web3forms.com/) — free, no account required, jus
 
 ---
 
-## TODO — Outstanding client items
+## TODO, Outstanding client items
 
-- [ ] **Email address** — Confirm `admin@lror.org` is correct (brief also listed `info@lraor.org` — clarify before setting up Web3Forms)
-- [ ] **Postcode** — Confirm 2834 for 4 Nobby Road, Lightning Ridge
-- [ ] **DGR / tax-deductible donation status** — Confirm and update the tax deductibility copy in `/donate/index.html`
-- [ ] **Acknowledgement of Country wording** — Confirm exact wording with a Yuwaalaraay / Yuwaalayaay / Gamilaraay community representative before launch
-- [ ] **Board members** — Confirm all 7 names are current; collect: professional portrait (1:1 square), confirmed role/title, ~100-word bio per member
-- [ ] **Staff members** — Supply 2 staff names, roles, photos, and 150–250 word bios
-- [ ] **Stripe account** — Set up account and generate all Payment Links (see Stripe setup above)
-- [ ] **Photos** — Supply batches for: education programs, research, share farming, machinery, Indigenous youth engagement (written consent required), roads, environmental management
-- [ ] **PDFs** — Supply all documents for `/assets/downloads/`: meeting minutes, current licences, policies, Plan of Management
-- [ ] **Resources nav** — Confirm whether Tourism / Mining / Contractors / Documents should remain footer-only (current setup) OR be added as a top-level "Resources" nav item (one-line edit per HTML file)
-- [ ] **Media coverage** — Supply press article titles, publication names, dates and URLs to seed the Media page
-- [ ] **Web3Forms key** — Generate at https://web3forms.com (30 seconds, no account needed) and paste into contact and documents pages
-- [ ] **Google Business Profile** — Strongly recommended for local SEO; create at https://business.google.com
-- [ ] **Logo** — Supply SVG or hi-res PNG (transparent background) to replace the current placeholder icon
-- [ ] **Key stats** — Confirm 4 figures for the home page stat band: years operating, hectares managed, research projects supported, community partners
-- [ ] **Privacy Policy and Terms** — Supply documents or pages; link from footer
-- [ ] **ABN** — Confirm 22 866 447 410 is current
+- [ ] **Email address**, Confirm `admin@lror.org` is correct (brief also listed `info@lraor.org`, clarify before setting up Web3Forms)
+- [ ] **Postcode**, Confirm 2834 for 4 Nobby Road, Lightning Ridge
+- [ ] **DGR / tax-deductible donation status**, Confirm and update the tax deductibility copy in `/donate/index.html`
+- [ ] **Acknowledgement of Country wording**, Confirm exact wording with a Yuwaalaraay / Yuwaalayaay / Gamilaraay community representative before launch
+- [ ] **Board members**, Confirm all 7 names are current; collect: professional portrait (1:1 square), confirmed role/title, ~100-word bio per member
+- [ ] **Staff members**, Supply 2 staff names, roles, photos, and 150–250 word bios
+- [ ] **Stripe account**, Set up account and generate all Payment Links (see Stripe setup above)
+- [ ] **Photos**, Supply batches for: education programs, research, share farming, machinery, Indigenous youth engagement (written consent required), roads, environmental management
+- [ ] **PDFs**, Supply all documents for `/assets/downloads/`: meeting minutes, current licences, policies, Plan of Management
+- [ ] **Resources nav**, Confirm whether Tourism / Mining / Contractors / Documents should remain footer-only (current setup) OR be added as a top-level "Resources" nav item (one-line edit per HTML file)
+- [ ] **Media coverage**, Supply press article titles, publication names, dates and URLs to seed the Media page
+- [ ] **Web3Forms key**, Generate at https://web3forms.com (30 seconds, no account needed) and paste into contact and documents pages
+- [ ] **Google Business Profile**, Strongly recommended for local SEO; create at https://business.google.com
+- [ ] **Logo**, Supply SVG or hi-res PNG (transparent background) to replace the current placeholder icon
+- [ ] **Key stats**, Confirm 4 figures for the home page stat band: years operating, hectares managed, research projects supported, community partners
+- [ ] **Privacy Policy and Terms**, Supply documents or pages; link from footer
+- [ ] **ABN**, Confirm 22 866 447 410 is current
 
 ---
 

@@ -1,4 +1,4 @@
-/* LRAOR — hand-written overrides only */
+/* LRAOR, hand-written overrides only */
 
 /* Fraunces variable font settings for soft, relaxed display */
 h1, h2, h3, .font-display {
@@ -10,7 +10,7 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Skip link — visually hidden until focused */
+/* Skip link, visually hidden until focused */
 .skip-link {
   position: absolute;
   left: -9999px;

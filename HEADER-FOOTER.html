@@ -1,5 +1,5 @@
 <!--
-  HEADER-FOOTER.html — CANONICAL REFERENCE ONLY
+  HEADER-FOOTER.html, CANONICAL REFERENCE ONLY
   ================================================
   This file is NOT served. It is the single source of truth for the
   header and footer markup. When the nav changes, update this file
@@ -14,8 +14,8 @@
 -->
 
 <!-- ============================================================
-     HEAD SNIPPET — paste inside <head> of every page
-     (Google Fonts, Tailwind, Alpine — update page-specific meta separately)
+     HEAD SNIPPET, paste inside <head> of every page
+     (Google Fonts, Tailwind, Alpine, update page-specific meta separately)
      ============================================================ -->
 <!--
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,32 +52,23 @@
 -->
 
 <!-- ============================================================
-     SKIP LINK — first element inside <body> on every page
+     SKIP LINK, first element inside <body> on every page
      ============================================================ -->
 <!--
 <a href="#main-content" class="skip-link">Skip to main content</a>
 -->
 
 <!-- ============================================================
-     HEADER — NAV-VERSION: 1
+     HEADER, NAV-VERSION: 1
      ============================================================ -->
 <header class="sticky top-0 z-50 bg-brand-bone/95 backdrop-blur border-b border-brand-line" x-data="mobileNav()">
 
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16 lg:h-20">
 
-      <!-- Logo + Name (no divider) -->
-      <a href="/" class="flex items-center gap-3 group flex-shrink-0" aria-label="Lightning Ridge Area Opal Reserve — Home">
-        <!-- TODO-CLIENT: replace with actual SVG logo -->
-        <div class="w-10 h-10 rounded-full bg-brand-ochre flex items-center justify-center flex-shrink-0" aria-hidden="true">
-          <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-          </svg>
-        </div>
-        <div class="leading-tight">
-          <span class="block text-sm font-semibold text-brand-charcoal group-hover:text-brand-ochre transition">Lightning Ridge Area</span>
-          <span class="block text-xs text-brand-slate">Opal Reserve</span>
-        </div>
+      <!-- Logo -->
+      <a href="/" class="flex items-center flex-shrink-0" aria-label="Lightning Ridge Area Opal Reserve — Home">
+        <img src="/assets/images/logo.jpeg" alt="Lightning Ridge Area Opal Reserve" width="240" height="67" class="h-10 lg:h-12 w-auto">
       </a>
 
       <!-- Desktop nav -->
@@ -301,11 +292,11 @@
   </div>
 
 </header>
-<!-- END HEADER — NAV-VERSION: 1 -->
+<!-- END HEADER, NAV-VERSION: 1 -->
 
 
 <!-- ============================================================
-     FOOTER — FOOTER-VERSION: 1
+     FOOTER, FOOTER-VERSION: 1
      ============================================================ -->
 <footer class="bg-brand-charcoal text-brand-bone">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
@@ -313,20 +304,15 @@
 
       <!-- Column 1: LRAOR identity -->
       <div>
-        <a href="/" class="flex items-center gap-3 mb-5 group" aria-label="Lightning Ridge Area Opal Reserve — Home">
-          <div class="w-10 h-10 rounded-full bg-brand-ochre flex items-center justify-center flex-shrink-0" aria-hidden="true">
-            <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-            </svg>
-          </div>
-          <div class="leading-tight">
-            <span class="block text-sm font-semibold text-brand-bone group-hover:text-brand-ochre transition">Lightning Ridge Area</span>
-            <span class="block text-xs text-brand-sand">Opal Reserve</span>
-          </div>
-        </a>
+        <a href="/" class="inline-block mb-5" aria-label="Lightning Ridge Area Opal Reserve — Home">
+            <div class="leading-tight">
+              <span class="block text-base font-semibold text-brand-bone hover:text-brand-ochre transition">Lightning Ridge Area</span>
+              <span class="block text-sm text-brand-sand">Opal Reserve</span>
+            </div>
+          </a>
 
         <p class="text-sm text-brand-sand leading-relaxed mb-6">
-          On-ground management of Crown land across the Lightning Ridge opal fields — supporting mining, tourism, education, research and land care across the Reserve.
+          On-ground management of Crown land across the Lightning Ridge opal fields, supporting mining, tourism, education, research and land care across the Reserve.
         </p>
 
         <address class="not-italic text-sm text-brand-sand space-y-2">
@@ -422,4 +408,4 @@
   </div>
 
 </footer>
-<!-- END FOOTER — FOOTER-VERSION: 1 -->
+<!-- END FOOTER, FOOTER-VERSION: 1 -->

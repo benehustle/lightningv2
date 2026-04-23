@@ -1,4 +1,4 @@
-# Redirects — Lightning Ridge Area Opal Reserve
+# Redirects, Lightning Ridge Area Opal Reserve
 # Format: /old-path/  /new-path/  status-code
 # Processed top-to-bottom by Cloudflare Pages
 
@@ -28,5 +28,5 @@
 /road-and-track-maintenance-request-form        /resources/documents/#road-maintenance      301
 /contact/                                       /contact/                                   301
 
-# Catch-all — serve custom 404 page for unmatched routes
+# Catch-all, serve custom 404 page for unmatched routes
 /*                                              /404.html                                   404

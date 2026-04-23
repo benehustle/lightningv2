@@ -1,4 +1,4 @@
-# Placeholders — Replace Before Launch
+# Placeholders, Replace Before Launch
 
 Every placeholder in the site is marked with a `<!-- TODO-CLIENT: ... -->` comment in the HTML. This file tracks all of them by category so nothing gets missed before go-live.
 
@@ -52,7 +52,7 @@ All images sourced from `images.unsplash.com` must be replaced with client-suppl
 
 | Item | File(s) | Notes |
 |------|---------|-------|
-| Board member roles | `about/board/index.html` | 7 members — all need confirmed titles (e.g. Chair, Deputy Chair, Secretary, Treasurer, Director) |
+| Board member roles | `about/board/index.html` | 7 members, all need confirmed titles (e.g. Chair, Deputy Chair, Secretary, Treasurer, Director) |
 | Board member bios | `about/board/index.html` | ~100 words per member |
 | Staff names | `about/staff/index.html` | 2 staff members |
 | Staff roles | `about/staff/index.html` | Confirmed job titles |
@@ -68,8 +68,8 @@ All images sourced from `images.unsplash.com` must be replaced with client-suppl
 | Board meeting frequency | `about/board/index.html` | Confirm (e.g. quarterly, bi-monthly) |
 | Plan of Management adoption date | `resources/documents/index.html` | Confirm year/date |
 | Independent review details | `resources/mining/index.html` | Supply reviewer name, year, outcome summary |
-| Media coverage — URLs | `media/index.html` | 5 press articles need real links (not `#`) |
-| Media coverage — dates | `media/index.html` | Confirm / correct publication dates |
+| Media coverage, URLs | `media/index.html` | 5 press articles need real links (not `#`) |
+| Media coverage, dates | `media/index.html` | Confirm / correct publication dates |
 
 ---
 
@@ -77,7 +77,7 @@ All images sourced from `images.unsplash.com` must be replaced with client-suppl
 
 | Item | File | Action |
 |------|------|--------|
-| Web3Forms access key | `contact/index.html` | Go to https://web3forms.com, enter admin email, copy key — replace `YOUR_WEB3FORMS_KEY_HERE` |
+| Web3Forms access key | `contact/index.html` | Go to https://web3forms.com, enter admin email, copy key, replace `YOUR_WEB3FORMS_KEY_HERE` |
 | Web3Forms access key | `resources/documents/index.html` | Same key as above |
 
 ---

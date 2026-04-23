@@ -65,7 +65,7 @@
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <!-- ============================================================
-       HEADER — NAV-VERSION: 1
+       HEADER, NAV-VERSION: 1
        ============================================================ -->
   <header class="sticky top-0 z-50 bg-brand-bone/95 backdrop-blur border-b border-brand-line" x-data="mobileNav()">
 
@@ -73,7 +73,7 @@
       <div class="flex items-center justify-between h-16 lg:h-20">
 
         <!-- Logo + Name -->
-        <a href="/" class="flex items-center gap-3 group flex-shrink-0" aria-label="Lightning Ridge Area Opal Reserve — Home">
+        <a href="/" class="flex items-center gap-3 group flex-shrink-0" aria-label="Lightning Ridge Area Opal Reserve, Home">
           <!-- TODO-CLIENT: replace placeholder icon with actual SVG logo -->
           <div class="w-10 h-10 rounded-full bg-brand-ochre flex items-center justify-center flex-shrink-0" aria-hidden="true">
             <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -305,7 +305,7 @@
     </div>
 
   </header>
-  <!-- END HEADER — NAV-VERSION: 1 -->
+  <!-- END HEADER, NAV-VERSION: 1 -->
 
   <main id="main-content">
 
@@ -340,7 +340,7 @@
     </section>
 
     <!-- ============================================================
-         ALPINE MODAL — "Online donations coming soon"
+         ALPINE MODAL, "Online donations coming soon"
          ============================================================ -->
     <div x-data="{ show: false, amount: '' }" @donate-modal.window="show = true; amount = $event.detail.amount" @keydown.escape.window="show = false">
       <div
@@ -376,7 +376,7 @@
     </div>
 
     <!-- ============================================================
-         SECTION 1 — General Donation
+         SECTION 1, General Donation
          ============================================================ -->
     <section class="py-20 md:py-28 bg-white" aria-labelledby="general-donation-heading">
       <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -385,7 +385,7 @@
           <p class="text-sm uppercase tracking-widest text-brand-sage mb-3">Make a difference</p>
           <h2 id="general-donation-heading" class="font-display font-medium text-3xl sm:text-4xl text-brand-charcoal tracking-tight mb-5">Make a General Donation</h2>
           <p class="text-brand-slate leading-relaxed text-base lg:text-lg">
-            Unrestricted donations support land management, education programs, research partnerships and community infrastructure across the Reserve. Revenue is reinvested locally — every dollar stays in Lightning Ridge, funding work that directly benefits the opal fields community.
+            Unrestricted donations support land management, education programs, research partnerships and community infrastructure across the Reserve. Revenue is reinvested locally, every dollar stays in Lightning Ridge, funding work that directly benefits the opal fields community.
           </p>
         </div>
 
@@ -431,7 +431,7 @@
     </section>
 
     <!-- ============================================================
-         SECTION 2 — Program-Specific Donations
+         SECTION 2, Program-Specific Donations
          ============================================================ -->
     <section class="py-20 bg-brand-sand" aria-labelledby="specific-projects-heading">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -460,7 +460,7 @@
             <div class="p-6 lg:p-8">
               <p class="text-xs uppercase tracking-widest text-brand-sage mb-2">Flagship project</p>
               <h3 class="font-display font-medium text-2xl text-brand-charcoal mb-3">Wandella Shearing Shed Transformation</h3>
-              <p class="text-brand-slate leading-relaxed mb-6">Help us convert the historic Wandella shearing shed into a purpose-built education and research facility — expanding what's possible for students, researchers and community groups.</p>
+              <p class="text-brand-slate leading-relaxed mb-6">Help us convert the historic Wandella shearing shed into a purpose-built education and research facility, expanding what's possible for students, researchers and community groups.</p>
               <!-- TODO-CLIENT: replace with real Stripe Payment Link for Wandella Shed project -->
               <a href="#donate-placeholder" x-data @click.prevent="$dispatch('donate-modal', { amount: 'to the Wandella Shed project' })" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-brand-ochre text-white rounded-md hover:bg-brand-clay transition font-medium">
                 Donate to this project
@@ -484,7 +484,7 @@
             <div class="p-6 lg:p-8">
               <p class="text-xs uppercase tracking-widest text-brand-sage mb-2">Community impact</p>
               <h3 class="font-display font-medium text-2xl text-brand-charcoal mb-3">Fund an Employment Role</h3>
-              <p class="text-brand-slate leading-relaxed mb-6">Help fund a dedicated on-ground position at the Reserve — supporting land management, education delivery and community program coordination.</p>
+              <p class="text-brand-slate leading-relaxed mb-6">Help fund a dedicated on-ground position at the Reserve, supporting land management, education delivery and community program coordination.</p>
               <!-- TODO-CLIENT: replace with real Stripe Payment Link for Employment Role project -->
               <a href="#donate-placeholder" x-data @click.prevent="$dispatch('donate-modal', { amount: 'to the Employment Role project' })" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-brand-ochre text-white rounded-md hover:bg-brand-clay transition font-medium">
                 Donate to this project
@@ -497,7 +497,7 @@
     </section>
 
     <!-- ============================================================
-         SECTION 3 — More Ways to Give
+         SECTION 3, More Ways to Give
          ============================================================ -->
     <section class="py-16 bg-white border-t border-brand-line" aria-labelledby="more-ways-heading">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -536,7 +536,7 @@
               <svg class="w-6 h-6 text-brand-ochre" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
             </div>
             <h3 class="font-display font-medium text-xl text-brand-charcoal mb-2">In-Kind Support</h3>
-            <p class="text-brand-slate text-sm leading-relaxed mb-4">Donate goods, services or expertise — equipment, professional skills or volunteer time are all welcome.</p>
+            <p class="text-brand-slate text-sm leading-relaxed mb-4">Donate goods, services or expertise, equipment, professional skills or volunteer time are all welcome.</p>
             <a href="mailto:admin@lror.org?subject=In-Kind%20Support%20Enquiry" class="text-brand-ochre text-sm font-medium hover:text-brand-clay hover:underline underline-offset-4 transition">
               Get in touch
             </a>
@@ -549,7 +549,7 @@
   </main>
 
   <!-- ============================================================
-       FOOTER — FOOTER-VERSION: 1
+       FOOTER, FOOTER-VERSION: 1
        ============================================================ -->
   <footer class="bg-brand-charcoal text-brand-bone">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
@@ -557,20 +557,15 @@
 
         <!-- Column 1: LRAOR identity -->
         <div>
-          <a href="/" class="flex items-center gap-3 mb-5 group" aria-label="Lightning Ridge Area Opal Reserve — Home">
-            <div class="w-10 h-10 rounded-full bg-brand-ochre flex items-center justify-center flex-shrink-0" aria-hidden="true">
-              <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-              </svg>
-            </div>
+          <a href="/" class="inline-block mb-5" aria-label="Lightning Ridge Area Opal Reserve — Home">
             <div class="leading-tight">
-              <span class="block text-sm font-semibold text-brand-bone group-hover:text-brand-ochre transition">Lightning Ridge Area</span>
-              <span class="block text-xs text-brand-sand">Opal Reserve</span>
+              <span class="block text-base font-semibold text-brand-bone hover:text-brand-ochre transition">Lightning Ridge Area</span>
+              <span class="block text-sm text-brand-sand">Opal Reserve</span>
             </div>
           </a>
 
           <p class="text-sm text-brand-sand leading-relaxed mb-6">
-            On-ground management of Crown land across the Lightning Ridge opal fields — supporting mining, tourism, education, research and land care across the Reserve.
+            On-ground management of Crown land across the Lightning Ridge opal fields, supporting mining, tourism, education, research and land care across the Reserve.
           </p>
 
           <address class="not-italic text-sm text-brand-sand space-y-2">
@@ -666,7 +661,7 @@
     </div>
 
   </footer>
-  <!-- END FOOTER — FOOTER-VERSION: 1 -->
+  <!-- END FOOTER, FOOTER-VERSION: 1 -->
 
 </body>
 </html>
