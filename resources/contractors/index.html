@@ -31,14 +31,23 @@
         extend: {
           colors: {
             brand: {
-              ochre:    '#B8562A',
-              clay:     '#8C3A1A',
-              sage:     '#6B7A5A',
-              bone:     '#F5EFE6',
-              charcoal: '#1F1C19',
-              slate:    '#3D3A35',
-              sand:     '#E8DFD1',
-              line:     '#D9CFBF',
+              navy:       '#1E2A5E',
+              navyDeep:   '#14204A',
+              ochre:      '#B8562A',
+              clay:       '#8C3A1A',
+              sage:       '#6B7A5A',
+              bone:       '#F5EFE6',
+              charcoal:   '#1F1C19',
+              slate:      '#3D3A35',
+              sand:       '#E8DFD1',
+              line:       '#D9CFBF',
+              opal: {
+                blue:    '#2D5FB8',
+                teal:    '#3FB5C4',
+                green:   '#4A8A3B',
+                gold:    '#E8B923',
+                red:     '#C93B2A',
+              },
             }
           },
           fontFamily: {
@@ -53,8 +62,10 @@
 
   <!-- Alpine.js -->
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" defer></script>
 
   <!-- Local overrides -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/styles.css">
   <script src="/assets/js/main.js" defer></script>
 </head>
@@ -594,7 +605,7 @@
 
         <!-- Column 2: Sitemap -->
         <div>
-          <h3 class="text-xs font-semibold uppercase tracking-widest text-brand-sage mb-5">Sitemap</h3>
+          <h3 class="text-xs font-semibold uppercase tracking-widest text-white/60 mb-5">Sitemap</h3>
           <nav aria-label="Footer navigation">
             <ul class="space-y-2 text-sm text-brand-sand">
               <li><a href="/" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Home</a></li>
@@ -635,14 +646,14 @@
 
         <!-- Column 3: Acknowledgement + Disclaimer -->
         <div>
-          <h3 class="text-xs font-semibold uppercase tracking-widest text-brand-sage mb-5">Acknowledgement of Country</h3>
+          <h3 class="text-xs font-semibold uppercase tracking-widest text-white/60 mb-5">Acknowledgement of Country</h3>
           <!-- TODO-CLIENT: confirm traditional owners and preferred Acknowledgement of Country wording -->
           <p class="text-sm text-brand-sand leading-relaxed mb-8">
             The Lightning Ridge Area Opal Reserve acknowledges the Yuwaalaraay, Yuwaalayaay and Gamilaraay peoples as the Traditional Custodians of the lands on which we work. We pay our respects to Elders past and present, and to all Aboriginal and Torres Strait Islander peoples who continue to care for Country.
           </p>
 
-          <div class="border-t border-brand-slate pt-6">
-            <h3 class="text-xs font-semibold uppercase tracking-widest text-brand-sage mb-3">Important Distinction</h3>
+          <div class="border-t border-white/10 pt-6">
+            <h3 class="text-xs font-semibold uppercase tracking-widest text-white/60 mb-3">Important Distinction</h3>
             <p class="text-xs text-brand-sand leading-relaxed">
               Lightning Ridge Area Opal Reserve is a delegated Crown Land Manager. Statutory approvals and regulation of mining and resources remain with <a href="https://www.crownlands.nsw.gov.au/" target="_blank" rel="noopener noreferrer" class="underline hover:text-brand-ochre transition">Crown Lands NSW</a> and the <a href="https://www.resourcesregulator.nsw.gov.au/" target="_blank" rel="noopener noreferrer" class="underline hover:text-brand-ochre transition">NSW Resources Regulator</a>.
             </p>
@@ -653,8 +664,8 @@
     </div>
 
     <!-- Bottom bar -->
-    <div class="border-t border-brand-slate">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-brand-slate">
+    <div class="border-t border-white/10">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/50">
         <p>© 2026 Lightning Ridge Area Opal Reserve · ABN 22 866 447 410</p>
         <div class="flex items-center gap-4">
           <a href="#" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Privacy</a><!-- TODO-CLIENT: link to privacy policy -->

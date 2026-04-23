@@ -34,14 +34,23 @@
         extend: {
           colors: {
             brand: {
-              ochre:    '#B8562A',
-              clay:     '#8C3A1A',
-              sage:     '#6B7A5A',
-              bone:     '#F5EFE6',
-              charcoal: '#1F1C19',
-              slate:    '#3D3A35',
-              sand:     '#E8DFD1',
-              line:     '#D9CFBF',
+              navy:       '#1E2A5E',
+              navyDeep:   '#14204A',
+              ochre:      '#B8562A',
+              clay:       '#8C3A1A',
+              sage:       '#6B7A5A',
+              bone:       '#F5EFE6',
+              charcoal:   '#1F1C19',
+              slate:      '#3D3A35',
+              sand:       '#E8DFD1',
+              line:       '#D9CFBF',
+              opal: {
+                blue:    '#2D5FB8',
+                teal:    '#3FB5C4',
+                green:   '#4A8A3B',
+                gold:    '#E8B923',
+                red:     '#C93B2A',
+              },
             }
           },
           fontFamily: {
@@ -56,8 +65,10 @@
 
   <!-- Alpine.js -->
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" defer></script>
 
   <!-- Local overrides -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/styles.css">
   <script src="/assets/js/main.js" defer></script>
 
@@ -100,7 +111,7 @@
 
         <!-- Logo -->
         <a href="/" class="flex items-center flex-shrink-0" aria-label="Lightning Ridge Area Opal Reserve — Home">
-          <img src="/assets/images/logo.jpeg" alt="Lightning Ridge Area Opal Reserve" width="240" height="67" class="h-10 lg:h-12 w-auto">
+          <img src="/assets/images/logo.jpeg" alt="Lightning Ridge Area Opal Reserve" width="240" height="67" class="h-12 md:h-14 w-auto">
         </a>
 
         <!-- Desktop nav -->
@@ -325,85 +336,109 @@
 
   <main id="main-content">
 
-    <!-- ============================================================
-         HERO, full-bleed, left-aligned
-         TODO-CLIENT: replace Unsplash placeholder with supplied hero photo
+    <!-- §5.1 ============================================================
+         HERO — Ken Burns + staggered reveal + scroll cue
+         TODO-CLIENT: replace Unsplash image with supplied hero photo
          ============================================================ -->
-    <section class="relative min-h-[85vh] flex items-end" aria-label="Hero">
-      <!-- Background image -->
-      <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
+    <section class="relative overflow-hidden min-h-[88vh] flex items-center" aria-label="Hero">
+
+      <!-- Background with Ken Burns zoom -->
+      <div class="absolute inset-0 hero-kenburns">
         <img
           src="https://images.unsplash.com/photo-1529963183134-61a90db47eaf?w=2880&q=80"
           alt=""
           class="w-full h-full object-cover object-center"
-          width="2880"
-          height="1620"
+          width="2880" height="1620"
           fetchpriority="high"
         >
-        <!-- Gradient overlay -->
-        <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/45 to-transparent"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
       </div>
 
-      <!-- Hero content -->
-      <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-36 w-full">
-        <div class="max-w-2xl">
-          <p class="text-sm uppercase tracking-widest text-brand-sand/80 mb-5 font-medium">Lightning Ridge, NSW · Crown Land Manager</p>
-          <h1 class="font-display font-medium text-white text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.05] mb-6">
-            Working Crown land.<br>
-            Practical outcomes.<br>
-            A living reserve.
-          </h1>
-          <p class="text-lg sm:text-xl text-white/85 leading-relaxed mb-10 max-w-xl">
-            On-ground management of the Lightning Ridge opal fields, supporting mining, tourism, education, research and land care across the Reserve.
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4">
-            <a href="/what-we-do/" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-brand-ochre text-white font-medium rounded-md hover:bg-brand-clay transition text-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
-              Explore Our Work
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </a>
-            <a href="/donate/" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 border-2 border-white/70 text-white font-medium rounded-md hover:bg-white/10 hover:border-white transition text-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
-              Support the Reserve
-            </a>
+      <!-- Navy gradient overlay -->
+      <div class="absolute inset-0 bg-gradient-to-br from-brand-navyDeep/80 via-brand-navy/55 to-transparent pointer-events-none"></div>
+
+      <!-- Opal shimmer -->
+      <div class="absolute inset-0 opal-shimmer pointer-events-none" aria-hidden="true"></div>
+
+      <!-- Content -->
+      <div class="relative max-w-6xl mx-auto px-6 py-24 md:py-32 w-full">
+        <div class="max-w-3xl">
+
+          <div class="flex items-center gap-3 mb-6 hero-reveal" style="--d:0ms">
+            <div class="opal-bar"></div>
+            <p class="text-sm uppercase tracking-[0.25em] text-white/80 font-medium">Lightning Ridge NSW · Crown Land Manager</p>
           </div>
+
+          <h1 class="font-display font-medium text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.05]">
+            <span class="block hero-reveal" style="--d:80ms">Working Crown land.</span>
+            <span class="block hero-reveal" style="--d:200ms">Practical outcomes.</span>
+            <span class="block hero-reveal" style="--d:320ms">A living reserve.</span>
+          </h1>
+
+          <p class="mt-6 text-lg md:text-xl text-white/85 max-w-2xl leading-relaxed hero-reveal" style="--d:480ms">
+            On-ground management of the Lightning Ridge opal fields — supporting mining, tourism, education, research and land care across the Reserve.
+          </p>
+
+          <div class="mt-10 flex flex-wrap gap-4 hero-reveal" style="--d:600ms">
+            <a href="/what-we-do/" class="btn-primary">
+              Explore our work
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a href="/donate/" class="btn-ghost-light">Support the Reserve</a>
+          </div>
+
         </div>
       </div>
+
+      <!-- Scroll cue -->
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 hero-reveal" style="--d:900ms" aria-hidden="true">
+        <div class="flex flex-col items-center gap-2 text-white/60">
+          <span class="text-xs uppercase tracking-widest">Scroll</span>
+          <div class="w-px h-10 bg-white/40 scroll-cue-line"></div>
+        </div>
+      </div>
+
     </section>
 
-    <!-- ============================================================
-         CLARIFIER BAND, "what we do / what we don't do"
+    <!-- §5.2 ============================================================
+         CLARIFIER BAND — what we are / what we're not
          ============================================================ -->
     <section class="bg-white border-b border-brand-line" aria-label="What LRAOR does and does not do">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10">
+      <div class="max-w-6xl mx-auto px-6 py-16 md:py-20">
 
-          <div class="flex items-start gap-4">
-            <div class="w-8 h-8 rounded-full bg-brand-sage/20 flex items-center justify-center flex-shrink-0 mt-0.5" aria-hidden="true">
-              <svg class="w-4 h-4 text-brand-sage" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <div class="flex items-center gap-3 mb-10">
+          <div class="opal-bar"></div>
+          <p class="text-sm uppercase tracking-[0.25em] text-brand-sage font-medium">What we are · what we're not</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+
+          <div class="flex items-start gap-4" data-aos="fade-up" data-aos-delay="0">
+            <div class="w-11 h-11 rounded-xl bg-brand-sage/15 flex items-center justify-center flex-shrink-0 mt-0.5" aria-hidden="true">
+              <svg class="w-5 h-5 text-brand-sage" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
             <div>
-              <p class="font-semibold text-brand-charcoal text-sm">We manage land, infrastructure and community assets</p>
-              <p class="text-brand-slate text-sm mt-1 leading-relaxed">Roads, access, facilities, and on-ground stewardship across the Reserve.</p>
+              <p class="font-semibold text-brand-navy text-sm leading-snug mb-1">We manage land, infrastructure and community assets</p>
+              <p class="text-brand-slate text-sm leading-relaxed">Roads, access, facilities, and on-ground stewardship across the Reserve.</p>
             </div>
           </div>
 
-          <div class="flex items-start gap-4">
-            <div class="w-8 h-8 rounded-full bg-brand-sage/20 flex items-center justify-center flex-shrink-0 mt-0.5" aria-hidden="true">
-              <svg class="w-4 h-4 text-brand-sage" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <div class="flex items-start gap-4" data-aos="fade-up" data-aos-delay="150">
+            <div class="w-11 h-11 rounded-xl bg-brand-sage/15 flex items-center justify-center flex-shrink-0 mt-0.5" aria-hidden="true">
+              <svg class="w-5 h-5 text-brand-sage" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
             <div>
-              <p class="font-semibold text-brand-charcoal text-sm">We support education, research and community projects</p>
-              <p class="text-brand-slate text-sm mt-1 leading-relaxed">Wandella Education Hub, university partnerships, youth programs, and more.</p>
+              <p class="font-semibold text-brand-navy text-sm leading-snug mb-1">We support education, research and community projects</p>
+              <p class="text-brand-slate text-sm leading-relaxed">Wandella Education Hub, university partnerships, youth programs, and more.</p>
             </div>
           </div>
 
-          <div class="flex items-start gap-4">
-            <div class="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center flex-shrink-0 mt-0.5" aria-hidden="true">
-              <svg class="w-4 h-4 text-brand-charcoal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          <div class="flex items-start gap-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="w-11 h-11 rounded-xl bg-brand-ochre/15 flex items-center justify-center flex-shrink-0 mt-0.5" aria-hidden="true">
+              <svg class="w-5 h-5 text-brand-ochre" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </div>
             <div>
-              <p class="font-semibold text-brand-charcoal text-sm">We are not a regulator</p>
-              <p class="text-brand-slate text-sm mt-1 leading-relaxed">Mining and resources regulation sits with <a href="https://www.crownlands.nsw.gov.au/" target="_blank" rel="noopener noreferrer" class="underline hover:text-brand-ochre transition">Crown Lands NSW</a> and the <a href="https://www.resourcesregulator.nsw.gov.au/" target="_blank" rel="noopener noreferrer" class="underline hover:text-brand-ochre transition">NSW Resources Regulator</a>.</p>
+              <p class="font-semibold text-brand-navy text-sm leading-snug mb-1">We are not a regulator</p>
+              <p class="text-brand-slate text-sm leading-relaxed">Mining and resources regulation sits with <a href="https://www.crownlands.nsw.gov.au/" target="_blank" rel="noopener noreferrer" class="underline hover:text-brand-ochre transition">Crown Lands NSW</a> and the <a href="https://www.resourcesregulator.nsw.gov.au/" target="_blank" rel="noopener noreferrer" class="underline hover:text-brand-ochre transition">NSW Resources Regulator</a>.</p>
             </div>
           </div>
 
@@ -411,161 +446,116 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         WHAT WE DO GRID, 6 cards
+    <!-- §5.3 ============================================================
+         WHAT WE DO GRID — 6 cards with hover life + AOS
          ============================================================ -->
-    <section class="py-20 md:py-28" aria-labelledby="what-we-do-heading">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="py-16 md:py-20" aria-labelledby="what-we-do-heading">
+      <div class="max-w-6xl mx-auto px-6">
 
-        <div class="mb-12">
-          <p class="text-sm uppercase tracking-widest text-brand-sage mb-3">On the ground</p>
-          <h2 id="what-we-do-heading" class="font-display font-medium text-3xl sm:text-4xl lg:text-5xl text-brand-charcoal tracking-tight">What we do</h2>
+        <div class="mb-10" data-aos="fade-up">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="opal-bar"></div>
+            <p class="text-sm uppercase tracking-[0.25em] text-brand-sage font-medium">On the ground</p>
+          </div>
+          <h2 id="what-we-do-heading" class="font-display font-medium text-3xl sm:text-4xl lg:text-5xl text-brand-navy tracking-tight">What we do</h2>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
 
-          <!-- Card: Wandella -->
-          <article class="group rounded-2xl overflow-hidden border border-brand-line bg-white hover:shadow-lg transition-shadow">
+          <a href="/what-we-do/wandella/" class="group block overflow-hidden rounded-2xl bg-white border border-brand-line card-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre" data-aos="fade-up" data-aos-delay="0">
             <div class="aspect-[4/3] overflow-hidden">
               <!-- TODO-CLIENT: replace with Wandella farmhouse photo -->
-              <img
-                src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=800&q=75"
-                alt="The Wandella farmhouse precinct, a base for researchers and school groups"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-                width="800"
-                height="600"
-              >
+              <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=800&q=75" alt="The Wandella farmhouse precinct — a base for researchers and school groups" class="w-full h-full object-cover card-img" loading="lazy" width="800" height="600">
             </div>
             <div class="p-6">
-              <h3 class="font-display font-medium text-xl text-brand-charcoal mb-2">Wandella</h3>
-              <p class="text-brand-slate text-sm leading-relaxed mb-4">A dedicated hub for researchers, school groups and community programs on the Reserve.</p>
-              <a href="/what-we-do/wandella/" class="inline-flex items-center gap-1.5 text-brand-ochre text-sm font-medium hover:text-brand-clay hover:underline underline-offset-4 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre rounded">
+              <h3 class="font-display text-xl text-brand-navy mb-2">Wandella</h3>
+              <p class="text-brand-slate text-sm leading-relaxed">A dedicated hub for researchers, school groups and community programs on the Reserve.</p>
+              <span class="inline-flex items-center gap-1.5 mt-4 text-brand-ochre group-hover:gap-3 transition-all font-medium text-sm">
                 Learn more
-                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              </a>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </span>
             </div>
-          </article>
+          </a>
 
-          <!-- Card: Education & Youth -->
-          <article class="group rounded-2xl overflow-hidden border border-brand-line bg-white hover:shadow-lg transition-shadow">
+          <a href="/what-we-do/education-youth-programs/" class="group block overflow-hidden rounded-2xl bg-white border border-brand-line card-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre" data-aos="fade-up" data-aos-delay="100">
             <div class="aspect-[4/3] overflow-hidden">
               <!-- TODO-CLIENT: replace with education/youth program photo -->
-              <img
-                src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=800&q=75"
-                alt="Students participating in hands-on outdoor learning on Country"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-                width="800"
-                height="600"
-              >
+              <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=800&q=75" alt="Students participating in hands-on outdoor learning on Country" class="w-full h-full object-cover card-img" loading="lazy" width="800" height="600">
             </div>
             <div class="p-6">
-              <h3 class="font-display font-medium text-xl text-brand-charcoal mb-2">Education &amp; Youth Programs</h3>
-              <p class="text-brand-slate text-sm leading-relaxed mb-4">Hands-on learning on Country, including Hands-On Learning and the BroSpeak initiative.</p>
-              <a href="/what-we-do/education-youth-programs/" class="inline-flex items-center gap-1.5 text-brand-ochre text-sm font-medium hover:text-brand-clay hover:underline underline-offset-4 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre rounded">
+              <h3 class="font-display text-xl text-brand-navy mb-2">Education &amp; Youth Programs</h3>
+              <p class="text-brand-slate text-sm leading-relaxed">Hands-on learning on Country, including Hands-On Learning and the BroSpeak initiative.</p>
+              <span class="inline-flex items-center gap-1.5 mt-4 text-brand-ochre group-hover:gap-3 transition-all font-medium text-sm">
                 Learn more
-                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              </a>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </span>
             </div>
-          </article>
+          </a>
 
-          <!-- Card: Research -->
-          <article class="group rounded-2xl overflow-hidden border border-brand-line bg-white hover:shadow-lg transition-shadow">
+          <a href="/what-we-do/research-partnerships/" class="group block overflow-hidden rounded-2xl bg-white border border-brand-line card-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre" data-aos="fade-up" data-aos-delay="200">
             <div class="aspect-[4/3] overflow-hidden">
               <!-- TODO-CLIENT: replace with Narran River / research photo -->
-              <img
-                src="https://images.unsplash.com/photo-1518021964703-4b2030f03085?w=800&q=75"
-                alt="Researchers conducting fish monitoring surveys on the Narran River"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-                width="800"
-                height="600"
-              >
+              <img src="https://images.unsplash.com/photo-1518021964703-4b2030f03085?w=800&q=75" alt="Researchers conducting fish monitoring surveys on the Narran River" class="w-full h-full object-cover card-img" loading="lazy" width="800" height="600">
             </div>
             <div class="p-6">
-              <h3 class="font-display font-medium text-xl text-brand-charcoal mb-2">Research Partnerships</h3>
-              <p class="text-brand-slate text-sm leading-relaxed mb-4">Collaborating with UNSW and University of Sydney on fish monitoring, ecology and more.</p>
-              <a href="/what-we-do/research-partnerships/" class="inline-flex items-center gap-1.5 text-brand-ochre text-sm font-medium hover:text-brand-clay hover:underline underline-offset-4 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre rounded">
+              <h3 class="font-display text-xl text-brand-navy mb-2">Research Partnerships</h3>
+              <p class="text-brand-slate text-sm leading-relaxed">Collaborating with UNSW and University of Sydney on fish monitoring, ecology and more.</p>
+              <span class="inline-flex items-center gap-1.5 mt-4 text-brand-ochre group-hover:gap-3 transition-all font-medium text-sm">
                 Learn more
-                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              </a>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </span>
             </div>
-          </article>
+          </a>
 
-          <!-- Card: Agriculture -->
-          <article class="group rounded-2xl overflow-hidden border border-brand-line bg-white hover:shadow-lg transition-shadow">
+          <a href="/what-we-do/agriculture-share-farming/" class="group block overflow-hidden rounded-2xl bg-white border border-brand-line card-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre" data-aos="fade-up" data-aos-delay="300">
             <div class="aspect-[4/3] overflow-hidden">
               <!-- TODO-CLIENT: replace with share farming / cropping photo -->
-              <img
-                src="https://images.unsplash.com/photo-1500076656116-558758c991c1?w=800&q=75"
-                alt="Productive share farming and cropping on Crown land at the Reserve"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-                width="800"
-                height="600"
-              >
+              <img src="https://images.unsplash.com/photo-1500076656116-558758c991c1?w=800&q=75" alt="Productive share farming and cropping on Crown land at the Reserve" class="w-full h-full object-cover card-img" loading="lazy" width="800" height="600">
             </div>
             <div class="p-6">
-              <h3 class="font-display font-medium text-xl text-brand-charcoal mb-2">Agriculture &amp; Share Farming</h3>
-              <p class="text-brand-slate text-sm leading-relaxed mb-4">Indigenous-led share farming and productive use of Crown land across the Reserve.</p>
-              <a href="/what-we-do/agriculture-share-farming/" class="inline-flex items-center gap-1.5 text-brand-ochre text-sm font-medium hover:text-brand-clay hover:underline underline-offset-4 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre rounded">
+              <h3 class="font-display text-xl text-brand-navy mb-2">Agriculture &amp; Share Farming</h3>
+              <p class="text-brand-slate text-sm leading-relaxed">Indigenous-led share farming and productive use of Crown land across the Reserve.</p>
+              <span class="inline-flex items-center gap-1.5 mt-4 text-brand-ochre group-hover:gap-3 transition-all font-medium text-sm">
                 Learn more
-                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              </a>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </span>
             </div>
-          </article>
+          </a>
 
-          <!-- Card: Land & Infrastructure -->
-          <article class="group rounded-2xl overflow-hidden border border-brand-line bg-white hover:shadow-lg transition-shadow">
+          <a href="/what-we-do/land-infrastructure/" class="group block overflow-hidden rounded-2xl bg-white border border-brand-line card-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre" data-aos="fade-up" data-aos-delay="400">
             <div class="aspect-[4/3] overflow-hidden">
               <!-- TODO-CLIENT: replace with roads/infrastructure photo -->
-              <img
-                src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=75"
-                alt="Road and infrastructure management across the Lightning Ridge opal fields"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-                width="800"
-                height="600"
-              >
+              <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&q=75" alt="Outback red dirt road through the Lightning Ridge opal fields" class="w-full h-full object-cover card-img" loading="lazy" width="800" height="600">
             </div>
             <div class="p-6">
-              <h3 class="font-display font-medium text-xl text-brand-charcoal mb-2">Land &amp; Infrastructure</h3>
-              <p class="text-brand-slate text-sm leading-relaxed mb-4">Roads, access points, and community facilities serving miners and residents daily.</p>
-              <a href="/what-we-do/land-infrastructure/" class="inline-flex items-center gap-1.5 text-brand-ochre text-sm font-medium hover:text-brand-clay hover:underline underline-offset-4 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre rounded">
+              <h3 class="font-display text-xl text-brand-navy mb-2">Land &amp; Infrastructure</h3>
+              <p class="text-brand-slate text-sm leading-relaxed">Roads, access points, and community facilities serving miners and residents daily.</p>
+              <span class="inline-flex items-center gap-1.5 mt-4 text-brand-ochre group-hover:gap-3 transition-all font-medium text-sm">
                 Learn more
-                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              </a>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </span>
             </div>
-          </article>
+          </a>
 
-          <!-- Card: Environmental Management -->
-          <article class="group rounded-2xl overflow-hidden border border-brand-line bg-white hover:shadow-lg transition-shadow">
+          <a href="/what-we-do/environmental-management/" class="group block overflow-hidden rounded-2xl bg-white border border-brand-line card-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre" data-aos="fade-up" data-aos-delay="500">
             <div class="aspect-[4/3] overflow-hidden">
-              <!-- TODO-CLIENT: replace with environmental management / Hudson Pear photo -->
-              <img
-                src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&q=75"
-                alt="Environmental management including Hudson Pear biocontrol across the Reserve"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-                width="800"
-                height="600"
-              >
+              <!-- TODO-CLIENT: replace with environmental management / outback landscape photo -->
+              <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&q=75" alt="Outback landscape — environmental management including Hudson Pear biocontrol" class="w-full h-full object-cover card-img" loading="lazy" width="800" height="600">
             </div>
             <div class="p-6">
-              <h3 class="font-display font-medium text-xl text-brand-charcoal mb-2">Environmental Management</h3>
-              <p class="text-brand-slate text-sm leading-relaxed mb-4">Hudson Pear biocontrol, feral animal management and weed control across the Reserve.</p>
-              <a href="/what-we-do/environmental-management/" class="inline-flex items-center gap-1.5 text-brand-ochre text-sm font-medium hover:text-brand-clay hover:underline underline-offset-4 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre rounded">
+              <h3 class="font-display text-xl text-brand-navy mb-2">Environmental Management</h3>
+              <p class="text-brand-slate text-sm leading-relaxed">Hudson Pear biocontrol, feral animal management and weed control across the Reserve.</p>
+              <span class="inline-flex items-center gap-1.5 mt-4 text-brand-ochre group-hover:gap-3 transition-all font-medium text-sm">
                 Learn more
-                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              </a>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </span>
             </div>
-          </article>
+          </a>
 
         </div>
 
-        <div class="mt-10 text-center">
-          <a href="/what-we-do/" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 border-2 border-brand-sage text-brand-sage font-medium rounded-md hover:bg-brand-sage hover:text-white transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre">
+        <div class="mt-10 text-center" data-aos="fade-up">
+          <a href="/what-we-do/" class="inline-flex items-center justify-center gap-2 px-7 py-3 border-2 border-brand-navy text-brand-navy font-medium rounded-md hover:bg-brand-navy hover:text-white transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre">
             View all programs
           </a>
         </div>
@@ -573,213 +563,214 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         WANDELLA SPOTLIGHT, split section
+    <!-- §5.5 ============================================================
+         STAT BAND — count-up on scroll
+         TODO-CLIENT: supply real figures for hectares managed, research projects, community partners
          ============================================================ -->
-    <section class="bg-brand-sand py-20 md:py-28 overflow-hidden" aria-labelledby="wandella-heading">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+    <section class="bg-brand-sand py-16 md:py-20 border-y border-brand-line" aria-label="Key statistics">
+      <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
 
-          <!-- Image -->
-          <div class="rounded-2xl overflow-hidden aspect-[3/2] lg:aspect-auto lg:h-[480px]">
-            <!-- TODO-CLIENT: replace with Wandella farmhouse hero photo -->
-            <img
-              src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1800&q=80"
-              alt="The Wandella farmhouse precinct at the Lightning Ridge Area Opal Reserve"
-              class="w-full h-full object-cover"
-              loading="lazy"
-              width="1800"
-              height="1200"
-            >
-          </div>
+        <div class="text-center" data-aos="fade-up" data-aos-delay="0">
+          <div class="opal-bar mx-auto mb-4"></div>
+          <div class="font-display text-5xl md:text-6xl text-brand-navy font-medium" data-counter data-target="600" data-suffix="+">600+</div>
+          <p class="mt-2 text-xs uppercase tracking-widest text-brand-slate leading-snug">Hudson Pear biocontrol<br>tubs released in 2025</p>
+        </div>
 
-          <!-- Copy -->
-          <div>
-            <p class="text-sm uppercase tracking-widest text-brand-sage mb-4">Flagship project</p>
-            <h2 id="wandella-heading" class="font-display font-medium text-3xl sm:text-4xl lg:text-5xl text-brand-charcoal tracking-tight leading-[1.1] mb-5">
+        <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+          <div class="opal-bar mx-auto mb-4"></div>
+          <!-- TODO-CLIENT: supply hectares managed figure -->
+          <div class="font-display text-5xl md:text-6xl text-brand-navy font-medium">{{ TBD }}</div>
+          <p class="mt-2 text-xs uppercase tracking-widest text-brand-slate leading-snug">Hectares<br>managed</p>
+        </div>
+
+        <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+          <div class="opal-bar mx-auto mb-4"></div>
+          <!-- TODO-CLIENT: supply research projects figure -->
+          <div class="font-display text-5xl md:text-6xl text-brand-navy font-medium">{{ TBD }}</div>
+          <p class="mt-2 text-xs uppercase tracking-widest text-brand-slate leading-snug">Research<br>projects</p>
+        </div>
+
+        <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+          <div class="opal-bar mx-auto mb-4"></div>
+          <!-- TODO-CLIENT: supply community partners figure -->
+          <div class="font-display text-5xl md:text-6xl text-brand-navy font-medium">{{ TBD }}</div>
+          <p class="mt-2 text-xs uppercase tracking-widest text-brand-slate leading-snug">Community<br>partners</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- §5.4 ============================================================
+         WANDELLA SPOTLIGHT — full-bleed navy, parallax image
+         ============================================================ -->
+    <section class="relative bg-brand-navy text-white overflow-hidden" aria-labelledby="wandella-heading">
+      <div class="grid md:grid-cols-2 gap-0 items-stretch min-h-[580px]">
+
+        <!-- Image side — full edge to edge -->
+        <div class="relative overflow-hidden order-2 md:order-1 min-h-[380px] md:min-h-full" data-aos="fade-right">
+          <!-- TODO-CLIENT: replace with Wandella farmhouse hero photo -->
+          <img
+            src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1800&q=80"
+            alt="The Wandella farmhouse precinct at the Lightning Ridge Area Opal Reserve"
+            class="absolute inset-0 w-full h-full object-cover parallax-img"
+            loading="lazy" width="1800" height="1200"
+          >
+          <!-- Subtle navy wash on the edge meeting the copy side -->
+          <div class="hidden md:block absolute inset-y-0 right-0 w-24 bg-gradient-to-r from-transparent to-brand-navy/40 pointer-events-none"></div>
+        </div>
+
+        <!-- Copy side -->
+        <div class="order-1 md:order-2 flex items-center px-6 md:px-16 py-16 md:py-24" data-aos="fade-left">
+          <div class="max-w-xl">
+
+            <div class="flex items-center gap-3 mb-6">
+              <div class="opal-bar"></div>
+              <p class="text-sm uppercase tracking-[0.25em] text-white/70 font-medium">Flagship project</p>
+            </div>
+
+            <h2 id="wandella-heading" class="font-display font-medium text-3xl md:text-5xl leading-[1.1] tracking-tight mb-5">
               Wandella Research &amp; Education Hub
             </h2>
-            <p class="text-brand-slate leading-relaxed text-base lg:text-lg mb-4">
+            <p class="text-lg text-white/85 leading-relaxed mb-4">
               The Wandella farmhouse precinct has been transformed into a long-term base for visiting researchers, school groups, community programs and collaborative projects.
             </p>
-            <p class="text-brand-slate leading-relaxed text-base mb-8">
-              The next step: converting the historic Wandella shearing shed into a purpose-built education and research facility. This is the flagship project we need your help with, a permanent home for discovery, learning and innovation on Country.
+            <p class="text-white/80 leading-relaxed mb-8">
+              The next step: converting the historic Wandella shearing shed into a purpose-built education and research facility — a permanent home for discovery, learning and innovation on Country.
             </p>
-            <div class="flex flex-col sm:flex-row gap-4">
-              <a href="/what-we-do/wandella/" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-brand-ochre text-white font-medium rounded-md hover:bg-brand-clay transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre">
+            <div class="flex flex-wrap gap-4">
+              <a href="/what-we-do/wandella/" class="btn-primary-light">
                 About Wandella
               </a>
-              <a href="/donate/#wandella-shed" class="inline-flex items-center gap-2 text-brand-ochre font-medium hover:text-brand-clay hover:underline underline-offset-4 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre rounded px-6 py-3">
+              <a href="/donate/#wandella-shed" class="btn-ghost-light">
                 Support this project
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
               </a>
             </div>
-          </div>
 
+          </div>
         </div>
+
       </div>
     </section>
 
-    <!-- ============================================================
-         STAT BAND
-         TODO-CLIENT: supply real numbers for all four stats
+    <!-- §5.7 ============================================================
+         HIGHLIGHTS FROM THE FIELD — 3 cards, fixed images, hover life
          ============================================================ -->
-    <section class="bg-brand-ochre py-16 md:py-20" aria-label="Key statistics">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 text-center">
+    <section class="py-16 md:py-20" aria-labelledby="highlights-heading">
+      <div class="max-w-6xl mx-auto px-6">
 
-          <div>
-            <p class="font-display font-medium text-4xl sm:text-5xl text-white mb-2">{{ TBD }}</p><!-- TODO-CLIENT: years operating -->
-            <p class="text-sm text-white/80 uppercase tracking-wider">Years operating</p>
+        <div class="mb-10" data-aos="fade-up">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="opal-bar"></div>
+            <p class="text-sm uppercase tracking-[0.25em] text-brand-sage font-medium">Recent outcomes</p>
           </div>
-          <div>
-            <p class="font-display font-medium text-4xl sm:text-5xl text-white mb-2">{{ TBD }}</p><!-- TODO-CLIENT: hectares managed -->
-            <p class="text-sm text-white/80 uppercase tracking-wider">Hectares managed</p>
-          </div>
-          <div>
-            <p class="font-display font-medium text-4xl sm:text-5xl text-white mb-2">{{ TBD }}</p><!-- TODO-CLIENT: research projects supported -->
-            <p class="text-sm text-white/80 uppercase tracking-wider">Research projects</p>
-          </div>
-          <div>
-            <p class="font-display font-medium text-4xl sm:text-5xl text-white mb-2">{{ TBD }}</p><!-- TODO-CLIENT: community partners -->
-            <p class="text-sm text-white/80 uppercase tracking-wider">Community partners</p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         RECENT HIGHLIGHTS, 3 cards
-         ============================================================ -->
-    <section class="py-20 md:py-28" aria-labelledby="highlights-heading">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <div class="mb-12">
-          <p class="text-sm uppercase tracking-widest text-brand-sage mb-3">Recent outcomes</p>
-          <h2 id="highlights-heading" class="font-display font-medium text-3xl sm:text-4xl lg:text-5xl text-brand-charcoal tracking-tight">Highlights from the field</h2>
+          <h2 id="highlights-heading" class="font-display font-medium text-3xl sm:text-4xl lg:text-5xl text-brand-navy tracking-tight">Highlights from the field</h2>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
 
-          <!-- Highlight 1: Wandella Education Hub -->
-          <article class="rounded-2xl overflow-hidden border border-brand-line bg-white">
+          <article class="group block overflow-hidden rounded-2xl bg-white border border-brand-line card-hover" data-aos="fade-up" data-aos-delay="0">
             <div class="aspect-[4/3] overflow-hidden">
               <!-- TODO-CLIENT: replace with Wandella education program photo -->
-              <img
-                src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=75"
-                alt="Students at the Wandella Education Hub engaging in outdoor learning"
-                class="w-full h-full object-cover"
-                loading="lazy"
-                width="800"
-                height="600"
-              >
+              <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=75" alt="Students at the Wandella Education Hub in an outdoor learning session" class="w-full h-full object-cover card-img" loading="lazy" width="800" height="600">
             </div>
             <div class="p-6">
               <p class="text-xs uppercase tracking-widest text-brand-sage mb-2">Education</p>
-              <h3 class="font-display font-medium text-xl text-brand-charcoal mb-3">Wandella Education Hub growing</h3>
+              <h3 class="font-display font-medium text-xl text-brand-navy mb-3 group-hover:text-brand-ochre transition">Wandella Education Hub growing</h3>
               <p class="text-brand-slate text-sm leading-relaxed">The Wandella farmhouse is hosting an expanding calendar of school groups and community programs, with demand growing year on year.</p>
             </div>
           </article>
 
-          <!-- Highlight 2: Hudson Pear biocontrol -->
-          <article class="rounded-2xl overflow-hidden border border-brand-line bg-white">
+          <article class="group block overflow-hidden rounded-2xl bg-white border border-brand-line card-hover" data-aos="fade-up" data-aos-delay="100">
             <div class="aspect-[4/3] overflow-hidden">
-              <!-- TODO-CLIENT: replace with Hudson Pear / biocontrol photo -->
-              <img
-                src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&q=75"
-                alt="Hudson Pear biocontrol work using cochineal insects on Crown land"
-                class="w-full h-full object-cover"
-                loading="lazy"
-                width="800"
-                height="600"
-              >
+              <!-- TODO-CLIENT: replace with Hudson Pear / outback vegetation photo -->
+              <img src="https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=800&q=75" alt="Outback vegetation on the Reserve — Hudson Pear biocontrol program underway" class="w-full h-full object-cover card-img" loading="lazy" width="800" height="600">
             </div>
             <div class="p-6">
               <p class="text-xs uppercase tracking-widest text-brand-sage mb-2">Environmental</p>
-              <h3 class="font-display font-medium text-xl text-brand-charcoal mb-3">600+ tubs of Hudson Pear biocontrol released</h3>
+              <h3 class="font-display font-medium text-xl text-brand-navy mb-3 group-hover:text-brand-ochre transition">600+ tubs of Hudson Pear biocontrol released</h3>
               <p class="text-brand-slate text-sm leading-relaxed">Working with NSW DPIRD and Local Land Services, we released cochineal biocontrol agents across Crown land areas of the opal fields in 2025.</p>
             </div>
           </article>
 
-          <!-- Highlight 3: Grawin Front Road -->
-          <article class="rounded-2xl overflow-hidden border border-brand-line bg-white">
+          <article class="group block overflow-hidden rounded-2xl bg-white border border-brand-line card-hover" data-aos="fade-up" data-aos-delay="200">
             <div class="aspect-[4/3] overflow-hidden">
-              <!-- TODO-CLIENT: replace with road upgrade / Grawin Front Road photo -->
-              <img
-                src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&q=75"
-                alt="Grawin Front Road after gazettal and upgrade by Walgett Shire Council"
-                class="w-full h-full object-cover"
-                loading="lazy"
-                width="800"
-                height="600"
-              >
+              <!-- TODO-CLIENT: replace with Grawin Front Road / outback red dirt road photo -->
+              <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=800&q=75" alt="Outback red dirt road through open land — the Grawin Front Road upgrade" class="w-full h-full object-cover card-img" loading="lazy" width="800" height="600">
             </div>
             <div class="p-6">
               <p class="text-xs uppercase tracking-widest text-brand-sage mb-2">Infrastructure</p>
-              <h3 class="font-display font-medium text-xl text-brand-charcoal mb-3">Grawin Front Road gazetted and upgraded</h3>
+              <h3 class="font-display font-medium text-xl text-brand-navy mb-3 group-hover:text-brand-ochre transition">Grawin Front Road gazetted and upgraded</h3>
               <p class="text-brand-slate text-sm leading-relaxed">After years of advocacy, the Grawin Front Road has been formally gazetted and upgraded by Walgett Shire Council, improving access for the whole community.</p>
             </div>
           </article>
 
         </div>
 
-        <div class="mt-10 text-center">
-          <a href="/media/" class="inline-flex items-center gap-2 text-brand-ochre font-medium hover:text-brand-clay hover:underline underline-offset-4 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre rounded">
+        <div class="mt-10 text-center" data-aos="fade-up">
+          <a href="/media/" class="inline-flex items-center gap-2 text-brand-navy font-medium hover:text-brand-ochre transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre rounded">
             More news and media
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
         </div>
 
       </div>
     </section>
 
-    <!-- ============================================================
-         PARTNERS LOGO STRIP
-         TODO-CLIENT: supply partner logo files for /assets/images/partners/
+    <!-- §5.6 ============================================================
+         PARTNERS MARQUEE — continuous horizontal scroll, pause on hover
+         TODO-CLIENT: replace SVG wordmarks with official partner logos (with permission)
          ============================================================ -->
-    <section class="bg-brand-sand py-14 md:py-20 border-t border-brand-line" aria-labelledby="partners-heading">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <p class="text-center text-sm uppercase tracking-widest text-brand-sage mb-10" id="partners-heading">Partners &amp; collaborators</p>
-
-        <!-- Partner logos, greyscale, colour on hover -->
-        <!-- TODO-CLIENT: replace text placeholders with actual logo images -->
-        <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-6" role="list" aria-label="Partner organisations">
-          <div class="text-xs font-semibold text-brand-slate/60 hover:text-brand-ochre transition cursor-default grayscale hover:grayscale-0" role="listitem">Crown Lands NSW</div>
-          <div class="text-xs font-semibold text-brand-slate/60 hover:text-brand-ochre transition cursor-default" role="listitem">NSW Resources Regulator</div>
-          <div class="text-xs font-semibold text-brand-slate/60 hover:text-brand-ochre transition cursor-default" role="listitem">Walgett Shire Council</div>
-          <div class="text-xs font-semibold text-brand-slate/60 hover:text-brand-ochre transition cursor-default" role="listitem">UNSW</div>
-          <div class="text-xs font-semibold text-brand-slate/60 hover:text-brand-ochre transition cursor-default" role="listitem">University of Sydney</div>
-          <div class="text-xs font-semibold text-brand-slate/60 hover:text-brand-ochre transition cursor-default" role="listitem">Hands on Learning</div>
-          <div class="text-xs font-semibold text-brand-slate/60 hover:text-brand-ochre transition cursor-default" role="listitem">Lightning Ridge Central School</div>
-          <div class="text-xs font-semibold text-brand-slate/60 hover:text-brand-ochre transition cursor-default" role="listitem">Castlereagh Macquarie County Council</div>
-          <div class="text-xs font-semibold text-brand-slate/60 hover:text-brand-ochre transition cursor-default" role="listitem">NSW DPIRD</div>
-          <div class="text-xs font-semibold text-brand-slate/60 hover:text-brand-ochre transition cursor-default" role="listitem">Local Land Services</div>
+    <section class="py-14 bg-white border-y border-brand-line overflow-hidden" aria-labelledby="partners-heading">
+      <div class="max-w-6xl mx-auto px-6">
+        <p class="text-center text-sm uppercase tracking-[0.25em] text-brand-sage font-medium mb-8" id="partners-heading">Partners &amp; collaborators</p>
+      </div>
+      <div class="marquee">
+        <div class="marquee-track">
+          <div class="marquee-group">
+            <img src="/assets/images/partners/crown-lands-nsw.svg"                alt="Crown Lands NSW"                          class="partner-logo">
+            <img src="/assets/images/partners/resources-regulator.svg"            alt="NSW Resources Regulator"                  class="partner-logo">
+            <img src="/assets/images/partners/walgett-shire.svg"                  alt="Walgett Shire Council"                    class="partner-logo">
+            <img src="/assets/images/partners/unsw.svg"                           alt="UNSW"                                     class="partner-logo">
+            <img src="/assets/images/partners/usyd.svg"                           alt="University of Sydney"                     class="partner-logo">
+            <img src="/assets/images/partners/hands-on-learning.svg"              alt="Hands on Learning"                        class="partner-logo">
+            <img src="/assets/images/partners/lightning-ridge-central-school.svg" alt="Lightning Ridge Central School"           class="partner-logo">
+            <img src="/assets/images/partners/castlereagh-macquarie.svg"          alt="Castlereagh Macquarie County Council"     class="partner-logo">
+            <img src="/assets/images/partners/nsw-dpird.svg"                      alt="NSW DPIRD"                                class="partner-logo">
+            <img src="/assets/images/partners/local-land-services.svg"            alt="Local Land Services"                      class="partner-logo">
+          </div>
+          <div class="marquee-group" aria-hidden="true">
+            <img src="/assets/images/partners/crown-lands-nsw.svg"                alt="" class="partner-logo">
+            <img src="/assets/images/partners/resources-regulator.svg"            alt="" class="partner-logo">
+            <img src="/assets/images/partners/walgett-shire.svg"                  alt="" class="partner-logo">
+            <img src="/assets/images/partners/unsw.svg"                           alt="" class="partner-logo">
+            <img src="/assets/images/partners/usyd.svg"                           alt="" class="partner-logo">
+            <img src="/assets/images/partners/hands-on-learning.svg"              alt="" class="partner-logo">
+            <img src="/assets/images/partners/lightning-ridge-central-school.svg" alt="" class="partner-logo">
+            <img src="/assets/images/partners/castlereagh-macquarie.svg"          alt="" class="partner-logo">
+            <img src="/assets/images/partners/nsw-dpird.svg"                      alt="" class="partner-logo">
+            <img src="/assets/images/partners/local-land-services.svg"            alt="" class="partner-logo">
+          </div>
         </div>
-
       </div>
     </section>
 
-    <!-- ============================================================
-         CTA BAND
+    <!-- §5.8 ============================================================
+         FINAL CTA BAND — navy, opal shimmer, flush above footer
          ============================================================ -->
-    <section class="bg-brand-sage py-20 md:py-28" aria-label="Donation call to action">
-      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <p class="text-sm uppercase tracking-widest text-white/70 mb-4">Support the Reserve</p>
-        <h2 class="font-display font-medium text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-[1.1] mb-5">
-          Help us keep the Reserve working for everyone
+    <section class="relative py-20 md:py-24 bg-brand-navy overflow-hidden" aria-label="Donation call to action">
+      <div class="absolute inset-0 opal-shimmer opacity-40 pointer-events-none" aria-hidden="true"></div>
+      <div class="relative max-w-4xl mx-auto px-6 text-center" data-aos="fade-up">
+        <div class="opal-bar mx-auto mb-6"></div>
+        <h2 class="font-display font-medium text-3xl md:text-5xl text-white tracking-tight leading-[1.1]">
+          Back the work happening on the ground.
         </h2>
-        <p class="text-white/85 leading-relaxed text-base lg:text-lg mb-10 max-w-xl mx-auto">
-          Revenue from the Reserve is reinvested into local infrastructure and community projects. Your contribution makes that work possible.
+        <p class="mt-6 text-lg text-white/80 max-w-2xl mx-auto leading-relaxed">
+          Every contribution goes directly into land management, education, research and community projects at Lightning Ridge.
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/donate/" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-ochre text-white font-medium rounded-md hover:bg-brand-clay transition text-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
-            Donate to the Reserve
-          </a>
-          <a href="/contact/" class="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white/60 text-white font-medium rounded-md hover:bg-white/10 hover:border-white transition text-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
-            Get in touch
-          </a>
+        <div class="mt-10 flex flex-wrap gap-4 justify-center">
+          <a href="/donate/" class="btn-primary-warm">Donate now</a>
+          <a href="/contact/" class="btn-ghost-light">Partner with us</a>
         </div>
       </div>
     </section>
@@ -829,7 +820,7 @@
 
         <!-- Column 2: Sitemap -->
         <div>
-          <h3 class="text-xs font-semibold uppercase tracking-widest text-brand-sage mb-5">Sitemap</h3>
+          <h3 class="text-xs font-semibold uppercase tracking-widest text-white/60 mb-5">Sitemap</h3>
           <nav aria-label="Footer navigation">
             <ul class="space-y-2 text-sm text-brand-sand">
               <li><a href="/" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Home</a></li>
@@ -870,14 +861,14 @@
 
         <!-- Column 3: Acknowledgement + Disclaimer -->
         <div>
-          <h3 class="text-xs font-semibold uppercase tracking-widest text-brand-sage mb-5">Acknowledgement of Country</h3>
+          <h3 class="text-xs font-semibold uppercase tracking-widest text-white/60 mb-5">Acknowledgement of Country</h3>
           <!-- TODO-CLIENT: confirm traditional owners and preferred Acknowledgement of Country wording -->
           <p class="text-sm text-brand-sand leading-relaxed mb-8">
             The Lightning Ridge Area Opal Reserve acknowledges the Yuwaalaraay, Yuwaalayaay and Gamilaraay peoples as the Traditional Custodians of the lands on which we work. We pay our respects to Elders past and present, and to all Aboriginal and Torres Strait Islander peoples who continue to care for Country.
           </p>
 
-          <div class="border-t border-brand-slate pt-6">
-            <h3 class="text-xs font-semibold uppercase tracking-widest text-brand-sage mb-3">Important Distinction</h3>
+          <div class="border-t border-white/10 pt-6">
+            <h3 class="text-xs font-semibold uppercase tracking-widest text-white/60 mb-3">Important Distinction</h3>
             <p class="text-xs text-brand-sand leading-relaxed">
               Lightning Ridge Area Opal Reserve is a delegated Crown Land Manager. Statutory approvals and regulation of mining and resources remain with <a href="https://www.crownlands.nsw.gov.au/" target="_blank" rel="noopener noreferrer" class="underline hover:text-brand-ochre transition">Crown Lands NSW</a> and the <a href="https://www.resourcesregulator.nsw.gov.au/" target="_blank" rel="noopener noreferrer" class="underline hover:text-brand-ochre transition">NSW Resources Regulator</a>.
             </p>
@@ -888,8 +879,8 @@
     </div>
 
     <!-- Bottom bar -->
-    <div class="border-t border-brand-slate">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-brand-slate">
+    <div class="border-t border-white/10">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/50">
         <p>© 2026 Lightning Ridge Area Opal Reserve · ABN 22 866 447 410</p>
         <div class="flex items-center gap-4">
           <a href="#" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Privacy</a><!-- TODO-CLIENT: link to privacy policy -->
