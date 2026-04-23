@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Page-specific meta -->
+  <title>About the Reserve · Lightning Ridge Area Opal Reserve</title>
+  <meta name="description" content="Learn about the Lightning Ridge Area Opal Reserve — a delegated Crown Land Manager responsible for on-ground management of Crown land across the Lightning Ridge opal fields in NSW.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="About the Reserve · Lightning Ridge Area Opal Reserve">
+  <meta property="og:description" content="A delegated Crown Land Manager under the Crown Land Management Act 2016 (NSW), governing the Lightning Ridge opal fields on behalf of the local community.">
+  <meta property="og:image" content="https://lror.org/assets/images/og-about.jpg"><!-- TODO-CLIENT: supply og image -->
+  <meta property="og:url" content="https://lror.org/about/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About the Reserve · Lightning Ridge Area Opal Reserve">
+  <meta name="twitter:description" content="A delegated Crown Land Manager governing the Lightning Ridge opal fields on behalf of the local community.">
+  <meta name="twitter:image" content="https://lror.org/assets/images/og-about.jpg"><!-- TODO-CLIENT: supply twitter image -->
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://lror.org/about/">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind config + CDN -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              ochre:    '#B8562A',
+              clay:     '#8C3A1A',
+              sage:     '#6B7A5A',
+              bone:     '#F5EFE6',
+              charcoal: '#1F1C19',
+              slate:    '#3D3A35',
+              sand:     '#E8DFD1',
+              line:     '#D9CFBF',
+            }
+          },
+          fontFamily: {
+            display: ['"Fraunces"', 'Georgia', 'serif'],
+            sans:    ['"Inter"', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Alpine.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <!-- Local overrides -->
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <script src="/assets/js/main.js" defer></script>
+
+  <!-- Organization JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Lightning Ridge Area Opal Reserve",
+    "url": "https://lror.org",
+    "logo": "https://lror.org/assets/images/logo.png",
+    "email": "admin@lror.org",
+    "telephone": "+61488423885",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "4 Nobby Road",
+      "addressLocality": "Lightning Ridge",
+      "addressRegion": "NSW",
+      "postalCode": "2834",
+      "addressCountry": "AU"
+    },
+    "sameAs": ["https://www.facebook.com/Lightning-Ridge-Area-Opal-Reserve-2313374568905380/"],
+    "areaServed": ["Lightning Ridge", "Walgett Shire", "New South Wales", "Australia"]
+  }
+  </script>
+</head>
+
+<body class="text-brand-charcoal bg-brand-bone font-sans">
+
+  <!-- Skip to content -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ============================================================
+       HEADER — NAV-VERSION: 1
+       ============================================================ -->
+  <header class="sticky top-0 z-50 bg-brand-bone/95 backdrop-blur border-b border-brand-line" x-data="mobileNav()">
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 lg:h-20">
+
+        <!-- Logo + Name -->
+        <a href="/" class="flex items-center gap-3 group flex-shrink-0" aria-label="Lightning Ridge Area Opal Reserve — Home">
+          <!-- TODO-CLIENT: replace placeholder icon with actual SVG logo -->
+          <div class="w-10 h-10 rounded-full bg-brand-ochre flex items-center justify-center flex-shrink-0" aria-hidden="true">
+            <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+          </div>
+          <div class="leading-tight">
+            <span class="block text-sm font-semibold text-brand-charcoal group-hover:text-brand-ochre transition">Lightning Ridge Area</span>
+            <span class="block text-xs text-brand-slate">Opal Reserve</span>
+          </div>
+        </a>
+
+        <!-- Desktop nav -->
+        <nav class="hidden lg:flex items-center gap-1" aria-label="Primary navigation">
+
+          <a href="/" class="px-3 py-2 text-sm font-medium text-brand-charcoal hover:text-brand-ochre transition rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre">
+            Home
+          </a>
+
+          <!-- What We Do dropdown -->
+          <div x-data="{ open: false }" @click.outside="open = false" @keydown.escape.window="open = false" class="relative">
+            <button
+              @click="open = !open"
+              @mouseenter="open = true"
+              :aria-expanded="open.toString()"
+              aria-haspopup="true"
+              class="flex items-center gap-1 px-3 py-2 text-sm font-medium text-brand-charcoal hover:text-brand-ochre transition rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre"
+            >
+              What We Do
+              <svg class="w-4 h-4 transition-transform" :class="open ? 'rotate-180' : ''" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div
+              x-show="open"
+              x-transition:enter="transition ease-out duration-150"
+              x-transition:enter-start="opacity-0 -translate-y-1"
+              x-transition:enter-end="opacity-100 translate-y-0"
+              x-transition:leave="transition ease-in duration-100"
+              x-transition:leave-start="opacity-100 translate-y-0"
+              x-transition:leave-end="opacity-0 -translate-y-1"
+              @mouseleave="open = false"
+              class="absolute top-full left-0 mt-2 w-72 bg-white border border-brand-line rounded-xl shadow-lg py-2"
+              role="menu"
+              aria-label="What We Do submenu"
+            >
+              <a href="/what-we-do/wandella/" role="menuitem" class="flex items-start gap-3 px-4 py-3 hover:bg-brand-sand transition group focus-visible:outline-none focus-visible:bg-brand-sand">
+                <span class="mt-0.5 w-5 h-5 text-brand-ochre flex-shrink-0" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                </span>
+                <span>
+                  <span class="block text-sm font-medium text-brand-charcoal group-hover:text-brand-ochre transition">Wandella</span>
+                  <span class="block text-xs text-brand-slate mt-0.5">Research &amp; Education Hub</span>
+                </span>
+              </a>
+              <a href="/what-we-do/education-youth-programs/" role="menuitem" class="flex items-start gap-3 px-4 py-3 hover:bg-brand-sand transition group focus-visible:outline-none focus-visible:bg-brand-sand">
+                <span class="mt-0.5 w-5 h-5 text-brand-ochre flex-shrink-0" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+                </span>
+                <span>
+                  <span class="block text-sm font-medium text-brand-charcoal group-hover:text-brand-ochre transition">Education &amp; Youth Programs</span>
+                  <span class="block text-xs text-brand-slate mt-0.5">Hands-on learning on Country</span>
+                </span>
+              </a>
+              <a href="/what-we-do/research-partnerships/" role="menuitem" class="flex items-start gap-3 px-4 py-3 hover:bg-brand-sand transition group focus-visible:outline-none focus-visible:bg-brand-sand">
+                <span class="mt-0.5 w-5 h-5 text-brand-ochre flex-shrink-0" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                </span>
+                <span>
+                  <span class="block text-sm font-medium text-brand-charcoal group-hover:text-brand-ochre transition">Research Partnerships</span>
+                  <span class="block text-xs text-brand-slate mt-0.5">UNSW, University of Sydney &amp; more</span>
+                </span>
+              </a>
+              <a href="/what-we-do/agriculture-share-farming/" role="menuitem" class="flex items-start gap-3 px-4 py-3 hover:bg-brand-sand transition group focus-visible:outline-none focus-visible:bg-brand-sand">
+                <span class="mt-0.5 w-5 h-5 text-brand-ochre flex-shrink-0" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12m0 0C12 7 7 5 2 7"/><path d="M12 12c0-5 5-7 10-5"/><path d="M2 22h20"/></svg>
+                </span>
+                <span>
+                  <span class="block text-sm font-medium text-brand-charcoal group-hover:text-brand-ochre transition">Agriculture &amp; Share Farming</span>
+                  <span class="block text-xs text-brand-slate mt-0.5">Productive use of Crown land</span>
+                </span>
+              </a>
+              <a href="/what-we-do/land-infrastructure/" role="menuitem" class="flex items-start gap-3 px-4 py-3 hover:bg-brand-sand transition group focus-visible:outline-none focus-visible:bg-brand-sand">
+                <span class="mt-0.5 w-5 h-5 text-brand-ochre flex-shrink-0" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                </span>
+                <span>
+                  <span class="block text-sm font-medium text-brand-charcoal group-hover:text-brand-ochre transition">Land &amp; Infrastructure</span>
+                  <span class="block text-xs text-brand-slate mt-0.5">Roads, access &amp; community facilities</span>
+                </span>
+              </a>
+              <a href="/what-we-do/environmental-management/" role="menuitem" class="flex items-start gap-3 px-4 py-3 hover:bg-brand-sand transition group focus-visible:outline-none focus-visible:bg-brand-sand">
+                <span class="mt-0.5 w-5 h-5 text-brand-ochre flex-shrink-0" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8C8 10 5.9 16.17 3.82 19.34M9.1 17.96C11.07 15.8 14 14 17 8"/><path d="M21 12c0 4.97-4.03 9-9 9S3 16.97 3 12 7.03 3 12 3s9 4.03 9 9z"/></svg>
+                </span>
+                <span>
+                  <span class="block text-sm font-medium text-brand-charcoal group-hover:text-brand-ochre transition">Environmental Management</span>
+                  <span class="block text-xs text-brand-slate mt-0.5">Weed control, pest management &amp; more</span>
+                </span>
+              </a>
+            </div>
+          </div>
+
+          <!-- About Us dropdown — ACTIVE -->
+          <div x-data="{ open: false }" @click.outside="open = false" @keydown.escape.window="open = false" class="relative">
+            <button
+              @click="open = !open"
+              @mouseenter="open = true"
+              :aria-expanded="open.toString()"
+              aria-haspopup="true"
+              aria-current="page"
+              class="flex items-center gap-1 px-3 py-2 text-sm font-medium text-brand-ochre border-b-2 border-brand-ochre transition rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre"
+            >
+              About Us
+              <svg class="w-4 h-4 transition-transform" :class="open ? 'rotate-180' : ''" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div
+              x-show="open"
+              x-transition:enter="transition ease-out duration-150"
+              x-transition:enter-start="opacity-0 -translate-y-1"
+              x-transition:enter-end="opacity-100 translate-y-0"
+              x-transition:leave="transition ease-in duration-100"
+              x-transition:leave-start="opacity-100 translate-y-0"
+              x-transition:leave-end="opacity-0 -translate-y-1"
+              @mouseleave="open = false"
+              class="absolute top-full left-0 mt-2 w-56 bg-white border border-brand-line rounded-xl shadow-lg py-2"
+              role="menu"
+              aria-label="About Us submenu"
+            >
+              <a href="/about/" role="menuitem" class="flex items-center gap-3 px-4 py-3 hover:bg-brand-sand transition group focus-visible:outline-none focus-visible:bg-brand-sand">
+                <span class="w-5 h-5 text-brand-ochre flex-shrink-0" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                </span>
+                <span class="text-sm font-medium text-brand-charcoal group-hover:text-brand-ochre transition">About the Reserve</span>
+              </a>
+              <a href="/about/board/" role="menuitem" class="flex items-center gap-3 px-4 py-3 hover:bg-brand-sand transition group focus-visible:outline-none focus-visible:bg-brand-sand">
+                <span class="w-5 h-5 text-brand-ochre flex-shrink-0" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                </span>
+                <span class="text-sm font-medium text-brand-charcoal group-hover:text-brand-ochre transition">Board</span>
+              </a>
+              <a href="/about/staff/" role="menuitem" class="flex items-center gap-3 px-4 py-3 hover:bg-brand-sand transition group focus-visible:outline-none focus-visible:bg-brand-sand">
+                <span class="w-5 h-5 text-brand-ochre flex-shrink-0" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </span>
+                <span class="text-sm font-medium text-brand-charcoal group-hover:text-brand-ochre transition">Staff</span>
+              </a>
+            </div>
+          </div>
+
+          <a href="/media/" class="px-3 py-2 text-sm font-medium text-brand-charcoal hover:text-brand-ochre transition rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre">
+            Media
+          </a>
+
+          <a href="/donate/" class="ml-2 inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-ochre text-white text-sm font-medium rounded-md hover:bg-brand-clay transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre">
+            Donate
+          </a>
+
+          <a href="/contact/" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 border-2 border-brand-sage text-brand-sage text-sm font-medium rounded-md hover:bg-brand-sage hover:text-white transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre">
+            Contact
+          </a>
+
+        </nav>
+
+        <!-- Mobile hamburger -->
+        <button
+          @click="toggle()"
+          class="lg:hidden p-2 rounded-md text-brand-charcoal hover:text-brand-ochre hover:bg-brand-sand transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre"
+          :aria-expanded="open.toString()"
+          aria-controls="mobile-nav"
+          aria-label="Toggle navigation menu"
+        >
+          <svg x-show="!open" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          <svg x-show="open" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Mobile nav panel -->
+    <div
+      id="mobile-nav"
+      x-show="open"
+      x-transition:enter="transition ease-out duration-200"
+      x-transition:enter-start="opacity-0 -translate-y-2"
+      x-transition:enter-end="opacity-100 translate-y-0"
+      x-transition:leave="transition ease-in duration-150"
+      x-transition:leave-start="opacity-100 translate-y-0"
+      x-transition:leave-end="opacity-0 -translate-y-2"
+      class="lg:hidden border-t border-brand-line bg-brand-bone"
+    >
+      <nav class="max-w-6xl mx-auto px-4 py-4 space-y-1" aria-label="Mobile navigation">
+
+        <a href="/" class="block px-4 py-3 text-sm font-medium text-brand-charcoal hover:text-brand-ochre hover:bg-brand-sand rounded-lg transition" @click="close()">Home</a>
+
+        <div x-data="{ open: false }">
+          <button @click="open = !open" class="flex items-center justify-between w-full px-4 py-3 text-sm font-medium text-brand-charcoal hover:text-brand-ochre hover:bg-brand-sand rounded-lg transition" :aria-expanded="open.toString()">
+            What We Do
+            <svg class="w-4 h-4 transition-transform" :class="open ? 'rotate-180' : ''" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div x-show="open" x-collapse class="pl-4 mt-1 space-y-1 border-l-2 border-brand-line ml-4">
+            <a href="/what-we-do/wandella/" class="block px-3 py-2 text-sm text-brand-slate hover:text-brand-ochre hover:bg-brand-sand rounded-lg transition" @click="close()">Wandella – Research &amp; Education Hub</a>
+            <a href="/what-we-do/education-youth-programs/" class="block px-3 py-2 text-sm text-brand-slate hover:text-brand-ochre hover:bg-brand-sand rounded-lg transition" @click="close()">Education &amp; Youth Programs</a>
+            <a href="/what-we-do/research-partnerships/" class="block px-3 py-2 text-sm text-brand-slate hover:text-brand-ochre hover:bg-brand-sand rounded-lg transition" @click="close()">Research Partnerships</a>
+            <a href="/what-we-do/agriculture-share-farming/" class="block px-3 py-2 text-sm text-brand-slate hover:text-brand-ochre hover:bg-brand-sand rounded-lg transition" @click="close()">Agriculture &amp; Share Farming</a>
+            <a href="/what-we-do/land-infrastructure/" class="block px-3 py-2 text-sm text-brand-slate hover:text-brand-ochre hover:bg-brand-sand rounded-lg transition" @click="close()">Land &amp; Infrastructure Management</a>
+            <a href="/what-we-do/environmental-management/" class="block px-3 py-2 text-sm text-brand-slate hover:text-brand-ochre hover:bg-brand-sand rounded-lg transition" @click="close()">Environmental Management</a>
+          </div>
+        </div>
+
+        <div x-data="{ open: false }">
+          <button @click="open = !open" class="flex items-center justify-between w-full px-4 py-3 text-sm font-medium text-brand-ochre bg-brand-sand rounded-lg transition" :aria-expanded="open.toString()" aria-current="page">
+            About Us
+            <svg class="w-4 h-4 transition-transform" :class="open ? 'rotate-180' : ''" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div x-show="open" x-collapse class="pl-4 mt-1 space-y-1 border-l-2 border-brand-line ml-4">
+            <a href="/about/" class="block px-3 py-2 text-sm text-brand-slate hover:text-brand-ochre hover:bg-brand-sand rounded-lg transition" @click="close()">About the Reserve</a>
+            <a href="/about/board/" class="block px-3 py-2 text-sm text-brand-slate hover:text-brand-ochre hover:bg-brand-sand rounded-lg transition" @click="close()">Board</a>
+            <a href="/about/staff/" class="block px-3 py-2 text-sm text-brand-slate hover:text-brand-ochre hover:bg-brand-sand rounded-lg transition" @click="close()">Staff</a>
+          </div>
+        </div>
+
+        <a href="/media/" class="block px-4 py-3 text-sm font-medium text-brand-charcoal hover:text-brand-ochre hover:bg-brand-sand rounded-lg transition" @click="close()">Media</a>
+
+        <div class="pt-2 pb-1 flex flex-col gap-2">
+          <a href="/donate/" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-brand-ochre text-white text-sm font-medium rounded-md hover:bg-brand-clay transition" @click="close()">Donate</a>
+          <a href="/contact/" class="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-brand-sage text-brand-sage text-sm font-medium rounded-md hover:bg-brand-sage hover:text-white transition" @click="close()">Contact</a>
+        </div>
+
+      </nav>
+    </div>
+
+  </header>
+  <!-- END HEADER — NAV-VERSION: 1 -->
+
+  <main id="main-content">
+
+    <!-- ============================================================
+         PAGE HERO
+         TODO-CLIENT: replace Unsplash placeholder with supplied hero photo
+         ============================================================ -->
+    <section class="relative min-h-[50vh] flex items-end" aria-label="Page hero">
+      <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
+        <img
+          src="https://images.unsplash.com/photo-1529963183134-61a90db47eaf?w=2880&q=80"
+          alt=""
+          class="w-full h-full object-cover object-center"
+          width="2880"
+          height="1620"
+          loading="lazy"
+        >
+        <div class="absolute inset-0 bg-gradient-to-r from-black/65 via-black/40 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+      </div>
+
+      <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 w-full">
+        <!-- Breadcrumbs -->
+        <nav aria-label="Breadcrumb" class="mb-5">
+          <ol class="flex items-center gap-2 text-sm text-white/70">
+            <li><a href="/" class="hover:text-white transition">Home</a></li>
+            <li aria-hidden="true"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></li>
+            <li><span class="text-white font-medium" aria-current="page">About Us</span></li>
+          </ol>
+        </nav>
+        <h1 class="font-display font-medium text-white text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.05]">
+          About the Reserve
+        </h1>
+        <p class="mt-4 text-lg text-white/80 max-w-xl leading-relaxed">
+          A community-governed Crown Land Manager working the Lightning Ridge opal fields since our establishment under the Crown Land Management Act 2016 (NSW).
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         ORGANISATION OVERVIEW
+         ============================================================ -->
+    <section class="py-20 md:py-28" aria-labelledby="overview-heading">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
+
+          <!-- Main prose -->
+          <div class="lg:col-span-2">
+            <p class="text-sm uppercase tracking-widest text-brand-sage mb-3">Who we are</p>
+            <h2 id="overview-heading" class="font-display font-medium text-3xl sm:text-4xl text-brand-charcoal tracking-tight mb-8">
+              Crown Land Manager for the Lightning Ridge Opal Fields
+            </h2>
+
+            <div class="prose max-w-none text-brand-slate leading-relaxed space-y-5 text-base lg:text-[1.0625rem]">
+              <p>
+                The Lightning Ridge Area Opal Reserve (LRAOR) — formally <strong class="text-brand-charcoal">The Trustee for Lightning Ridge &amp; Surrounding Opal Fields Management Reserve Land Manager</strong>, ABN 22 866 447 410 — is a delegated Crown Land Manager appointed under the <em>Crown Land Management Act 2016</em> (NSW). We are responsible for the on-ground management of Crown land across the Lightning Ridge opal fields.
+              </p>
+              <p>
+                Our role is practical and on-the-ground: maintaining roads and access, stewarding natural assets, supporting community programs, and facilitating productive and responsible use of the Reserve. Revenue generated by the Reserve is reinvested directly into local infrastructure and community projects — not distributed as profit.
+              </p>
+
+              <!-- NOT A REGULATOR — stated plainly and firmly -->
+              <div class="bg-red-50 border border-red-200 rounded-xl p-5 not-prose">
+                <div class="flex items-start gap-3">
+                  <div class="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0 mt-0.5" aria-hidden="true">
+                    <svg class="w-3.5 h-3.5 text-red-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                  </div>
+                  <div>
+                    <p class="font-semibold text-brand-charcoal text-sm mb-1">We are not a regulator.</p>
+                    <p class="text-sm text-brand-slate leading-relaxed">
+                      Statutory approvals, licensing and enforcement relating to mining and resources are the responsibility of <a href="https://www.crownlands.nsw.gov.au/" target="_blank" rel="noopener noreferrer" class="text-brand-ochre underline hover:text-brand-clay transition">Crown Lands NSW</a> and the <a href="https://www.resourcesregulator.nsw.gov.au/" target="_blank" rel="noopener noreferrer" class="text-brand-ochre underline hover:text-brand-clay transition">NSW Resources Regulator</a> — not LRAOR. If you have a regulatory matter, please contact those agencies directly.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <p>
+                The Reserve is governed by a <strong class="text-brand-charcoal">Board of seven members</strong> representing the local mining community, landholders and broader stakeholders of the Lightning Ridge area. Day-to-day operations are managed by a small, dedicated staff team based in Lightning Ridge.
+              </p>
+            </div>
+          </div>
+
+          <!-- Sidebar: key facts -->
+          <div class="lg:col-span-1">
+            <div class="bg-brand-sand rounded-2xl p-6 sticky top-24">
+              <h3 class="font-display font-medium text-lg text-brand-charcoal mb-5">Key facts</h3>
+              <dl class="space-y-4 text-sm">
+                <div>
+                  <dt class="text-xs uppercase tracking-widest text-brand-sage mb-1">Legal name</dt>
+                  <dd class="text-brand-slate leading-snug">The Trustee for Lightning Ridge &amp; Surrounding Opal Fields Management Reserve Land Manager</dd>
+                </div>
+                <div>
+                  <dt class="text-xs uppercase tracking-widest text-brand-sage mb-1">ABN</dt>
+                  <dd class="text-brand-slate">22 866 447 410</dd>
+                </div>
+                <div>
+                  <dt class="text-xs uppercase tracking-widest text-brand-sage mb-1">Status</dt>
+                  <dd class="text-brand-slate">Delegated Crown Land Manager under the <em>Crown Land Management Act 2016</em> (NSW)</dd>
+                </div>
+                <div>
+                  <dt class="text-xs uppercase tracking-widest text-brand-sage mb-1">Governance</dt>
+                  <dd class="text-brand-slate">Board of 7 community-representative members</dd>
+                </div>
+                <div>
+                  <dt class="text-xs uppercase tracking-widest text-brand-sage mb-1">Based in</dt>
+                  <dd class="text-brand-slate">Lightning Ridge, NSW 2834</dd>
+                </div>
+                <div>
+                  <dt class="text-xs uppercase tracking-widest text-brand-sage mb-1">Revenue use</dt>
+                  <dd class="text-brand-slate">Reinvested into local infrastructure and community projects</dd>
+                </div>
+              </dl>
+              <div class="mt-6 pt-5 border-t border-brand-line">
+                <a href="/contact/" class="inline-flex items-center gap-2 text-brand-ochre text-sm font-medium hover:text-brand-clay hover:underline underline-offset-4 transition">
+                  Contact us
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         WHERE WE WORK
+         ============================================================ -->
+    <section class="bg-brand-sand py-20 md:py-28" aria-labelledby="where-we-work-heading">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+          <!-- Image -->
+          <div class="rounded-2xl overflow-hidden aspect-[4/3]">
+            <!-- TODO-CLIENT: replace with aerial/landscape photo of the Lightning Ridge opal fields -->
+            <img
+              src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80"
+              alt="Aerial view of the vast outback landscape of the Lightning Ridge opal fields, Walgett Shire, New South Wales"
+              class="w-full h-full object-cover"
+              loading="lazy"
+              width="1200"
+              height="900"
+            >
+          </div>
+
+          <!-- Copy -->
+          <div>
+            <p class="text-sm uppercase tracking-widest text-brand-sage mb-3">Our region</p>
+            <h2 id="where-we-work-heading" class="font-display font-medium text-3xl sm:text-4xl text-brand-charcoal tracking-tight mb-6">
+              Where We Work
+            </h2>
+            <div class="text-brand-slate leading-relaxed space-y-4 text-base">
+              <p>
+                The Reserve spans Crown land across the Lightning Ridge opal fields in north-western New South Wales, within the Walgett Shire. The opal fields are among the most significant in Australia — a working landscape where miners, farmers and communities have lived and worked for generations.
+              </p>
+              <p>
+                Our area of responsibility encompasses the opal fields around <strong class="text-brand-charcoal">Lightning Ridge</strong> itself, as well as the surrounding communities of <strong class="text-brand-charcoal">Grawin</strong>, <strong class="text-brand-charcoal">Glengarry</strong>, <strong class="text-brand-charcoal">Sheepyard</strong>, <strong class="text-brand-charcoal">Goodooga</strong> and the regional centre of <strong class="text-brand-charcoal">Walgett</strong>.
+              </p>
+              <p>
+                The opal fields are a mosaic of active mining claims, pastoral runs and natural bushland — all Crown land, managed in the public interest. The terrain is characterised by red-dirt tracks, scattered mulga and cypress pine, seasonal waterways including the Narran River system, and the distinctive mine mullock heaps that define the Lightning Ridge landscape.
+              </p>
+              <p>
+                Managing this landscape requires close collaboration with miners, landholders, local government, state agencies and the broader community — which is exactly how we work.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         OUR PURPOSE — 3-column cards
+         ============================================================ -->
+    <section class="py-20 md:py-28" aria-labelledby="purpose-heading">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="text-center mb-14">
+          <p class="text-sm uppercase tracking-widest text-brand-sage mb-3">Why we exist</p>
+          <h2 id="purpose-heading" class="font-display font-medium text-3xl sm:text-4xl text-brand-charcoal tracking-tight">
+            Our Purpose
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+          <!-- Card: Land Stewardship -->
+          <div class="bg-white border border-brand-line rounded-2xl p-8 text-center">
+            <div class="w-14 h-14 rounded-full bg-brand-ochre/10 flex items-center justify-center mx-auto mb-5" aria-hidden="true">
+              <svg class="w-7 h-7 text-brand-ochre" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
+              </svg>
+            </div>
+            <h3 class="font-display font-medium text-xl text-brand-charcoal mb-3">Land Stewardship</h3>
+            <p class="text-brand-slate text-sm leading-relaxed">
+              Maintaining roads, access tracks, water points and community facilities across the Reserve. Looking after Crown land so it continues to work for miners, residents and visitors today and into the future.
+            </p>
+          </div>
+
+          <!-- Card: Community Programs -->
+          <div class="bg-white border border-brand-line rounded-2xl p-8 text-center">
+            <div class="w-14 h-14 rounded-full bg-brand-sage/10 flex items-center justify-center mx-auto mb-5" aria-hidden="true">
+              <svg class="w-7 h-7 text-brand-sage" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+                <path d="M16 3.13a4 4 0 010 7.75"/>
+              </svg>
+            </div>
+            <h3 class="font-display font-medium text-xl text-brand-charcoal mb-3">Community Programs</h3>
+            <p class="text-brand-slate text-sm leading-relaxed">
+              Supporting education, youth programs, research partnerships and Indigenous-led initiatives. Revenue from the Reserve is reinvested locally — in projects that benefit the whole Lightning Ridge community.
+            </p>
+          </div>
+
+          <!-- Card: Environmental Care -->
+          <div class="bg-white border border-brand-line rounded-2xl p-8 text-center">
+            <div class="w-14 h-14 rounded-full bg-green-50 flex items-center justify-center mx-auto mb-5" aria-hidden="true">
+              <svg class="w-7 h-7 text-green-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 8C8 10 5.9 16.17 3.82 19.34M9.1 17.96C11.07 15.8 14 14 17 8"/>
+                <path d="M21 12c0 4.97-4.03 9-9 9S3 16.97 3 12 7.03 3 12 3s9 4.03 9 9z"/>
+              </svg>
+            </div>
+            <h3 class="font-display font-medium text-xl text-brand-charcoal mb-3">Environmental Care</h3>
+            <p class="text-brand-slate text-sm leading-relaxed">
+              Active weed control, feral animal management and biocontrol programs — including the Hudson Pear cochineal release. Working to keep the opal fields healthy for the long term.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         BOARD & STAFF CARDS
+         ============================================================ -->
+    <section class="bg-brand-sand py-20 md:py-28" aria-labelledby="people-heading">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="text-center mb-12">
+          <p class="text-sm uppercase tracking-widest text-brand-sage mb-3">The people</p>
+          <h2 id="people-heading" class="font-display font-medium text-3xl sm:text-4xl text-brand-charcoal tracking-tight">
+            Governance &amp; Team
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+          <!-- Board card -->
+          <a href="/about/board/" class="group bg-white border border-brand-line rounded-2xl overflow-hidden hover:shadow-lg transition-shadow">
+            <div class="aspect-[3/2] overflow-hidden">
+              <!-- TODO-CLIENT: replace with group photo of the Board -->
+              <img
+                src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=900&q=75"
+                alt="The LRAOR Board of Directors — seven community-representative members"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+                width="900"
+                height="600"
+              >
+            </div>
+            <div class="p-8">
+              <h3 class="font-display font-medium text-2xl text-brand-charcoal mb-3 group-hover:text-brand-ochre transition">Meet the Board</h3>
+              <p class="text-brand-slate text-sm leading-relaxed mb-5">
+                Seven community-representative directors responsible for the governance and strategic direction of the Reserve. The Board meets regularly and all positions are voluntary.
+              </p>
+              <span class="inline-flex items-center gap-1.5 text-brand-ochre text-sm font-medium group-hover:text-brand-clay transition">
+                Board of Directors
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </span>
+            </div>
+          </a>
+
+          <!-- Staff card -->
+          <a href="/about/staff/" class="group bg-white border border-brand-line rounded-2xl overflow-hidden hover:shadow-lg transition-shadow">
+            <div class="aspect-[3/2] overflow-hidden">
+              <!-- TODO-CLIENT: replace with staff photo -->
+              <img
+                src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=900&q=75"
+                alt="The LRAOR staff team based in Lightning Ridge, NSW"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+                width="900"
+                height="600"
+              >
+            </div>
+            <div class="p-8">
+              <h3 class="font-display font-medium text-2xl text-brand-charcoal mb-3 group-hover:text-brand-ochre transition">Meet the Staff</h3>
+              <p class="text-brand-slate text-sm leading-relaxed mb-5">
+                A small, dedicated team based in Lightning Ridge responsible for the day-to-day operations, land management and community programs of the Reserve.
+              </p>
+              <span class="inline-flex items-center gap-1.5 text-brand-ochre text-sm font-medium group-hover:text-brand-clay transition">
+                Our staff
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CTA BAND
+         ============================================================ -->
+    <section class="bg-brand-sage py-20 md:py-28" aria-label="Contact call to action">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p class="text-sm uppercase tracking-widest text-white/70 mb-4">Get in touch</p>
+        <h2 class="font-display font-medium text-3xl sm:text-4xl text-white tracking-tight leading-[1.1] mb-5">
+          Questions about the Reserve?
+        </h2>
+        <p class="text-white/85 leading-relaxed text-base lg:text-lg mb-10 max-w-xl mx-auto">
+          Our team is based in Lightning Ridge and happy to help. Whether you have a general enquiry, a community proposal, or a media request — get in touch.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contact/" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-ochre text-white font-medium rounded-md hover:bg-brand-clay transition text-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+            Contact us
+          </a>
+          <a href="/media/" class="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white/60 text-white font-medium rounded-md hover:bg-white/10 hover:border-white transition text-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+            Media enquiries
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER — FOOTER-VERSION: 1
+       ============================================================ -->
+  <footer class="bg-brand-charcoal text-brand-bone">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+
+        <!-- Column 1: LRAOR identity -->
+        <div>
+          <a href="/" class="flex items-center gap-3 mb-5 group" aria-label="Lightning Ridge Area Opal Reserve — Home">
+            <div class="w-10 h-10 rounded-full bg-brand-ochre flex items-center justify-center flex-shrink-0" aria-hidden="true">
+              <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+              </svg>
+            </div>
+            <div class="leading-tight">
+              <span class="block text-sm font-semibold text-brand-bone group-hover:text-brand-ochre transition">Lightning Ridge Area</span>
+              <span class="block text-xs text-brand-sand">Opal Reserve</span>
+            </div>
+          </a>
+
+          <p class="text-sm text-brand-sand leading-relaxed mb-6">
+            On-ground management of Crown land across the Lightning Ridge opal fields — supporting mining, tourism, education, research and land care across the Reserve.
+          </p>
+
+          <address class="not-italic text-sm text-brand-sand space-y-2">
+            <p>4 Nobby Road<br>Lightning Ridge NSW 2834<!-- TODO-CLIENT: confirm postcode --></p>
+            <p><a href="mailto:admin@lror.org" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">admin@lror.org</a></p>
+            <p><a href="tel:+61488423885" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">0488 423 885</a></p>
+            <p>Mon–Fri 9:00 AM – 5:00 PM</p>
+          </address>
+
+          <a
+            href="https://www.facebook.com/Lightning-Ridge-Area-Opal-Reserve-2313374568905380/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 mt-5 text-sm text-brand-sand hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded"
+            aria-label="LRAOR on Facebook (opens in new tab)"
+          >
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+            </svg>
+            Facebook
+          </a>
+        </div>
+
+        <!-- Column 2: Sitemap -->
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-widest text-brand-sage mb-5">Sitemap</h3>
+          <nav aria-label="Footer navigation">
+            <ul class="space-y-2 text-sm text-brand-sand">
+              <li><a href="/" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Home</a></li>
+              <li class="pt-1">
+                <span class="text-brand-bone font-medium">What We Do</span>
+                <ul class="mt-1.5 ml-3 space-y-1.5 text-brand-sand">
+                  <li><a href="/what-we-do/wandella/" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Wandella – Research &amp; Education Hub</a></li>
+                  <li><a href="/what-we-do/education-youth-programs/" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Education &amp; Youth Programs</a></li>
+                  <li><a href="/what-we-do/research-partnerships/" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Research Partnerships</a></li>
+                  <li><a href="/what-we-do/agriculture-share-farming/" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Agriculture &amp; Share Farming</a></li>
+                  <li><a href="/what-we-do/land-infrastructure/" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Land &amp; Infrastructure</a></li>
+                  <li><a href="/what-we-do/environmental-management/" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Environmental Management</a></li>
+                </ul>
+              </li>
+              <li class="pt-1">
+                <span class="text-brand-bone font-medium">About Us</span>
+                <ul class="mt-1.5 ml-3 space-y-1.5 text-brand-sand">
+                  <li><a href="/about/" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">About the Reserve</a></li>
+                  <li><a href="/about/board/" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Board</a></li>
+                  <li><a href="/about/staff/" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Staff</a></li>
+                </ul>
+              </li>
+              <li class="pt-1"><a href="/media/" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Media</a></li>
+              <li><a href="/donate/" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Donate</a></li>
+              <li><a href="/contact/" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Contact</a></li>
+              <li class="pt-1">
+                <span class="text-brand-bone font-medium">Resources</span>
+                <ul class="mt-1.5 ml-3 space-y-1.5 text-brand-sand">
+                  <li><a href="/resources/tourism/" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Tourism</a></li>
+                  <li><a href="/resources/mining/" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Mining Liaison</a></li>
+                  <li><a href="/resources/contractors/" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Contractors</a></li>
+                  <li><a href="/resources/documents/" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Documents &amp; Forms</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Column 3: Acknowledgement + Disclaimer -->
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-widest text-brand-sage mb-5">Acknowledgement of Country</h3>
+          <!-- TODO-CLIENT: confirm traditional owners and preferred Acknowledgement of Country wording -->
+          <p class="text-sm text-brand-sand leading-relaxed mb-8">
+            The Lightning Ridge Area Opal Reserve acknowledges the Yuwaalaraay, Yuwaalayaay and Gamilaraay peoples as the Traditional Custodians of the lands on which we work. We pay our respects to Elders past and present, and to all Aboriginal and Torres Strait Islander peoples who continue to care for Country.
+          </p>
+
+          <div class="border-t border-brand-slate pt-6">
+            <h3 class="text-xs font-semibold uppercase tracking-widest text-brand-sage mb-3">Important Distinction</h3>
+            <p class="text-xs text-brand-sand leading-relaxed">
+              Lightning Ridge Area Opal Reserve is a delegated Crown Land Manager. Statutory approvals and regulation of mining and resources remain with <a href="https://www.crownlands.nsw.gov.au/" target="_blank" rel="noopener noreferrer" class="underline hover:text-brand-ochre transition">Crown Lands NSW</a> and the <a href="https://www.resourcesregulator.nsw.gov.au/" target="_blank" rel="noopener noreferrer" class="underline hover:text-brand-ochre transition">NSW Resources Regulator</a>.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="border-t border-brand-slate">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-brand-slate">
+        <p>© 2026 Lightning Ridge Area Opal Reserve · ABN 22 866 447 410</p>
+        <div class="flex items-center gap-4">
+          <a href="#" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Privacy</a><!-- TODO-CLIENT: link to privacy policy -->
+          <a href="#" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Terms</a><!-- TODO-CLIENT: link to terms -->
+        </div>
+      </div>
+    </div>
+
+  </footer>
+  <!-- END FOOTER — FOOTER-VERSION: 1 -->
+
+</body>
+</html>

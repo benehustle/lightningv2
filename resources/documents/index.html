@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Page-specific meta -->
+  <title>Documents &amp; Forms · Lightning Ridge Area Opal Reserve</title>
+  <meta name="description" content="Download meeting minutes, current licences, policies, the Plan of Management and other documents from the Lightning Ridge Area Opal Reserve. Submit road and track maintenance requests online.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Documents &amp; Forms · Lightning Ridge Area Opal Reserve">
+  <meta property="og:description" content="Download meeting minutes, current licences, policies, the Plan of Management and other documents from the Lightning Ridge Area Opal Reserve. Submit road and track maintenance requests online.">
+  <meta property="og:image" content="https://lror.org/assets/images/og-home.jpg"><!-- TODO-CLIENT: supply documents-specific OG image -->
+  <meta property="og:url" content="https://lror.org/resources/documents/">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://lror.org/resources/documents/">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind config + CDN -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              ochre:    '#B8562A',
+              clay:     '#8C3A1A',
+              sage:     '#6B7A5A',
+              bone:     '#F5EFE6',
+              charcoal: '#1F1C19',
+              slate:    '#3D3A35',
+              sand:     '#E8DFD1',
+              line:     '#D9CFBF',
+            }
+          },
+          fontFamily: {
+            display: ['"Fraunces"', 'Georgia', 'serif'],
+            sans:    ['"Inter"', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Alpine.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <!-- Local overrides -->
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <script src="/assets/js/main.js" defer></script>
+</head>
+
+<body class="text-brand-charcoal bg-brand-bone font-sans">
+
+  <!-- Skip to content -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ============================================================
+       HEADER — NAV-VERSION: 1
+       ============================================================ -->
+  <header class="sticky top-0 z-50 bg-brand-bone/95 backdrop-blur border-b border-brand-line" x-data="mobileNav()">
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 lg:h-20">
+
+        <!-- Logo + Name -->
+        <a href="/" class="flex items-center gap-3 group flex-shrink-0" aria-label="Lightning Ridge Area Opal Reserve — Home">
+          <!-- TODO-CLIENT: replace placeholder icon with actual SVG logo -->
+          <div class="w-10 h-10 rounded-full bg-brand-ochre flex items-center justify-center flex-shrink-0" aria-hidden="true">
+            <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+          </div>
+          <div class="leading-tight">
+            <span class="block text-sm font-semibold text-brand-charcoal group-hover:text-brand-ochre transition">Lightning Ridge Area</span>
+            <span class="block text-xs text-brand-slate">Opal Reserve</span>
+          </div>
+        </a>
+
+        <!-- Desktop nav -->
+        <nav class="hidden lg:flex items-center gap-1" aria-label="Primary navigation">
+
+          <a href="/" class="px-3 py-2 text-sm font-medium text-brand-charcoal hover:text-brand-ochre transition rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre">
+            Home
+          </a>
+
+          <!-- What We Do dropdown -->
+          <div x-data="{ open: false }" @click.outside="open = false" @keydown.escape.window="open = false" class="relative">
+            <button
+              @click="open = !open"
+              @mouseenter="open = true"
+              :aria-expanded="open.toString()"
+              aria-haspopup="true"
+              class="flex items-center gap-1 px-3 py-2 text-sm font-medium text-brand-charcoal hover:text-brand-ochre transition rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre"
+            >
+              What We Do
+              <svg class="w-4 h-4 transition-transform" :class="open ? 'rotate-180' : ''" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div
+              x-show="open"
+              x-transition:enter="transition ease-out duration-150"
+              x-transition:enter-start="opacity-0 -translate-y-1"
+              x-transition:enter-end="opacity-100 translate-y-0"
+              x-transition:leave="transition ease-in duration-100"
+              x-transition:leave-start="opacity-100 translate-y-0"
+              x-transition:leave-end="opacity-0 -translate-y-1"
+              @mouseleave="open = false"
+              class="absolute top-full left-0 mt-2 w-72 bg-white border border-brand-line rounded-xl shadow-lg py-2"
+              role="menu"
+              aria-label="What We Do submenu"
+            >
+              <a href="/what-we-do/wandella/" role="menuitem" class="flex items-start gap-3 px-4 py-3 hover:bg-brand-sand transition group focus-visible:outline-none focus-visible:bg-brand-sand">
+                <span class="mt-0.5 w-5 h-5 text-brand-ochre flex-shrink-0" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                </span>
+                <span>
+                  <span class="block text-sm font-medium text-brand-charcoal group-hover:text-brand-ochre transition">Wandella</span>
+                  <span class="block text-xs text-brand-slate mt-0.5">Research &amp; Education Hub</span>
+                </span>
+              </a>
+              <a href="/what-we-do/education-youth-programs/" role="menuitem" class="flex items-start gap-3 px-4 py-3 hover:bg-brand-sand transition group focus-visible:outline-none focus-visible:bg-brand-sand">
+                <span class="mt-0.5 w-5 h-5 text-brand-ochre flex-shrink-0" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+                </span>
+                <span>
+                  <span class="block text-sm font-medium text-brand-charcoal group-hover:text-brand-ochre transition">Education &amp; Youth Programs</span>
+                  <span class="block text-xs text-brand-slate mt-0.5">Hands-on learning on Country</span>
+                </span>
+              </a>
+              <a href="/what-we-do/research-partnerships/" role="menuitem" class="flex items-start gap-3 px-4 py-3 hover:bg-brand-sand transition group focus-visible:outline-none focus-visible:bg-brand-sand">
+                <span class="mt-0.5 w-5 h-5 text-brand-ochre flex-shrink-0" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                </span>
+                <span>
+                  <span class="block text-sm font-medium text-brand-charcoal group-hover:text-brand-ochre transition">Research Partnerships</span>
+                  <span class="block text-xs text-brand-slate mt-0.5">UNSW, University of Sydney &amp; more</span>
+                </span>
+              </a>
+              <a href="/what-we-do/agriculture-share-farming/" role="menuitem" class="flex items-start gap-3 px-4 py-3 hover:bg-brand-sand transition group focus-visible:outline-none focus-visible:bg-brand-sand">
+                <span class="mt-0.5 w-5 h-5 text-brand-ochre flex-shrink-0" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12m0 0C12 7 7 5 2 7"/><path d="M12 12c0-5 5-7 10-5"/><path d="M2 22h20"/></svg>
+                </span>
+                <span>
+                  <span class="block text-sm font-medium text-brand-charcoal group-hover:text-brand-ochre transition">Agriculture &amp; Share Farming</span>
+                  <span class="block text-xs text-brand-slate mt-0.5">Productive use of Crown land</span>
+                </span>
+              </a>
+              <a href="/what-we-do/land-infrastructure/" role="menuitem" class="flex items-start gap-3 px-4 py-3 hover:bg-brand-sand transition group focus-visible:outline-none focus-visible:bg-brand-sand">
+                <span class="mt-0.5 w-5 h-5 text-brand-ochre flex-shrink-0" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                </span>
+                <span>
+                  <span class="block text-sm font-medium text-brand-charcoal group-hover:text-brand-ochre transition">Land &amp; Infrastructure</span>
+                  <span class="block text-xs text-brand-slate mt-0.5">Roads, access &amp; community facilities</span>
+                </span>
+              </a>
+              <a href="/what-we-do/environmental-management/" role="menuitem" class="flex items-start gap-3 px-4 py-3 hover:bg-brand-sand transition group focus-visible:outline-none focus-visible:bg-brand-sand">
+                <span class="mt-0.5 w-5 h-5 text-brand-ochre flex-shrink-0" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8C8 10 5.9 16.17 3.82 19.34M9.1 17.96C11.07 15.8 14 14 17 8"/><path d="M21 12c0 4.97-4.03 9-9 9S3 16.97 3 12 7.03 3 12 3s9 4.03 9 9z"/></svg>
+                </span>
+                <span>
+                  <span class="block text-sm font-medium text-brand-charcoal group-hover:text-brand-ochre transition">Environmental Management</span>
+                  <span class="block text-xs text-brand-slate mt-0.5">Weed control, pest management &amp; more</span>
+                </span>
+              </a>
+            </div>
+          </div>
+
+          <!-- About Us dropdown -->
+          <div x-data="{ open: false }" @click.outside="open = false" @keydown.escape.window="open = false" class="relative">
+            <button
+              @click="open = !open"
+              @mouseenter="open = true"
+              :aria-expanded="open.toString()"
+              aria-haspopup="true"
+              class="flex items-center gap-1 px-3 py-2 text-sm font-medium text-brand-charcoal hover:text-brand-ochre transition rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre"
+            >
+              About Us
+              <svg class="w-4 h-4 transition-transform" :class="open ? 'rotate-180' : ''" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div
+              x-show="open"
+              x-transition:enter="transition ease-out duration-150"
+              x-transition:enter-start="opacity-0 -translate-y-1"
+              x-transition:enter-end="opacity-100 translate-y-0"
+              x-transition:leave="transition ease-in duration-100"
+              x-transition:leave-start="opacity-100 translate-y-0"
+              x-transition:leave-end="opacity-0 -translate-y-1"
+              @mouseleave="open = false"
+              class="absolute top-full left-0 mt-2 w-56 bg-white border border-brand-line rounded-xl shadow-lg py-2"
+              role="menu"
+              aria-label="About Us submenu"
+            >
+              <a href="/about/" role="menuitem" class="flex items-center gap-3 px-4 py-3 hover:bg-brand-sand transition group focus-visible:outline-none focus-visible:bg-brand-sand">
+                <span class="w-5 h-5 text-brand-ochre flex-shrink-0" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                </span>
+                <span class="text-sm font-medium text-brand-charcoal group-hover:text-brand-ochre transition">About the Reserve</span>
+              </a>
+              <a href="/about/board/" role="menuitem" class="flex items-center gap-3 px-4 py-3 hover:bg-brand-sand transition group focus-visible:outline-none focus-visible:bg-brand-sand">
+                <span class="w-5 h-5 text-brand-ochre flex-shrink-0" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                </span>
+                <span class="text-sm font-medium text-brand-charcoal group-hover:text-brand-ochre transition">Board</span>
+              </a>
+              <a href="/about/staff/" role="menuitem" class="flex items-center gap-3 px-4 py-3 hover:bg-brand-sand transition group focus-visible:outline-none focus-visible:bg-brand-sand">
+                <span class="w-5 h-5 text-brand-ochre flex-shrink-0" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </span>
+                <span class="text-sm font-medium text-brand-charcoal group-hover:text-brand-ochre transition">Staff</span>
+              </a>
+            </div>
+          </div>
+
+          <a href="/media/" class="px-3 py-2 text-sm font-medium text-brand-charcoal hover:text-brand-ochre transition rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre">
+            Media
+          </a>
+
+          <a href="/donate/" class="ml-2 inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-ochre text-white text-sm font-medium rounded-md hover:bg-brand-clay transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre">
+            Donate
+          </a>
+
+          <a href="/contact/" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 border-2 border-brand-sage text-brand-sage text-sm font-medium rounded-md hover:bg-brand-sage hover:text-white transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre">
+            Contact
+          </a>
+
+        </nav>
+
+        <!-- Mobile hamburger -->
+        <button
+          @click="toggle()"
+          class="lg:hidden p-2 rounded-md text-brand-charcoal hover:text-brand-ochre hover:bg-brand-sand transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre"
+          :aria-expanded="open.toString()"
+          aria-controls="mobile-nav"
+          aria-label="Toggle navigation menu"
+        >
+          <svg x-show="!open" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          <svg x-show="open" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Mobile nav panel -->
+    <div
+      id="mobile-nav"
+      x-show="open"
+      x-transition:enter="transition ease-out duration-200"
+      x-transition:enter-start="opacity-0 -translate-y-2"
+      x-transition:enter-end="opacity-100 translate-y-0"
+      x-transition:leave="transition ease-in duration-150"
+      x-transition:leave-start="opacity-100 translate-y-0"
+      x-transition:leave-end="opacity-0 -translate-y-2"
+      class="lg:hidden border-t border-brand-line bg-brand-bone"
+    >
+      <nav class="max-w-6xl mx-auto px-4 py-4 space-y-1" aria-label="Mobile navigation">
+
+        <a href="/" class="block px-4 py-3 text-sm font-medium text-brand-charcoal hover:text-brand-ochre hover:bg-brand-sand rounded-lg transition" @click="close()">Home</a>
+
+        <div x-data="{ open: false }">
+          <button @click="open = !open" class="flex items-center justify-between w-full px-4 py-3 text-sm font-medium text-brand-charcoal hover:text-brand-ochre hover:bg-brand-sand rounded-lg transition" :aria-expanded="open.toString()">
+            What We Do
+            <svg class="w-4 h-4 transition-transform" :class="open ? 'rotate-180' : ''" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div x-show="open" x-collapse class="pl-4 mt-1 space-y-1 border-l-2 border-brand-line ml-4">
+            <a href="/what-we-do/wandella/" class="block px-3 py-2 text-sm text-brand-slate hover:text-brand-ochre hover:bg-brand-sand rounded-lg transition" @click="close()">Wandella – Research &amp; Education Hub</a>
+            <a href="/what-we-do/education-youth-programs/" class="block px-3 py-2 text-sm text-brand-slate hover:text-brand-ochre hover:bg-brand-sand rounded-lg transition" @click="close()">Education &amp; Youth Programs</a>
+            <a href="/what-we-do/research-partnerships/" class="block px-3 py-2 text-sm text-brand-slate hover:text-brand-ochre hover:bg-brand-sand rounded-lg transition" @click="close()">Research Partnerships</a>
+            <a href="/what-we-do/agriculture-share-farming/" class="block px-3 py-2 text-sm text-brand-slate hover:text-brand-ochre hover:bg-brand-sand rounded-lg transition" @click="close()">Agriculture &amp; Share Farming</a>
+            <a href="/what-we-do/land-infrastructure/" class="block px-3 py-2 text-sm text-brand-slate hover:text-brand-ochre hover:bg-brand-sand rounded-lg transition" @click="close()">Land &amp; Infrastructure Management</a>
+            <a href="/what-we-do/environmental-management/" class="block px-3 py-2 text-sm text-brand-slate hover:text-brand-ochre hover:bg-brand-sand rounded-lg transition" @click="close()">Environmental Management</a>
+          </div>
+        </div>
+
+        <div x-data="{ open: false }">
+          <button @click="open = !open" class="flex items-center justify-between w-full px-4 py-3 text-sm font-medium text-brand-charcoal hover:text-brand-ochre hover:bg-brand-sand rounded-lg transition" :aria-expanded="open.toString()">
+            About Us
+            <svg class="w-4 h-4 transition-transform" :class="open ? 'rotate-180' : ''" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div x-show="open" x-collapse class="pl-4 mt-1 space-y-1 border-l-2 border-brand-line ml-4">
+            <a href="/about/" class="block px-3 py-2 text-sm text-brand-slate hover:text-brand-ochre hover:bg-brand-sand rounded-lg transition" @click="close()">About the Reserve</a>
+            <a href="/about/board/" class="block px-3 py-2 text-sm text-brand-slate hover:text-brand-ochre hover:bg-brand-sand rounded-lg transition" @click="close()">Board</a>
+            <a href="/about/staff/" class="block px-3 py-2 text-sm text-brand-slate hover:text-brand-ochre hover:bg-brand-sand rounded-lg transition" @click="close()">Staff</a>
+          </div>
+        </div>
+
+        <a href="/media/" class="block px-4 py-3 text-sm font-medium text-brand-charcoal hover:text-brand-ochre hover:bg-brand-sand rounded-lg transition" @click="close()">Media</a>
+
+        <div class="pt-2 pb-1 flex flex-col gap-2">
+          <a href="/donate/" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-brand-ochre text-white text-sm font-medium rounded-md hover:bg-brand-clay transition" @click="close()">Donate</a>
+          <a href="/contact/" class="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-brand-sage text-brand-sage text-sm font-medium rounded-md hover:bg-brand-sage hover:text-white transition" @click="close()">Contact</a>
+        </div>
+
+      </nav>
+    </div>
+
+  </header>
+  <!-- END HEADER — NAV-VERSION: 1 -->
+
+  <main id="main-content">
+
+    <!-- Page hero -->
+    <section class="bg-brand-sand border-b border-brand-line py-14 md:py-20" aria-label="Page hero">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Breadcrumbs -->
+        <nav class="mb-6" aria-label="Breadcrumb">
+          <ol class="flex items-center gap-2 text-sm text-brand-slate">
+            <li><a href="/" class="hover:text-brand-ochre transition">Home</a></li>
+            <li aria-hidden="true"><svg class="w-3.5 h-3.5 text-brand-line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></li>
+            <li><span class="text-brand-slate">Resources</span></li>
+            <li aria-hidden="true"><svg class="w-3.5 h-3.5 text-brand-line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></li>
+            <li><span class="text-brand-charcoal font-medium" aria-current="page">Documents &amp; Forms</span></li>
+          </ol>
+        </nav>
+
+        <p class="text-sm uppercase tracking-widest text-brand-sage mb-4">Resources</p>
+        <h1 class="font-display font-medium text-4xl sm:text-5xl lg:text-6xl text-brand-charcoal tracking-tight leading-[1.05] mb-5">Documents &amp; Forms</h1>
+        <p class="text-lg text-brand-slate leading-relaxed max-w-2xl">
+          Board meeting minutes, current licences, policies, the Plan of Management and a road maintenance request form are all available here.
+        </p>
+      </div>
+    </section>
+
+    <!-- In-page section nav -->
+    <div class="bg-white border-b border-brand-line sticky top-16 lg:top-20 z-40">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav aria-label="Documents sections" class="flex items-center gap-1 overflow-x-auto py-3 scrollbar-none">
+          <a href="#meeting-minutes" class="flex-shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-brand-slate hover:text-brand-ochre hover:bg-brand-sand rounded-md transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            Minutes
+          </a>
+          <span class="text-brand-line" aria-hidden="true">·</span>
+          <a href="#licences" class="flex-shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-brand-slate hover:text-brand-ochre hover:bg-brand-sand rounded-md transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><polyline points="9 11 12 14 22 4"/></svg>
+            Licences
+          </a>
+          <span class="text-brand-line" aria-hidden="true">·</span>
+          <a href="#policies" class="flex-shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-brand-slate hover:text-brand-ochre hover:bg-brand-sand rounded-md transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Policies
+          </a>
+          <span class="text-brand-line" aria-hidden="true">·</span>
+          <a href="#plan-of-management" class="flex-shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-brand-slate hover:text-brand-ochre hover:bg-brand-sand rounded-md transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+            Plan of Management
+          </a>
+          <span class="text-brand-line" aria-hidden="true">·</span>
+          <a href="#road-maintenance" class="flex-shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-brand-slate hover:text-brand-ochre hover:bg-brand-sand rounded-md transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            Road Maintenance
+          </a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+      <div class="max-w-3xl space-y-20">
+
+        <!-- ============================================================
+             SECTION 1: Meeting Minutes
+             ============================================================ -->
+        <section id="meeting-minutes" class="scroll-mt-32" aria-labelledby="minutes-heading">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-8 h-8 rounded-lg bg-brand-sand flex items-center justify-center flex-shrink-0" aria-hidden="true">
+              <svg class="w-4 h-4 text-brand-ochre" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <p class="text-sm uppercase tracking-widest text-brand-sage">Section 1</p>
+          </div>
+          <h2 id="minutes-heading" class="font-display font-medium text-3xl text-brand-charcoal mb-4">Meeting Minutes</h2>
+          <p class="text-brand-slate leading-relaxed mb-8">
+            Minutes of Board meetings are published here for transparency and community oversight. Minutes are published following Board adoption.
+          </p>
+
+          <!-- Minutes table -->
+          <div class="border border-brand-line rounded-xl overflow-hidden">
+            <table class="w-full text-sm" aria-label="Board meeting minutes">
+              <thead>
+                <tr class="bg-brand-sand border-b border-brand-line">
+                  <th scope="col" class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-widest text-brand-slate">Meeting</th>
+                  <th scope="col" class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-widest text-brand-slate">Date</th>
+                  <th scope="col" class="px-5 py-3 text-right text-xs font-semibold uppercase tracking-widest text-brand-slate">Download</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-brand-line bg-white">
+                <!-- TODO-CLIENT: supply meeting minutes PDFs -->
+                <tr class="hover:bg-brand-bone transition">
+                  <td class="px-5 py-4 font-medium text-brand-charcoal">Board Meeting</td>
+                  <td class="px-5 py-4 text-brand-slate">{{ TBD }}<!-- TODO-CLIENT: supply meeting date --></td>
+                  <td class="px-5 py-4 text-right">
+                    <a href="/assets/downloads/minutes/board-meeting-tbd-1.pdf" class="inline-flex items-center gap-1.5 text-brand-ochre font-medium hover:text-brand-clay hover:underline underline-offset-4 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre rounded" aria-label="Download minutes PDF — Board Meeting (date TBD)">
+                      <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                      PDF<!-- TODO-CLIENT: supply minutes PDF -->
+                    </a>
+                  </td>
+                </tr>
+                <tr class="hover:bg-brand-bone transition">
+                  <td class="px-5 py-4 font-medium text-brand-charcoal">Board Meeting</td>
+                  <td class="px-5 py-4 text-brand-slate">{{ TBD }}<!-- TODO-CLIENT: supply meeting date --></td>
+                  <td class="px-5 py-4 text-right">
+                    <a href="/assets/downloads/minutes/board-meeting-tbd-2.pdf" class="inline-flex items-center gap-1.5 text-brand-ochre font-medium hover:text-brand-clay hover:underline underline-offset-4 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre rounded" aria-label="Download minutes PDF — Board Meeting (date TBD)">
+                      <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                      PDF<!-- TODO-CLIENT: supply minutes PDF -->
+                    </a>
+                  </td>
+                </tr>
+                <tr class="hover:bg-brand-bone transition">
+                  <td class="px-5 py-4 font-medium text-brand-charcoal">Board Meeting</td>
+                  <td class="px-5 py-4 text-brand-slate">{{ TBD }}<!-- TODO-CLIENT: supply meeting date --></td>
+                  <td class="px-5 py-4 text-right">
+                    <a href="/assets/downloads/minutes/board-meeting-tbd-3.pdf" class="inline-flex items-center gap-1.5 text-brand-ochre font-medium hover:text-brand-clay hover:underline underline-offset-4 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre rounded" aria-label="Download minutes PDF — Board Meeting (date TBD)">
+                      <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                      PDF<!-- TODO-CLIENT: supply minutes PDF -->
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="text-xs text-brand-slate mt-4">Minutes are published following Board adoption.<!-- TODO-CLIENT: add further minutes rows as PDFs are supplied --></p>
+        </section>
+
+        <!-- ============================================================
+             SECTION 2: Current Licences
+             ============================================================ -->
+        <section id="licences" class="scroll-mt-32" aria-labelledby="licences-heading">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-8 h-8 rounded-lg bg-brand-sand flex items-center justify-center flex-shrink-0" aria-hidden="true">
+              <svg class="w-4 h-4 text-brand-ochre" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><polyline points="9 11 12 14 22 4"/></svg>
+            </div>
+            <p class="text-sm uppercase tracking-widest text-brand-sage">Section 2</p>
+          </div>
+          <h2 id="licences-heading" class="font-display font-medium text-3xl text-brand-charcoal mb-4">Current Licences</h2>
+          <p class="text-brand-slate leading-relaxed mb-8">
+            Current licences held by the Reserve are listed below for transparency and public record.
+          </p>
+
+          <!-- Licences list -->
+          <div class="border border-brand-line rounded-xl overflow-hidden">
+            <table class="w-full text-sm" aria-label="Current licences held by the Reserve">
+              <thead>
+                <tr class="bg-brand-sand border-b border-brand-line">
+                  <th scope="col" class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-widest text-brand-slate">Licence</th>
+                  <th scope="col" class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-widest text-brand-slate">Status</th>
+                  <th scope="col" class="px-5 py-3 text-right text-xs font-semibold uppercase tracking-widest text-brand-slate">Download</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-brand-line bg-white">
+                <!-- TODO-CLIENT: supply current licence documents and details -->
+                <tr class="hover:bg-brand-bone transition">
+                  <td class="px-5 py-4 font-medium text-brand-charcoal">{{ Licence name TBD }}<!-- TODO-CLIENT: supply licence name --></td>
+                  <td class="px-5 py-4"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Current</span></td>
+                  <td class="px-5 py-4 text-right">
+                    <a href="/assets/downloads/licences/licence-tbd-1.pdf" class="inline-flex items-center gap-1.5 text-brand-ochre font-medium hover:text-brand-clay hover:underline underline-offset-4 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre rounded" aria-label="Download licence PDF">
+                      <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                      PDF<!-- TODO-CLIENT: supply licence PDF -->
+                    </a>
+                  </td>
+                </tr>
+                <tr class="hover:bg-brand-bone transition">
+                  <td class="px-5 py-4 font-medium text-brand-charcoal">{{ Licence name TBD }}<!-- TODO-CLIENT: supply licence name --></td>
+                  <td class="px-5 py-4"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Current</span></td>
+                  <td class="px-5 py-4 text-right">
+                    <a href="/assets/downloads/licences/licence-tbd-2.pdf" class="inline-flex items-center gap-1.5 text-brand-ochre font-medium hover:text-brand-clay hover:underline underline-offset-4 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre rounded" aria-label="Download licence PDF">
+                      <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                      PDF<!-- TODO-CLIENT: supply licence PDF -->
+                    </a>
+                  </td>
+                </tr>
+                <tr class="hover:bg-brand-bone transition">
+                  <td class="px-5 py-4 font-medium text-brand-charcoal">{{ Licence name TBD }}<!-- TODO-CLIENT: supply licence name --></td>
+                  <td class="px-5 py-4"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Current</span></td>
+                  <td class="px-5 py-4 text-right">
+                    <a href="/assets/downloads/licences/licence-tbd-3.pdf" class="inline-flex items-center gap-1.5 text-brand-ochre font-medium hover:text-brand-clay hover:underline underline-offset-4 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre rounded" aria-label="Download licence PDF">
+                      <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                      PDF<!-- TODO-CLIENT: supply licence PDF -->
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-xs text-brand-slate mt-4"><!-- TODO-CLIENT: supply current licence documents and confirm list is complete --></p>
+        </section>
+
+        <!-- ============================================================
+             SECTION 3: Policies
+             ============================================================ -->
+        <section id="policies" class="scroll-mt-32" aria-labelledby="policies-heading">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-8 h-8 rounded-lg bg-brand-sand flex items-center justify-center flex-shrink-0" aria-hidden="true">
+              <svg class="w-4 h-4 text-brand-ochre" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <p class="text-sm uppercase tracking-widest text-brand-sage">Section 3</p>
+          </div>
+          <h2 id="policies-heading" class="font-display font-medium text-3xl text-brand-charcoal mb-4">Policies</h2>
+          <p class="text-brand-slate leading-relaxed mb-8">
+            LRAOR's operational policies are available for download below.
+          </p>
+
+          <div class="space-y-3">
+
+            <!-- Access Policy -->
+            <div class="flex items-center justify-between gap-4 p-5 bg-white border border-brand-line rounded-xl hover:border-brand-ochre transition group">
+              <div class="flex items-center gap-4">
+                <div class="w-9 h-9 rounded-lg bg-brand-sand flex items-center justify-center flex-shrink-0" aria-hidden="true">
+                  <svg class="w-4 h-4 text-brand-ochre" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                </div>
+                <div>
+                  <p class="font-medium text-brand-charcoal text-sm group-hover:text-brand-ochre transition">Access Policy</p>
+                  <p class="text-xs text-brand-slate mt-0.5"><!-- TODO-CLIENT: supply Access Policy PDF --></p>
+                </div>
+              </div>
+              <a
+                href="/assets/downloads/policies/access-policy.pdf"
+                class="flex-shrink-0 inline-flex items-center gap-1.5 text-brand-ochre text-sm font-medium hover:text-brand-clay hover:underline underline-offset-4 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre rounded"
+                aria-label="Download Access Policy PDF"
+              >
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download PDF
+              </a>
+            </div>
+
+            <!-- Complaints Policy -->
+            <div class="flex items-center justify-between gap-4 p-5 bg-white border border-brand-line rounded-xl hover:border-brand-ochre transition group">
+              <div class="flex items-center gap-4">
+                <div class="w-9 h-9 rounded-lg bg-brand-sand flex items-center justify-center flex-shrink-0" aria-hidden="true">
+                  <svg class="w-4 h-4 text-brand-ochre" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                </div>
+                <div>
+                  <p class="font-medium text-brand-charcoal text-sm group-hover:text-brand-ochre transition">Complaints Policy</p>
+                  <p class="text-xs text-brand-slate mt-0.5"><!-- TODO-CLIENT: supply Complaints Policy PDF --></p>
+                </div>
+              </div>
+              <a
+                href="/assets/downloads/policies/complaints-policy.pdf"
+                class="flex-shrink-0 inline-flex items-center gap-1.5 text-brand-ochre text-sm font-medium hover:text-brand-clay hover:underline underline-offset-4 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre rounded"
+                aria-label="Download Complaints Policy PDF"
+              >
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download PDF
+              </a>
+            </div>
+
+            <!-- Privacy Policy -->
+            <div class="flex items-center justify-between gap-4 p-5 bg-white border border-brand-line rounded-xl hover:border-brand-ochre transition group">
+              <div class="flex items-center gap-4">
+                <div class="w-9 h-9 rounded-lg bg-brand-sand flex items-center justify-center flex-shrink-0" aria-hidden="true">
+                  <svg class="w-4 h-4 text-brand-ochre" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                </div>
+                <div>
+                  <p class="font-medium text-brand-charcoal text-sm group-hover:text-brand-ochre transition">Privacy Policy</p>
+                  <p class="text-xs text-brand-slate mt-0.5"><!-- TODO-CLIENT: supply Privacy Policy PDF --></p>
+                </div>
+              </div>
+              <a
+                href="/assets/downloads/policies/privacy-policy.pdf"
+                class="flex-shrink-0 inline-flex items-center gap-1.5 text-brand-ochre text-sm font-medium hover:text-brand-clay hover:underline underline-offset-4 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre rounded"
+                aria-label="Download Privacy Policy PDF"
+              >
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download PDF
+              </a>
+            </div>
+
+          </div>
+          <p class="text-xs text-brand-slate mt-4"><!-- TODO-CLIENT: supply policy PDFs and confirm list is complete --></p>
+        </section>
+
+        <!-- ============================================================
+             SECTION 4: Plan of Management
+             ============================================================ -->
+        <section id="plan-of-management" class="scroll-mt-32" aria-labelledby="pom-heading">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-8 h-8 rounded-lg bg-brand-sand flex items-center justify-center flex-shrink-0" aria-hidden="true">
+              <svg class="w-4 h-4 text-brand-ochre" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+            </div>
+            <p class="text-sm uppercase tracking-widest text-brand-sage">Section 4</p>
+          </div>
+          <h2 id="pom-heading" class="font-display font-medium text-3xl text-brand-charcoal mb-4">Plan of Management</h2>
+
+          <!-- Featured card -->
+          <div class="bg-brand-sand rounded-2xl p-8 border border-brand-line">
+            <div class="flex items-start gap-5 mb-6">
+              <div class="w-12 h-12 rounded-xl bg-brand-ochre flex items-center justify-center flex-shrink-0" aria-hidden="true">
+                <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+              </div>
+              <div>
+                <h3 class="font-display font-medium text-2xl text-brand-charcoal mb-2">Plan of Management</h3>
+                <p class="text-brand-slate leading-relaxed text-sm">
+                  The Plan of Management is the key strategic document governing the Reserve's operations under the <em>Crown Land Management Act 2016</em> (NSW). It sets out how the Reserve's Crown land will be managed, what uses are permitted, and how the Reserve will fulfil its obligations as a Crown Land Manager.
+                </p>
+              </div>
+            </div>
+
+            <a
+              href="/assets/downloads/plan-of-management.pdf"
+              class="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-brand-ochre text-white font-medium rounded-md hover:bg-brand-clay transition text-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre"
+              aria-label="Download Plan of Management PDF"
+            >
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download Plan of Management (PDF)
+            </a>
+            <!-- TODO-CLIENT: supply current Plan of Management PDF -->
+
+            <p class="text-xs text-brand-slate mt-5">
+              The Plan of Management was adopted by the Board on {{ TBD }}.<!-- TODO-CLIENT: confirm adoption date -->
+            </p>
+          </div>
+        </section>
+
+        <!-- ============================================================
+             SECTION 5: Road & Track Maintenance Request
+             ============================================================ -->
+        <section id="road-maintenance" class="scroll-mt-32" aria-labelledby="road-maintenance-heading">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-8 h-8 rounded-lg bg-brand-sand flex items-center justify-center flex-shrink-0" aria-hidden="true">
+              <svg class="w-4 h-4 text-brand-ochre" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </div>
+            <p class="text-sm uppercase tracking-widest text-brand-sage">Section 5</p>
+          </div>
+          <h2 id="road-maintenance-heading" class="font-display font-medium text-3xl text-brand-charcoal mb-4">Report a Road or Track Issue</h2>
+          <p class="text-brand-slate leading-relaxed mb-8">
+            Use this form to report road or track maintenance issues on Crown land managed by the Reserve. We'll review and prioritise based on safety and access needs.
+          </p>
+
+          <!-- Web3Forms form -->
+          <form
+            action="https://api.web3forms.com/submit"
+            method="POST"
+            class="space-y-5 bg-white border border-brand-line rounded-2xl p-7 md:p-9"
+            x-data="{ submitting: false }"
+            @submit="submitting = true"
+          >
+            <!-- Web3Forms hidden fields -->
+            <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY_HERE"><!-- TODO-CLIENT: same Web3Forms key as contact page -->
+            <input type="hidden" name="subject" value="Road/Track Maintenance Request — lror.org">
+            <input type="hidden" name="redirect" value="https://lror.org/contact/thank-you/">
+            <!-- Honeypot -->
+            <input type="text" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off">
+
+            <!-- Your Name -->
+            <div>
+              <label for="rm-name" class="block text-sm font-medium text-brand-charcoal mb-1.5">
+                Your Name <span class="text-brand-ochre" aria-hidden="true">*</span>
+              </label>
+              <input
+                type="text"
+                id="rm-name"
+                name="name"
+                required
+                autocomplete="name"
+                placeholder="Full name"
+                class="w-full px-4 py-3 border border-brand-line rounded-lg bg-brand-bone text-brand-charcoal placeholder-brand-slate/50 text-sm focus:outline-none focus:ring-2 focus:ring-brand-ochre focus:border-transparent transition"
+              >
+            </div>
+
+            <!-- Email -->
+            <div>
+              <label for="rm-email" class="block text-sm font-medium text-brand-charcoal mb-1.5">
+                Email <span class="text-brand-ochre" aria-hidden="true">*</span>
+              </label>
+              <input
+                type="email"
+                id="rm-email"
+                name="email"
+                required
+                autocomplete="email"
+                placeholder="you@example.com"
+                class="w-full px-4 py-3 border border-brand-line rounded-lg bg-brand-bone text-brand-charcoal placeholder-brand-slate/50 text-sm focus:outline-none focus:ring-2 focus:ring-brand-ochre focus:border-transparent transition"
+              >
+            </div>
+
+            <!-- Phone (optional) -->
+            <div>
+              <label for="rm-phone" class="block text-sm font-medium text-brand-charcoal mb-1.5">
+                Phone <span class="text-xs text-brand-slate font-normal">(optional)</span>
+              </label>
+              <input
+                type="tel"
+                id="rm-phone"
+                name="phone"
+                autocomplete="tel"
+                placeholder="04xx xxx xxx"
+                class="w-full px-4 py-3 border border-brand-line rounded-lg bg-brand-bone text-brand-charcoal placeholder-brand-slate/50 text-sm focus:outline-none focus:ring-2 focus:ring-brand-ochre focus:border-transparent transition"
+              >
+            </div>
+
+            <!-- Location / Road Name -->
+            <div>
+              <label for="rm-location" class="block text-sm font-medium text-brand-charcoal mb-1.5">
+                Location / Road Name <span class="text-brand-ochre" aria-hidden="true">*</span>
+              </label>
+              <input
+                type="text"
+                id="rm-location"
+                name="location"
+                required
+                placeholder="e.g. Grawin Front Road, near the junction with..."
+                class="w-full px-4 py-3 border border-brand-line rounded-lg bg-brand-bone text-brand-charcoal placeholder-brand-slate/50 text-sm focus:outline-none focus:ring-2 focus:ring-brand-ochre focus:border-transparent transition"
+              >
+            </div>
+
+            <!-- Issue Type -->
+            <div>
+              <label for="rm-issue-type" class="block text-sm font-medium text-brand-charcoal mb-1.5">
+                Issue Type <span class="text-brand-ochre" aria-hidden="true">*</span>
+              </label>
+              <select
+                id="rm-issue-type"
+                name="issue_type"
+                required
+                class="w-full px-4 py-3 border border-brand-line rounded-lg bg-brand-bone text-brand-charcoal text-sm focus:outline-none focus:ring-2 focus:ring-brand-ochre focus:border-transparent transition appearance-none"
+              >
+                <option value="" disabled selected>Select issue type…</option>
+                <option value="Pothole / Surface damage">Pothole / Surface damage</option>
+                <option value="Drainage issue">Drainage issue</option>
+                <option value="Signage">Signage</option>
+                <option value="Vegetation">Vegetation</option>
+                <option value="Safety hazard">Safety hazard</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <!-- Description -->
+            <div>
+              <label for="rm-description" class="block text-sm font-medium text-brand-charcoal mb-1.5">
+                Description <span class="text-brand-ochre" aria-hidden="true">*</span>
+              </label>
+              <textarea
+                id="rm-description"
+                name="description"
+                required
+                rows="5"
+                placeholder="Describe the issue, approximate location, and urgency. The more detail you can provide, the better we can prioritise."
+                class="w-full px-4 py-3 border border-brand-line rounded-lg bg-brand-bone text-brand-charcoal placeholder-brand-slate/50 text-sm focus:outline-none focus:ring-2 focus:ring-brand-ochre focus:border-transparent transition resize-y"
+              ></textarea>
+            </div>
+
+            <!-- Submit -->
+            <div class="pt-1">
+              <button
+                type="submit"
+                :disabled="submitting"
+                class="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-brand-ochre text-white font-medium rounded-md hover:bg-brand-clay transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                <span x-show="!submitting">Submit Maintenance Request</span>
+                <span x-show="submitting">Submitting…</span>
+                <svg x-show="!submitting" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
+            </div>
+
+            <p class="text-xs text-brand-slate">
+              Your submission will be reviewed by LRAOR staff. We will contact you if we need more information. For urgent safety hazards, please also call <a href="tel:+61488423885" class="text-brand-ochre hover:text-brand-clay hover:underline underline-offset-4 transition">0488 423 885</a>.
+            </p>
+
+          </form>
+
+        </section>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER — FOOTER-VERSION: 1
+       ============================================================ -->
+  <footer class="bg-brand-charcoal text-brand-bone">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+
+        <!-- Column 1: LRAOR identity -->
+        <div>
+          <a href="/" class="flex items-center gap-3 mb-5 group" aria-label="Lightning Ridge Area Opal Reserve — Home">
+            <div class="w-10 h-10 rounded-full bg-brand-ochre flex items-center justify-center flex-shrink-0" aria-hidden="true">
+              <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+              </svg>
+            </div>
+            <div class="leading-tight">
+              <span class="block text-sm font-semibold text-brand-bone group-hover:text-brand-ochre transition">Lightning Ridge Area</span>
+              <span class="block text-xs text-brand-sand">Opal Reserve</span>
+            </div>
+          </a>
+
+          <p class="text-sm text-brand-sand leading-relaxed mb-6">
+            On-ground management of Crown land across the Lightning Ridge opal fields — supporting mining, tourism, education, research and land care across the Reserve.
+          </p>
+
+          <address class="not-italic text-sm text-brand-sand space-y-2">
+            <p>4 Nobby Road<br>Lightning Ridge NSW 2834<!-- TODO-CLIENT: confirm postcode --></p>
+            <p><a href="mailto:admin@lror.org" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">admin@lror.org</a></p>
+            <p><a href="tel:+61488423885" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">0488 423 885</a></p>
+            <p>Mon–Fri 9:00 AM – 5:00 PM</p>
+          </address>
+
+          <a
+            href="https://www.facebook.com/Lightning-Ridge-Area-Opal-Reserve-2313374568905380/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 mt-5 text-sm text-brand-sand hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded"
+            aria-label="LRAOR on Facebook (opens in new tab)"
+          >
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+            </svg>
+            Facebook
+          </a>
+        </div>
+
+        <!-- Column 2: Sitemap -->
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-widest text-brand-sage mb-5">Sitemap</h3>
+          <nav aria-label="Footer navigation">
+            <ul class="space-y-2 text-sm text-brand-sand">
+              <li><a href="/" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Home</a></li>
+              <li class="pt-1">
+                <span class="text-brand-bone font-medium">What We Do</span>
+                <ul class="mt-1.5 ml-3 space-y-1.5 text-brand-sand">
+                  <li><a href="/what-we-do/wandella/" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Wandella – Research &amp; Education Hub</a></li>
+                  <li><a href="/what-we-do/education-youth-programs/" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Education &amp; Youth Programs</a></li>
+                  <li><a href="/what-we-do/research-partnerships/" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Research Partnerships</a></li>
+                  <li><a href="/what-we-do/agriculture-share-farming/" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Agriculture &amp; Share Farming</a></li>
+                  <li><a href="/what-we-do/land-infrastructure/" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Land &amp; Infrastructure</a></li>
+                  <li><a href="/what-we-do/environmental-management/" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Environmental Management</a></li>
+                </ul>
+              </li>
+              <li class="pt-1">
+                <span class="text-brand-bone font-medium">About Us</span>
+                <ul class="mt-1.5 ml-3 space-y-1.5 text-brand-sand">
+                  <li><a href="/about/" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">About the Reserve</a></li>
+                  <li><a href="/about/board/" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Board</a></li>
+                  <li><a href="/about/staff/" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Staff</a></li>
+                </ul>
+              </li>
+              <li class="pt-1"><a href="/media/" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Media</a></li>
+              <li><a href="/donate/" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Donate</a></li>
+              <li><a href="/contact/" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Contact</a></li>
+              <li class="pt-1">
+                <span class="text-brand-bone font-medium">Resources</span>
+                <ul class="mt-1.5 ml-3 space-y-1.5 text-brand-sand">
+                  <li><a href="/resources/tourism/" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Tourism</a></li>
+                  <li><a href="/resources/mining/" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Mining Liaison</a></li>
+                  <li><a href="/resources/contractors/" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Contractors</a></li>
+                  <li><a href="/resources/documents/" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Documents &amp; Forms</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Column 3: Acknowledgement + Disclaimer -->
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-widest text-brand-sage mb-5">Acknowledgement of Country</h3>
+          <!-- TODO-CLIENT: confirm traditional owners and preferred Acknowledgement of Country wording -->
+          <p class="text-sm text-brand-sand leading-relaxed mb-8">
+            The Lightning Ridge Area Opal Reserve acknowledges the Yuwaalaraay, Yuwaalayaay and Gamilaraay peoples as the Traditional Custodians of the lands on which we work. We pay our respects to Elders past and present, and to all Aboriginal and Torres Strait Islander peoples who continue to care for Country.
+          </p>
+
+          <div class="border-t border-brand-slate pt-6">
+            <h3 class="text-xs font-semibold uppercase tracking-widest text-brand-sage mb-3">Important Distinction</h3>
+            <p class="text-xs text-brand-sand leading-relaxed">
+              Lightning Ridge Area Opal Reserve is a delegated Crown Land Manager. Statutory approvals and regulation of mining and resources remain with <a href="https://www.crownlands.nsw.gov.au/" target="_blank" rel="noopener noreferrer" class="underline hover:text-brand-ochre transition">Crown Lands NSW</a> and the <a href="https://www.resourcesregulator.nsw.gov.au/" target="_blank" rel="noopener noreferrer" class="underline hover:text-brand-ochre transition">NSW Resources Regulator</a>.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="border-t border-brand-slate">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-brand-slate">
+        <p>© 2026 Lightning Ridge Area Opal Reserve · ABN 22 866 447 410</p>
+        <div class="flex items-center gap-4">
+          <a href="#" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Privacy</a><!-- TODO-CLIENT: link to privacy policy -->
+          <a href="#" class="hover:text-brand-ochre transition focus-visible:outline-brand-ochre focus-visible:outline-2 rounded">Terms</a><!-- TODO-CLIENT: link to terms -->
+        </div>
+      </div>
+    </div>
+
+  </footer>
+  <!-- END FOOTER — FOOTER-VERSION: 1 -->
+
+</body>
+</html>
