@@ -83,7 +83,7 @@
             Home
           </a>
 
-          <div x-data="{ open: false }" @click.outside="open = false" @keydown.escape.window="open = false" @mouseleave="open = false" class="relative">
+          <div x-data="{ open: false, _t: null }" @mouseenter="clearTimeout(_t)" @mouseleave="_t = setTimeout(() => { open = false }, 150)" @click.outside="open = false" @keydown.escape.window="open = false" class="relative">
             <button @click="open = !open" @mouseenter="open = true" :aria-expanded="open.toString()" aria-haspopup="true" class="flex items-center gap-1 px-3 py-2 text-sm font-medium text-brand-charcoal hover:text-brand-ochre transition rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre">
               What We Do
               <svg class="w-4 h-4 transition-transform" :class="open ? 'rotate-180' : ''" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
@@ -98,7 +98,7 @@
             </div>
           </div>
 
-          <div x-data="{ open: false }" @click.outside="open = false" @keydown.escape.window="open = false" @mouseleave="open = false" class="relative">
+          <div x-data="{ open: false, _t: null }" @mouseenter="clearTimeout(_t)" @mouseleave="_t = setTimeout(() => { open = false }, 150)" @click.outside="open = false" @keydown.escape.window="open = false" class="relative">
             <button @click="open = !open" @mouseenter="open = true" :aria-expanded="open.toString()" aria-haspopup="true" class="flex items-center gap-1 px-3 py-2 text-sm font-medium text-brand-charcoal hover:text-brand-ochre transition rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre">
               About Us
               <svg class="w-4 h-4 transition-transform" :class="open ? 'rotate-180' : ''" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
