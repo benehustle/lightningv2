@@ -72,14 +72,14 @@
 <!-- ============================================================
      HEADER, NAV-VERSION: 1
      ============================================================ -->
-<header class="sticky top-0 z-50 bg-brand-bone/95 backdrop-blur border-b border-brand-line" x-data="mobileNav()">
+<header class="sticky top-0 z-50 bg-white border-b border-brand-line shadow-[0_1px_0_0_rgba(30,42,94,0.04)]" x-data="mobileNav()">
 
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16 lg:h-20">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex items-center justify-between h-20">
 
-      <!-- Logo -->
-      <a href="/" class="flex items-center flex-shrink-0" aria-label="Lightning Ridge Area Opal Reserve — Home">
-        <img src="/assets/images/logo.jpeg" alt="Lightning Ridge Area Opal Reserve" width="240" height="67" class="h-12 md:h-14 w-auto">
+      <!-- Logo — image contains full wordmark; no separate text needed -->
+      <a href="/" class="flex items-center shrink-0" aria-label="Lightning Ridge Area Opal Reserve — Home">
+        <img src="/assets/images/logo.jpeg" alt="Lightning Ridge Area Opal Reserve" width="220" height="56" class="h-10 md:h-12 w-auto block">
       </a>
 
       <!-- Desktop nav -->
@@ -256,7 +256,7 @@
     x-transition:leave="transition ease-in duration-150"
     x-transition:leave-start="opacity-100 translate-y-0"
     x-transition:leave-end="opacity-0 -translate-y-2"
-    class="lg:hidden border-t border-brand-line bg-brand-bone"
+    class="lg:hidden border-t border-brand-line bg-white"
     @click.outside="close()"
   >
     <nav class="max-w-6xl mx-auto px-4 py-4 space-y-1" aria-label="Mobile navigation">

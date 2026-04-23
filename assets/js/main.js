@@ -15,15 +15,6 @@ document.addEventListener('alpine:init', () => {
   }));
 });
 
-// ── Header scroll shadow ─────────────────────────────────────────────────────
-(function () {
-  const header = document.querySelector('header');
-  if (!header) return;
-  const onScroll = () => header.classList.toggle('header-scrolled', window.scrollY > 10);
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-})();
-
 // ── AOS init ─────────────────────────────────────────────────────────────────
 window.addEventListener('DOMContentLoaded', () => {
   if (typeof AOS !== 'undefined') {

@@ -27,7 +27,8 @@
   <!-- Preload hero image -->
   <link rel="preload" as="image" href="https://images.unsplash.com/photo-1529963183134-61a90db47eaf?w=2880&q=80">
 
-  <!-- Tailwind config + CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Tailwind CDN (must precede config) -->
   <script>
     tailwind.config = {
       theme: {
@@ -61,7 +62,6 @@
       }
     }
   </script>
-  <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Alpine.js -->
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -104,14 +104,14 @@
   <!-- ============================================================
        HEADER, NAV-VERSION: 1
        ============================================================ -->
-  <header class="sticky top-0 z-50 bg-brand-bone/95 backdrop-blur border-b border-brand-line" x-data="mobileNav()">
+  <header class="sticky top-0 z-50 bg-white border-b border-brand-line shadow-[0_1px_0_0_rgba(30,42,94,0.04)]" x-data="mobileNav()">
 
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16 lg:h-20">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-center justify-between h-20">
 
-        <!-- Logo -->
-        <a href="/" class="flex items-center flex-shrink-0" aria-label="Lightning Ridge Area Opal Reserve — Home">
-          <img src="/assets/images/logo.jpeg" alt="Lightning Ridge Area Opal Reserve" width="240" height="67" class="h-12 md:h-14 w-auto">
+        <!-- Logo — image contains full wordmark; no separate text needed -->
+        <a href="/" class="flex items-center shrink-0" aria-label="Lightning Ridge Area Opal Reserve — Home">
+          <img src="/assets/images/logo.jpeg" alt="Lightning Ridge Area Opal Reserve" width="220" height="56" class="h-10 md:h-12 w-auto block">
         </a>
 
         <!-- Desktop nav -->
@@ -288,7 +288,7 @@
       x-transition:leave="transition ease-in duration-150"
       x-transition:leave-start="opacity-100 translate-y-0"
       x-transition:leave-end="opacity-0 -translate-y-2"
-      class="lg:hidden border-t border-brand-line bg-brand-bone"
+      class="lg:hidden border-t border-brand-line bg-white"
     >
       <nav class="max-w-6xl mx-auto px-4 py-4 space-y-1" aria-label="Mobile navigation">
 
@@ -365,7 +365,7 @@
 
           <div class="flex items-center gap-3 mb-6 hero-reveal" style="--d:0ms">
             <div class="opal-bar"></div>
-            <p class="text-sm uppercase tracking-[0.25em] text-white/80 font-medium">Lightning Ridge NSW · Crown Land Manager</p>
+            <p class="text-sm uppercase tracking-[0.25em] text-white/90 font-semibold">Lightning Ridge NSW · Crown Land Manager</p>
           </div>
 
           <h1 class="font-display font-medium text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.05]">
@@ -374,7 +374,7 @@
             <span class="block hero-reveal" style="--d:320ms">A living reserve.</span>
           </h1>
 
-          <p class="mt-6 text-lg md:text-xl text-white/85 max-w-2xl leading-relaxed hero-reveal" style="--d:480ms">
+          <p class="mt-6 text-lg md:text-xl text-white/90 max-w-2xl leading-relaxed hero-reveal" style="--d:480ms">
             On-ground management of the Lightning Ridge opal fields — supporting mining, tourism, education, research and land care across the Reserve.
           </p>
 
@@ -573,79 +573,77 @@
         <div class="text-center" data-aos="fade-up" data-aos-delay="0">
           <div class="opal-bar mx-auto mb-4"></div>
           <div class="font-display text-5xl md:text-6xl text-brand-navy font-medium" data-counter data-target="600" data-suffix="+">600+</div>
-          <p class="mt-2 text-xs uppercase tracking-widest text-brand-slate leading-snug">Hudson Pear biocontrol<br>tubs released in 2025</p>
+          <p class="mt-2 text-sm uppercase tracking-widest text-brand-slate">Hudson Pear biocontrol tubs released in 2025</p>
         </div>
 
         <div class="text-center" data-aos="fade-up" data-aos-delay="100">
           <div class="opal-bar mx-auto mb-4"></div>
           <!-- TODO-CLIENT: supply hectares managed figure -->
-          <div class="font-display text-5xl md:text-6xl text-brand-navy font-medium">{{ TBD }}</div>
-          <p class="mt-2 text-xs uppercase tracking-widest text-brand-slate leading-snug">Hectares<br>managed</p>
+          <div class="font-display text-5xl md:text-6xl text-brand-navy/30 font-medium select-none" aria-label="Figure to be confirmed">—</div>
+          <p class="mt-2 text-sm uppercase tracking-widest text-brand-slate">Hectares managed</p>
+          <p class="mt-1 text-xs text-brand-slate/60 italic">Figure pending confirmation</p>
         </div>
 
         <div class="text-center" data-aos="fade-up" data-aos-delay="200">
           <div class="opal-bar mx-auto mb-4"></div>
           <!-- TODO-CLIENT: supply research projects figure -->
-          <div class="font-display text-5xl md:text-6xl text-brand-navy font-medium">{{ TBD }}</div>
-          <p class="mt-2 text-xs uppercase tracking-widest text-brand-slate leading-snug">Research<br>projects</p>
+          <div class="font-display text-5xl md:text-6xl text-brand-navy/30 font-medium select-none" aria-label="Figure to be confirmed">—</div>
+          <p class="mt-2 text-sm uppercase tracking-widest text-brand-slate">Research projects</p>
+          <p class="mt-1 text-xs text-brand-slate/60 italic">Figure pending confirmation</p>
         </div>
 
         <div class="text-center" data-aos="fade-up" data-aos-delay="300">
           <div class="opal-bar mx-auto mb-4"></div>
           <!-- TODO-CLIENT: supply community partners figure -->
-          <div class="font-display text-5xl md:text-6xl text-brand-navy font-medium">{{ TBD }}</div>
-          <p class="mt-2 text-xs uppercase tracking-widest text-brand-slate leading-snug">Community<br>partners</p>
+          <div class="font-display text-5xl md:text-6xl text-brand-navy/30 font-medium select-none" aria-label="Figure to be confirmed">—</div>
+          <p class="mt-2 text-sm uppercase tracking-widest text-brand-slate">Community partners</p>
+          <p class="mt-1 text-xs text-brand-slate/60 italic">Figure pending confirmation</p>
         </div>
 
       </div>
     </section>
 
     <!-- §5.4 ============================================================
-         WANDELLA SPOTLIGHT — full-bleed navy, parallax image
+         WANDELLA SPOTLIGHT — full-bleed navy, image left / copy right
+         TODO-CLIENT: replace Unsplash placeholder with /assets/images/uploads/wandella-spotlight.jpg
          ============================================================ -->
     <section class="relative bg-brand-navy text-white overflow-hidden" aria-labelledby="wandella-heading">
-      <div class="grid md:grid-cols-2 gap-0 items-stretch min-h-[580px]">
+      <div class="grid md:grid-cols-2 items-stretch">
 
-        <!-- Image side — full edge to edge -->
-        <div class="relative overflow-hidden order-2 md:order-1 min-h-[380px] md:min-h-full" data-aos="fade-right">
-          <!-- TODO-CLIENT: replace with Wandella farmhouse hero photo -->
+        <!-- Image side -->
+        <div class="relative min-h-[420px] md:min-h-[560px] overflow-hidden" data-aos="fade-right">
           <img
-            src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1800&q=80"
-            alt="The Wandella farmhouse precinct at the Lightning Ridge Area Opal Reserve"
-            class="absolute inset-0 w-full h-full object-cover parallax-img"
+            src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1800&q=80"
+            alt="Wandella farmhouse education and research hub at golden hour"
+            class="absolute inset-0 w-full h-full object-cover"
             loading="lazy" width="1800" height="1200"
           >
-          <!-- Subtle navy wash on the edge meeting the copy side -->
-          <div class="hidden md:block absolute inset-y-0 right-0 w-24 bg-gradient-to-r from-transparent to-brand-navy/40 pointer-events-none"></div>
+          <div class="hidden md:block absolute inset-y-0 right-0 w-20 bg-gradient-to-r from-transparent to-brand-navy/40 pointer-events-none"></div>
         </div>
 
         <!-- Copy side -->
-        <div class="order-1 md:order-2 flex items-center px-6 md:px-16 py-16 md:py-24" data-aos="fade-left">
+        <div class="flex items-center px-6 sm:px-10 md:px-14 lg:px-20 py-16 md:py-24" data-aos="fade-left">
           <div class="max-w-xl">
 
             <div class="flex items-center gap-3 mb-6">
               <div class="opal-bar"></div>
-              <p class="text-sm uppercase tracking-[0.25em] text-white/70 font-medium">Flagship project</p>
+              <p class="text-xs sm:text-sm uppercase tracking-[0.25em] text-white/70 font-semibold">Flagship project</p>
             </div>
 
-            <h2 id="wandella-heading" class="font-display font-medium text-3xl md:text-5xl leading-[1.1] tracking-tight mb-5">
+            <h2 id="wandella-heading" class="font-display font-medium text-3xl sm:text-4xl md:text-5xl leading-[1.1] tracking-tight mb-6 text-white">
               Wandella Research &amp; Education Hub
             </h2>
-            <p class="text-lg text-white/85 leading-relaxed mb-4">
+            <p class="text-lg text-white/90 leading-relaxed mb-5">
               The Wandella farmhouse precinct has been transformed into a long-term base for visiting researchers, school groups, community programs and collaborative projects.
             </p>
-            <p class="text-white/80 leading-relaxed mb-8">
+            <p class="text-lg text-white/90 leading-relaxed mb-8">
               The next step: converting the historic Wandella shearing shed into a purpose-built education and research facility — a permanent home for discovery, learning and innovation on Country.
             </p>
-            <div class="flex flex-wrap gap-4">
-              <a href="/what-we-do/wandella/" class="btn-primary-light">
-                About Wandella
-              </a>
-              <a href="/donate/#wandella-shed" class="btn-ghost-light">
-                Support this project
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-              </a>
-            </div>
+            <a href="/donate/#wandella-shed"
+               class="inline-flex items-center gap-2 px-6 py-3 bg-white text-brand-navy rounded-md hover:bg-brand-bone transition font-medium">
+              Support this project
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
 
           </div>
         </div>
@@ -675,7 +673,7 @@
               <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=75" alt="Students at the Wandella Education Hub in an outdoor learning session" class="w-full h-full object-cover card-img" loading="lazy" width="800" height="600">
             </div>
             <div class="p-6">
-              <p class="text-xs uppercase tracking-widest text-brand-sage mb-2">Education</p>
+              <p class="text-sm uppercase tracking-widest text-brand-sage font-semibold mb-2">Education</p>
               <h3 class="font-display font-medium text-xl text-brand-navy mb-3 group-hover:text-brand-ochre transition">Wandella Education Hub growing</h3>
               <p class="text-brand-slate text-sm leading-relaxed">The Wandella farmhouse is hosting an expanding calendar of school groups and community programs, with demand growing year on year.</p>
             </div>
@@ -687,7 +685,7 @@
               <img src="https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=800&q=75" alt="Outback vegetation on the Reserve — Hudson Pear biocontrol program underway" class="w-full h-full object-cover card-img" loading="lazy" width="800" height="600">
             </div>
             <div class="p-6">
-              <p class="text-xs uppercase tracking-widest text-brand-sage mb-2">Environmental</p>
+              <p class="text-sm uppercase tracking-widest text-brand-sage font-semibold mb-2">Environmental</p>
               <h3 class="font-display font-medium text-xl text-brand-navy mb-3 group-hover:text-brand-ochre transition">600+ tubs of Hudson Pear biocontrol released</h3>
               <p class="text-brand-slate text-sm leading-relaxed">Working with NSW DPIRD and Local Land Services, we released cochineal biocontrol agents across Crown land areas of the opal fields in 2025.</p>
             </div>
@@ -699,7 +697,7 @@
               <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=800&q=75" alt="Outback red dirt road through open land — the Grawin Front Road upgrade" class="w-full h-full object-cover card-img" loading="lazy" width="800" height="600">
             </div>
             <div class="p-6">
-              <p class="text-xs uppercase tracking-widest text-brand-sage mb-2">Infrastructure</p>
+              <p class="text-sm uppercase tracking-widest text-brand-sage font-semibold mb-2">Infrastructure</p>
               <h3 class="font-display font-medium text-xl text-brand-navy mb-3 group-hover:text-brand-ochre transition">Grawin Front Road gazetted and upgraded</h3>
               <p class="text-brand-slate text-sm leading-relaxed">After years of advocacy, the Grawin Front Road has been formally gazetted and upgraded by Walgett Shire Council, improving access for the whole community.</p>
             </div>
@@ -728,28 +726,28 @@
       <div class="marquee">
         <div class="marquee-track">
           <div class="marquee-group">
-            <img src="/assets/images/partners/crown-lands-nsw.svg"                alt="Crown Lands NSW"                          class="partner-logo">
-            <img src="/assets/images/partners/resources-regulator.svg"            alt="NSW Resources Regulator"                  class="partner-logo">
-            <img src="/assets/images/partners/walgett-shire.svg"                  alt="Walgett Shire Council"                    class="partner-logo">
-            <img src="/assets/images/partners/unsw.svg"                           alt="UNSW"                                     class="partner-logo">
-            <img src="/assets/images/partners/usyd.svg"                           alt="University of Sydney"                     class="partner-logo">
-            <img src="/assets/images/partners/hands-on-learning.svg"              alt="Hands on Learning"                        class="partner-logo">
-            <img src="/assets/images/partners/lightning-ridge-central-school.svg" alt="Lightning Ridge Central School"           class="partner-logo">
-            <img src="/assets/images/partners/castlereagh-macquarie.svg"          alt="Castlereagh Macquarie County Council"     class="partner-logo">
-            <img src="/assets/images/partners/nsw-dpird.svg"                      alt="NSW DPIRD"                                class="partner-logo">
-            <img src="/assets/images/partners/local-land-services.svg"            alt="Local Land Services"                      class="partner-logo">
+            <img src="/assets/images/partners/crown-lands-nsw.svg"                alt="Crown Lands NSW"                          class="partner-logo partner-logo--text">
+            <img src="/assets/images/partners/resources-regulator.svg"            alt="NSW Resources Regulator"                  class="partner-logo partner-logo--text">
+            <img src="/assets/images/partners/walgett-shire.svg"                  alt="Walgett Shire Council"                    class="partner-logo partner-logo--text">
+            <img src="/assets/images/partners/unsw.svg"                           alt="UNSW"                                     class="partner-logo partner-logo--text">
+            <img src="/assets/images/partners/usyd.svg"                           alt="University of Sydney"                     class="partner-logo partner-logo--text">
+            <img src="/assets/images/partners/hands-on-learning.svg"              alt="Hands on Learning"                        class="partner-logo partner-logo--text">
+            <img src="/assets/images/partners/lightning-ridge-central-school.svg" alt="Lightning Ridge Central School"           class="partner-logo partner-logo--text">
+            <img src="/assets/images/partners/castlereagh-macquarie.svg"          alt="Castlereagh Macquarie County Council"     class="partner-logo partner-logo--text">
+            <img src="/assets/images/partners/nsw-dpird.svg"                      alt="NSW DPIRD"                                class="partner-logo partner-logo--text">
+            <img src="/assets/images/partners/local-land-services.svg"            alt="Local Land Services"                      class="partner-logo partner-logo--text">
           </div>
           <div class="marquee-group" aria-hidden="true">
-            <img src="/assets/images/partners/crown-lands-nsw.svg"                alt="" class="partner-logo">
-            <img src="/assets/images/partners/resources-regulator.svg"            alt="" class="partner-logo">
-            <img src="/assets/images/partners/walgett-shire.svg"                  alt="" class="partner-logo">
-            <img src="/assets/images/partners/unsw.svg"                           alt="" class="partner-logo">
-            <img src="/assets/images/partners/usyd.svg"                           alt="" class="partner-logo">
-            <img src="/assets/images/partners/hands-on-learning.svg"              alt="" class="partner-logo">
-            <img src="/assets/images/partners/lightning-ridge-central-school.svg" alt="" class="partner-logo">
-            <img src="/assets/images/partners/castlereagh-macquarie.svg"          alt="" class="partner-logo">
-            <img src="/assets/images/partners/nsw-dpird.svg"                      alt="" class="partner-logo">
-            <img src="/assets/images/partners/local-land-services.svg"            alt="" class="partner-logo">
+            <img src="/assets/images/partners/crown-lands-nsw.svg"                alt="" class="partner-logo partner-logo--text">
+            <img src="/assets/images/partners/resources-regulator.svg"            alt="" class="partner-logo partner-logo--text">
+            <img src="/assets/images/partners/walgett-shire.svg"                  alt="" class="partner-logo partner-logo--text">
+            <img src="/assets/images/partners/unsw.svg"                           alt="" class="partner-logo partner-logo--text">
+            <img src="/assets/images/partners/usyd.svg"                           alt="" class="partner-logo partner-logo--text">
+            <img src="/assets/images/partners/hands-on-learning.svg"              alt="" class="partner-logo partner-logo--text">
+            <img src="/assets/images/partners/lightning-ridge-central-school.svg" alt="" class="partner-logo partner-logo--text">
+            <img src="/assets/images/partners/castlereagh-macquarie.svg"          alt="" class="partner-logo partner-logo--text">
+            <img src="/assets/images/partners/nsw-dpird.svg"                      alt="" class="partner-logo partner-logo--text">
+            <img src="/assets/images/partners/local-land-services.svg"            alt="" class="partner-logo partner-logo--text">
           </div>
         </div>
       </div>
@@ -758,19 +756,23 @@
     <!-- §5.8 ============================================================
          FINAL CTA BAND — navy, opal shimmer, flush above footer
          ============================================================ -->
-    <section class="relative py-20 md:py-24 bg-brand-navy overflow-hidden" aria-label="Donation call to action">
-      <div class="absolute inset-0 opal-shimmer opacity-40 pointer-events-none" aria-hidden="true"></div>
+    <section class="relative py-20 md:py-28 bg-brand-navy text-white overflow-hidden" aria-label="Donation call to action">
+      <div class="absolute inset-0 opal-shimmer opacity-50 pointer-events-none" aria-hidden="true"></div>
       <div class="relative max-w-4xl mx-auto px-6 text-center" data-aos="fade-up">
         <div class="opal-bar mx-auto mb-6"></div>
-        <h2 class="font-display font-medium text-3xl md:text-5xl text-white tracking-tight leading-[1.1]">
+        <h2 class="font-display font-medium text-3xl sm:text-4xl md:text-5xl tracking-tight leading-[1.1] text-white">
           Back the work happening on the ground.
         </h2>
-        <p class="mt-6 text-lg text-white/80 max-w-2xl mx-auto leading-relaxed">
-          Every contribution goes directly into land management, education, research and community projects at Lightning Ridge.
+        <p class="mt-6 text-lg text-white/90 max-w-2xl mx-auto leading-relaxed">
+          Every contribution goes directly into land management, education, research, and community projects at Lightning Ridge.
         </p>
         <div class="mt-10 flex flex-wrap gap-4 justify-center">
-          <a href="/donate/" class="btn-primary-warm">Donate now</a>
-          <a href="/contact/" class="btn-ghost-light">Partner with us</a>
+          <a href="/donate/" class="inline-flex items-center gap-2 px-7 py-3.5 bg-brand-ochre text-white rounded-md hover:bg-brand-clay transition font-medium">
+            Donate now
+          </a>
+          <a href="/contact/" class="inline-flex items-center gap-2 px-7 py-3.5 border-2 border-white/60 text-white rounded-md hover:bg-white hover:text-brand-navy transition font-medium">
+            Partner with us
+          </a>
         </div>
       </div>
     </section>

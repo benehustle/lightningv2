@@ -1,9 +1,46 @@
 /* LRAOR — hand-written overrides only */
 
-/* ── Fraunces variable font settings ─────────────────────────────────────── */
-h1, h2, h3, .font-display {
-  font-variation-settings: "SOFT" 50, "WONK" 0, "opsz" 144;
+/* ── Global body defaults ─────────────────────────────────────────────────── */
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 400;
+  color: #1F1C19;
+  background: #F5EFE6;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
+
+p { color: #3D3A35; }
+
+/* Body text size bump */
+.prose-body, main p { font-size: 1.0625rem; }
+@media (min-width: 1024px) {
+  .prose-body, main p { font-size: 1.125rem; }
+}
+
+/* ── Fraunces variable font settings ─────────────────────────────────────── */
+h1, h2, h3, h4, .font-display {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 500;
+  color: #1E2A5E;
+  font-variation-settings: "SOFT" 50, "WONK" 0, "opsz" 144;
+  letter-spacing: -0.01em;
+}
+h1 { font-weight: 600; }
+
+/* ── Eyebrow labels ───────────────────────────────────────────────────────── */
+.eyebrow {
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  font-size: 0.75rem;
+}
+
+/* ── Card/group body text ─────────────────────────────────────────────────── */
+.card-desc, .group p { color: #3D3A35; line-height: 1.6; }
+
+/* ── Link underline offset ────────────────────────────────────────────────── */
+a { text-underline-offset: 3px; }
 
 /* ── Smooth scroll ────────────────────────────────────────────────────────── */
 html { scroll-behavior: smooth; }
@@ -42,12 +79,12 @@ html { scroll-behavior: smooth; }
 .opal-shimmer {
   background: linear-gradient(
     135deg,
-    rgba(45,95,184,0.12)  0%,
-    rgba(63,181,196,0.08) 33%,
-    rgba(232,185,35,0.10) 66%,
-    rgba(201,59,42,0.08)  100%
+    rgba(45,95,184,0.35)  0%,
+    rgba(63,181,196,0.22) 33%,
+    rgba(232,185,35,0.28) 66%,
+    rgba(201,59,42,0.25)  100%
   );
-  mix-blend-mode: screen;
+  mix-blend-mode: soft-light;
 }
 
 /* ── Button utilities (plain CSS — @apply unavailable in Play CDN) ────────── */
@@ -99,13 +136,6 @@ html { scroll-behavior: smooth; }
   outline-offset: 2px;
 }
 
-/* ── Header scroll shadow ─────────────────────────────────────────────────── */
-.header-scrolled {
-  box-shadow:
-    0 1px 0 0 rgba(30,42,94,0.08),
-    0 10px 30px -20px rgba(30,42,94,0.15);
-}
-
 /* ── Hero animations ──────────────────────────────────────────────────────── */
 .hero-reveal {
   opacity: 0;
@@ -155,13 +185,13 @@ html { scroll-behavior: smooth; }
 .marquee {
   position: relative;
   overflow: hidden;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
 }
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee 42s linear infinite;
+  animation: marquee 48s linear infinite;
 }
 .marquee:hover .marquee-track { animation-play-state: paused; }
 .marquee-group {
@@ -169,15 +199,23 @@ html { scroll-behavior: smooth; }
   gap: 4rem;
   padding-right: 4rem;
   align-items: center;
+  flex-shrink: 0;
 }
 .partner-logo {
-  height: 34px;
+  height: 40px;
   width: auto;
-  opacity: 0.5;
-  filter: grayscale(100%);
-  transition: opacity 200ms, filter 200ms;
+  opacity: 0.85;
+  filter: none;
+  transition: opacity 200ms, transform 200ms;
 }
-.partner-logo:hover { opacity: 1; filter: grayscale(0%); }
+.partner-logo:hover { opacity: 1; transform: scale(1.05); }
+.partner-logo--text {
+  padding: 0.5rem 0.75rem;
+  background: #F8F5F0;
+  border: 1px solid #E8DFD1;
+  border-radius: 6px;
+  height: 44px;
+}
 @keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
@@ -199,7 +237,13 @@ html { scroll-behavior: smooth; }
   .hero-reveal { animation: none !important; opacity: 1; transform: none; }
   .hero-kenburns img { animation: none !important; }
   .scroll-cue-line::after { animation: none !important; }
-  .marquee-track { animation: none !important; justify-content: center; flex-wrap: wrap; gap: 2rem; }
+  .marquee-track {
+    animation: none !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2.5rem;
+    width: 100%;
+  }
   .marquee-group:nth-child(2) { display: none; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
