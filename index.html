@@ -353,9 +353,10 @@
         >
       </div>
 
-      <!-- Navy gradient overlay: base dark layer + directional text-side darkening -->
-      <div class="absolute inset-0 bg-brand-navyDeep/50 pointer-events-none"></div>
-      <div class="absolute inset-0 bg-gradient-to-r from-brand-navyDeep/80 via-brand-navyDeep/40 to-transparent pointer-events-none"></div>
+      <!-- Overlays: base scrim + left text-side darkening + bottom vignette -->
+      <div class="absolute inset-0 bg-brand-navyDeep/55 pointer-events-none"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-brand-navyDeep/95 via-brand-navyDeep/60 to-brand-navy/10 pointer-events-none"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-brand-navyDeep/50 via-transparent to-transparent pointer-events-none"></div>
 
       <!-- Opal shimmer -->
       <div class="absolute inset-0 opal-shimmer pointer-events-none" aria-hidden="true"></div>
@@ -380,7 +381,7 @@
           </p>
 
           <div class="mt-10 flex flex-wrap gap-4 hero-reveal" style="--d:600ms">
-            <a href="/what-we-do/" class="btn-primary">
+            <a href="/what-we-do/" class="btn-primary-warm">
               Explore our work
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
             </a>
