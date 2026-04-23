@@ -4,13 +4,29 @@
 document.addEventListener('alpine:init', () => {
   Alpine.data('mobileNav', () => ({
     open: false,
+    _backdrop: null,
     toggle() {
       this.open = !this.open;
       document.body.classList.toggle('overflow-hidden', this.open);
+      if (this.open) {
+        this._backdrop = document.createElement('div');
+        this._backdrop.className = 'fixed inset-0 bg-black/30 z-40';
+        this._backdrop.addEventListener('click', () => this.close());
+        document.body.appendChild(this._backdrop);
+      } else {
+        this._removeBackdrop();
+      }
     },
     close() {
       this.open = false;
       document.body.classList.remove('overflow-hidden');
+      this._removeBackdrop();
+    },
+    _removeBackdrop() {
+      if (this._backdrop) {
+        this._backdrop.remove();
+        this._backdrop = null;
+      }
     }
   }));
 });

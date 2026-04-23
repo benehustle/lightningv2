@@ -72,7 +72,7 @@
 <!-- ============================================================
      HEADER, NAV-VERSION: 1
      ============================================================ -->
-<header class="sticky top-0 z-50 bg-white border-b border-brand-line shadow-[0_1px_0_0_rgba(30,42,94,0.04)]" x-data="mobileNav()">
+<header class="sticky top-0 z-50 bg-white border-b border-brand-line shadow-[0_1px_0_0_rgba(30,42,94,0.04)]" x-data="mobileNav()" @click.outside="close()">
 
   <div class="max-w-7xl mx-auto px-6">
     <div class="flex items-center justify-between h-20">
