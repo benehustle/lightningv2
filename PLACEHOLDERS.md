@@ -18,7 +18,7 @@ grep -r "TODO-CLIENT" --include="*.html" . | wc -l
 
 ## Images (Unsplash placeholders → client photos)
 
-All images sourced from `images.unsplash.com` must be replaced with client-supplied photos before launch. See `IMAGE-BRIEF.md` for full specifications.
+Site photos live under `assets/images/lror-legacy/` (scraped from the live `lror.org` WordPress media library to replace prior Unsplash placeholders). Further client-supplied assets: see `IMAGE-BRIEF.md`.
 
 | Page | Image description | Replacement needed |
 |------|------------------|--------------------|

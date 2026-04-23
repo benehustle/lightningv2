@@ -11,7 +11,8 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-p { color: #3D3A35; }
+/* Scope to main content only — footer/header paragraphs inherit from parent color class */
+main p { color: #3D3A35; }
 
 /* Body text size bump */
 .prose-body, main p { font-size: 1.0625rem; }
