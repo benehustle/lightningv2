@@ -104,34 +104,25 @@
   <!-- ============================================================
        HEADER, NAV-VERSION: 1
        ============================================================ -->
-  <header class="sticky top-0 z-50 bg-brand-bone/95 backdrop-blur border-b border-brand-line" x-data="mobileNav()">
+  <header class="sticky top-0 z-50 bg-white border-b border-brand-line shadow-[0_1px_0_0_rgba(30,42,94,0.04)]" x-data="mobileNav()">
 
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16 lg:h-20">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-center justify-between h-20">
 
-        <!-- Logo + Name -->
-        <a href="/" class="flex items-center gap-3 group flex-shrink-0" aria-label="Lightning Ridge Area Opal Reserve, Home">
-          <!-- TODO-CLIENT: replace placeholder icon with actual SVG logo -->
-          <div class="w-10 h-10 rounded-full bg-brand-ochre flex items-center justify-center flex-shrink-0" aria-hidden="true">
-            <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-            </svg>
-          </div>
-          <div class="leading-tight">
-            <span class="block text-sm font-semibold text-brand-charcoal group-hover:text-brand-ochre transition">Lightning Ridge Area</span>
-            <span class="block text-xs text-brand-slate">Opal Reserve</span>
-          </div>
+        <!-- Logo — image contains full wordmark; no separate text needed -->
+        <a href="/" class="flex items-center shrink-0" aria-label="Lightning Ridge Area Opal Reserve — Home">
+          <img src="/assets/images/logo.jpeg" alt="Lightning Ridge Area Opal Reserve" width="220" height="56" class="h-10 md:h-12 w-auto block">
         </a>
 
         <!-- Desktop nav -->
         <nav class="hidden lg:flex items-center gap-1" aria-label="Primary navigation">
 
-          <a href="/" class="px-3 py-2 text-sm font-medium text-brand-charcoal hover:text-brand-ochre transition rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre">
+          <a href="/" class="px-3 py-2 text-sm font-medium text-brand-charcoal border-b-2 border-brand-ochre transition rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre" aria-current="page">
             Home
           </a>
 
           <!-- What We Do dropdown -->
-          <div x-data="{ open: false }" @click.outside="open = false" @keydown.escape.window="open = false" class="relative">
+          <div x-data="{ open: false }" @click.outside="open = false" @keydown.escape.window="open = false" @mouseleave="open = false" class="relative">
             <button
               @click="open = !open"
               @mouseenter="open = true"
@@ -150,7 +141,6 @@
               x-transition:leave="transition ease-in duration-100"
               x-transition:leave-start="opacity-100 translate-y-0"
               x-transition:leave-end="opacity-0 -translate-y-1"
-              @mouseleave="open = false"
               class="absolute top-full left-0 mt-2 w-72 bg-white border border-brand-line rounded-xl shadow-lg py-2"
               role="menu"
               aria-label="What We Do submenu"
@@ -213,7 +203,7 @@
           </div>
 
           <!-- About Us dropdown -->
-          <div x-data="{ open: false }" @click.outside="open = false" @keydown.escape.window="open = false" class="relative">
+          <div x-data="{ open: false }" @click.outside="open = false" @keydown.escape.window="open = false" @mouseleave="open = false" class="relative">
             <button
               @click="open = !open"
               @mouseenter="open = true"
@@ -232,7 +222,6 @@
               x-transition:leave="transition ease-in duration-100"
               x-transition:leave-start="opacity-100 translate-y-0"
               x-transition:leave-end="opacity-0 -translate-y-1"
-              @mouseleave="open = false"
               class="absolute top-full left-0 mt-2 w-56 bg-white border border-brand-line rounded-xl shadow-lg py-2"
               role="menu"
               aria-label="About Us submenu"
@@ -258,8 +247,7 @@
             </div>
           </div>
 
-          <!-- Media, ACTIVE -->
-          <a href="/media/" class="px-3 py-2 text-sm font-medium text-brand-ochre border-b-2 border-brand-ochre transition rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre" aria-current="page">
+          <a href="/media/" class="px-3 py-2 text-sm font-medium text-brand-charcoal hover:text-brand-ochre transition rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre">
             Media
           </a>
 
@@ -267,7 +255,7 @@
             Donate
           </a>
 
-          <a href="/contact/" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 border-2 border-brand-sage text-brand-sage text-sm font-medium rounded-md hover:bg-brand-sage hover:text-white transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre">
+          <a href="/contact/" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 border-2 border-brand-navy text-brand-navy text-sm font-medium rounded-md hover:bg-brand-navy hover:text-white transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre">
             Contact
           </a>
 
@@ -298,11 +286,11 @@
       x-transition:leave="transition ease-in duration-150"
       x-transition:leave-start="opacity-100 translate-y-0"
       x-transition:leave-end="opacity-0 -translate-y-2"
-      class="lg:hidden border-t border-brand-line bg-brand-bone"
+      class="lg:hidden border-t border-brand-line bg-white"
     >
       <nav class="max-w-6xl mx-auto px-4 py-4 space-y-1" aria-label="Mobile navigation">
 
-        <a href="/" class="block px-4 py-3 text-sm font-medium text-brand-charcoal hover:text-brand-ochre hover:bg-brand-sand rounded-lg transition" @click="close()">Home</a>
+        <a href="/" class="block px-4 py-3 text-sm font-medium text-brand-ochre bg-brand-sand rounded-lg" aria-current="page" @click="close()">Home</a>
 
         <div x-data="{ open: false }">
           <button @click="open = !open" class="flex items-center justify-between w-full px-4 py-3 text-sm font-medium text-brand-charcoal hover:text-brand-ochre hover:bg-brand-sand rounded-lg transition" :aria-expanded="open.toString()">
@@ -331,11 +319,11 @@
           </div>
         </div>
 
-        <a href="/media/" class="block px-4 py-3 text-sm font-medium text-brand-ochre bg-brand-sand rounded-lg transition" aria-current="page" @click="close()">Media</a>
+        <a href="/media/" class="block px-4 py-3 text-sm font-medium text-brand-charcoal hover:text-brand-ochre hover:bg-brand-sand rounded-lg transition" @click="close()">Media</a>
 
         <div class="pt-2 pb-1 flex flex-col gap-2">
           <a href="/donate/" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-brand-ochre text-white text-sm font-medium rounded-md hover:bg-brand-clay transition" @click="close()">Donate</a>
-          <a href="/contact/" class="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-brand-sage text-brand-sage text-sm font-medium rounded-md hover:bg-brand-sage hover:text-white transition" @click="close()">Contact</a>
+          <a href="/contact/" class="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-brand-navy text-brand-navy text-sm font-medium rounded-md hover:bg-brand-navy hover:text-white transition" @click="close()">Contact</a>
         </div>
 
       </nav>
@@ -360,8 +348,8 @@
           height="1620"
           loading="lazy"
         >
-        <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/45 to-transparent"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-brand-navyDeep/90 via-brand-navyDeep/55 to-brand-navy/10"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-brand-navyDeep/45 via-transparent to-transparent"></div>
       </div>
 
       <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 w-full">

@@ -78,72 +78,196 @@
   <!-- ============================================================
        HEADER, NAV-VERSION: 1
        ============================================================ -->
-  <header class="sticky top-0 z-50 bg-brand-bone/95 backdrop-blur border-b border-brand-line" x-data="mobileNav()">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16 lg:h-20">
+  <header class="sticky top-0 z-50 bg-white border-b border-brand-line shadow-[0_1px_0_0_rgba(30,42,94,0.04)]" x-data="mobileNav()">
 
-        <a href="/" class="flex items-center gap-3 group flex-shrink-0" aria-label="Lightning Ridge Area Opal Reserve, Home">
-          <!-- TODO-CLIENT: replace placeholder icon with actual SVG logo -->
-          <div class="w-10 h-10 rounded-full bg-brand-ochre flex items-center justify-center flex-shrink-0" aria-hidden="true">
-            <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-            </svg>
-          </div>
-          <div class="leading-tight">
-            <span class="block text-sm font-semibold text-brand-charcoal group-hover:text-brand-ochre transition">Lightning Ridge Area</span>
-            <span class="block text-xs text-brand-slate">Opal Reserve</span>
-          </div>
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-center justify-between h-20">
+
+        <!-- Logo — image contains full wordmark; no separate text needed -->
+        <a href="/" class="flex items-center shrink-0" aria-label="Lightning Ridge Area Opal Reserve — Home">
+          <img src="/assets/images/logo.jpeg" alt="Lightning Ridge Area Opal Reserve" width="220" height="56" class="h-10 md:h-12 w-auto block">
         </a>
 
+        <!-- Desktop nav -->
         <nav class="hidden lg:flex items-center gap-1" aria-label="Primary navigation">
-          <a href="/" class="px-3 py-2 text-sm font-medium text-brand-charcoal hover:text-brand-ochre transition rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre">Home</a>
 
-          <!-- What We Do dropdown, ACTIVE -->
-          <div x-data="{ open: false }" @click.outside="open = false" @keydown.escape.window="open = false" class="relative">
-            <button @click="open = !open" @mouseenter="open = true" :aria-expanded="open.toString()" aria-haspopup="true" class="flex items-center gap-1 px-3 py-2 text-sm font-medium text-brand-ochre border-b-2 border-brand-ochre transition rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre">
+          <a href="/" class="px-3 py-2 text-sm font-medium text-brand-charcoal border-b-2 border-brand-ochre transition rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre" aria-current="page">
+            Home
+          </a>
+
+          <!-- What We Do dropdown -->
+          <div x-data="{ open: false }" @click.outside="open = false" @keydown.escape.window="open = false" @mouseleave="open = false" class="relative">
+            <button
+              @click="open = !open"
+              @mouseenter="open = true"
+              :aria-expanded="open.toString()"
+              aria-haspopup="true"
+              class="flex items-center gap-1 px-3 py-2 text-sm font-medium text-brand-charcoal hover:text-brand-ochre transition rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre"
+            >
               What We Do
               <svg class="w-4 h-4 transition-transform" :class="open ? 'rotate-180' : ''" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
-            <div x-show="open" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-1" @mouseleave="open = false" class="absolute top-full left-0 mt-2 w-72 bg-white border border-brand-line rounded-xl shadow-lg py-2" role="menu" aria-label="What We Do submenu">
-              <a href="/what-we-do/wandella/" role="menuitem" class="flex items-start gap-3 px-4 py-3 hover:bg-brand-sand transition group focus-visible:outline-none focus-visible:bg-brand-sand"><span class="mt-0.5 w-5 h-5 text-brand-ochre flex-shrink-0" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><span><span class="block text-sm font-medium text-brand-charcoal group-hover:text-brand-ochre transition">Wandella</span><span class="block text-xs text-brand-slate mt-0.5">Research &amp; Education Hub</span></span></a>
-              <a href="/what-we-do/education-youth-programs/" role="menuitem" class="flex items-start gap-3 px-4 py-3 hover:bg-brand-sand transition group focus-visible:outline-none focus-visible:bg-brand-sand"><span class="mt-0.5 w-5 h-5 text-brand-ochre flex-shrink-0" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></span><span><span class="block text-sm font-medium text-brand-charcoal group-hover:text-brand-ochre transition">Education &amp; Youth Programs</span><span class="block text-xs text-brand-slate mt-0.5">Hands-on learning on Country</span></span></a>
-              <a href="/what-we-do/research-partnerships/" role="menuitem" class="flex items-start gap-3 px-4 py-3 hover:bg-brand-sand transition group focus-visible:outline-none focus-visible:bg-brand-sand"><span class="mt-0.5 w-5 h-5 text-brand-ochre flex-shrink-0" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span><span><span class="block text-sm font-medium text-brand-charcoal group-hover:text-brand-ochre transition">Research Partnerships</span><span class="block text-xs text-brand-slate mt-0.5">UNSW, University of Sydney &amp; more</span></span></a>
-              <a href="/what-we-do/agriculture-share-farming/" role="menuitem" class="flex items-start gap-3 px-4 py-3 hover:bg-brand-sand transition group focus-visible:outline-none focus-visible:bg-brand-sand"><span class="mt-0.5 w-5 h-5 text-brand-ochre flex-shrink-0" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12m0 0C12 7 7 5 2 7"/><path d="M12 12c0-5 5-7 10-5"/><path d="M2 22h20"/></svg></span><span><span class="block text-sm font-medium text-brand-charcoal group-hover:text-brand-ochre transition">Agriculture &amp; Share Farming</span><span class="block text-xs text-brand-slate mt-0.5">Productive use of Crown land</span></span></a>
-              <a href="/what-we-do/land-infrastructure/" role="menuitem" class="flex items-start gap-3 px-4 py-3 hover:bg-brand-sand transition group focus-visible:outline-none focus-visible:bg-brand-sand"><span class="mt-0.5 w-5 h-5 text-brand-ochre flex-shrink-0" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span><span><span class="block text-sm font-medium text-brand-charcoal group-hover:text-brand-ochre transition">Land &amp; Infrastructure</span><span class="block text-xs text-brand-slate mt-0.5">Roads, access &amp; community facilities</span></span></a>
-              <a href="/what-we-do/environmental-management/" role="menuitem" class="flex items-start gap-3 px-4 py-3 hover:bg-brand-sand transition group focus-visible:outline-none focus-visible:bg-brand-sand"><span class="mt-0.5 w-5 h-5 text-brand-ochre flex-shrink-0" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8C8 10 5.9 16.17 3.82 19.34M9.1 17.96C11.07 15.8 14 14 17 8"/><path d="M21 12c0 4.97-4.03 9-9 9S3 16.97 3 12 7.03 3 12 3s9 4.03 9 9z"/></svg></span><span><span class="block text-sm font-medium text-brand-charcoal group-hover:text-brand-ochre transition">Environmental Management</span><span class="block text-xs text-brand-slate mt-0.5">Weed control, pest management &amp; more</span></span></a>
+            <div
+              x-show="open"
+              x-transition:enter="transition ease-out duration-150"
+              x-transition:enter-start="opacity-0 -translate-y-1"
+              x-transition:enter-end="opacity-100 translate-y-0"
+              x-transition:leave="transition ease-in duration-100"
+              x-transition:leave-start="opacity-100 translate-y-0"
+              x-transition:leave-end="opacity-0 -translate-y-1"
+              class="absolute top-full left-0 mt-2 w-72 bg-white border border-brand-line rounded-xl shadow-lg py-2"
+              role="menu"
+              aria-label="What We Do submenu"
+            >
+              <a href="/what-we-do/wandella/" role="menuitem" class="flex items-start gap-3 px-4 py-3 hover:bg-brand-sand transition group focus-visible:outline-none focus-visible:bg-brand-sand">
+                <span class="mt-0.5 w-5 h-5 text-brand-ochre flex-shrink-0" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                </span>
+                <span>
+                  <span class="block text-sm font-medium text-brand-charcoal group-hover:text-brand-ochre transition">Wandella</span>
+                  <span class="block text-xs text-brand-slate mt-0.5">Research &amp; Education Hub</span>
+                </span>
+              </a>
+              <a href="/what-we-do/education-youth-programs/" role="menuitem" class="flex items-start gap-3 px-4 py-3 hover:bg-brand-sand transition group focus-visible:outline-none focus-visible:bg-brand-sand">
+                <span class="mt-0.5 w-5 h-5 text-brand-ochre flex-shrink-0" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+                </span>
+                <span>
+                  <span class="block text-sm font-medium text-brand-charcoal group-hover:text-brand-ochre transition">Education &amp; Youth Programs</span>
+                  <span class="block text-xs text-brand-slate mt-0.5">Hands-on learning on Country</span>
+                </span>
+              </a>
+              <a href="/what-we-do/research-partnerships/" role="menuitem" class="flex items-start gap-3 px-4 py-3 hover:bg-brand-sand transition group focus-visible:outline-none focus-visible:bg-brand-sand">
+                <span class="mt-0.5 w-5 h-5 text-brand-ochre flex-shrink-0" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                </span>
+                <span>
+                  <span class="block text-sm font-medium text-brand-charcoal group-hover:text-brand-ochre transition">Research Partnerships</span>
+                  <span class="block text-xs text-brand-slate mt-0.5">UNSW, University of Sydney &amp; more</span>
+                </span>
+              </a>
+              <a href="/what-we-do/agriculture-share-farming/" role="menuitem" class="flex items-start gap-3 px-4 py-3 hover:bg-brand-sand transition group focus-visible:outline-none focus-visible:bg-brand-sand">
+                <span class="mt-0.5 w-5 h-5 text-brand-ochre flex-shrink-0" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12m0 0C12 7 7 5 2 7"/><path d="M12 12c0-5 5-7 10-5"/><path d="M2 22h20"/></svg>
+                </span>
+                <span>
+                  <span class="block text-sm font-medium text-brand-charcoal group-hover:text-brand-ochre transition">Agriculture &amp; Share Farming</span>
+                  <span class="block text-xs text-brand-slate mt-0.5">Productive use of Crown land</span>
+                </span>
+              </a>
+              <a href="/what-we-do/land-infrastructure/" role="menuitem" class="flex items-start gap-3 px-4 py-3 hover:bg-brand-sand transition group focus-visible:outline-none focus-visible:bg-brand-sand">
+                <span class="mt-0.5 w-5 h-5 text-brand-ochre flex-shrink-0" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                </span>
+                <span>
+                  <span class="block text-sm font-medium text-brand-charcoal group-hover:text-brand-ochre transition">Land &amp; Infrastructure</span>
+                  <span class="block text-xs text-brand-slate mt-0.5">Roads, access &amp; community facilities</span>
+                </span>
+              </a>
+              <a href="/what-we-do/environmental-management/" role="menuitem" class="flex items-start gap-3 px-4 py-3 hover:bg-brand-sand transition group focus-visible:outline-none focus-visible:bg-brand-sand">
+                <span class="mt-0.5 w-5 h-5 text-brand-ochre flex-shrink-0" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8C8 10 5.9 16.17 3.82 19.34M9.1 17.96C11.07 15.8 14 14 17 8"/><path d="M21 12c0 4.97-4.03 9-9 9S3 16.97 3 12 7.03 3 12 3s9 4.03 9 9z"/></svg>
+                </span>
+                <span>
+                  <span class="block text-sm font-medium text-brand-charcoal group-hover:text-brand-ochre transition">Environmental Management</span>
+                  <span class="block text-xs text-brand-slate mt-0.5">Weed control, pest management &amp; more</span>
+                </span>
+              </a>
             </div>
           </div>
 
           <!-- About Us dropdown -->
-          <div x-data="{ open: false }" @click.outside="open = false" @keydown.escape.window="open = false" class="relative">
-            <button @click="open = !open" @mouseenter="open = true" :aria-expanded="open.toString()" aria-haspopup="true" class="flex items-center gap-1 px-3 py-2 text-sm font-medium text-brand-charcoal hover:text-brand-ochre transition rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre">
+          <div x-data="{ open: false }" @click.outside="open = false" @keydown.escape.window="open = false" @mouseleave="open = false" class="relative">
+            <button
+              @click="open = !open"
+              @mouseenter="open = true"
+              :aria-expanded="open.toString()"
+              aria-haspopup="true"
+              class="flex items-center gap-1 px-3 py-2 text-sm font-medium text-brand-charcoal hover:text-brand-ochre transition rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre"
+            >
               About Us
               <svg class="w-4 h-4 transition-transform" :class="open ? 'rotate-180' : ''" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
-            <div x-show="open" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-1" @mouseleave="open = false" class="absolute top-full left-0 mt-2 w-56 bg-white border border-brand-line rounded-xl shadow-lg py-2" role="menu" aria-label="About Us submenu">
-              <a href="/about/" role="menuitem" class="flex items-center gap-3 px-4 py-3 hover:bg-brand-sand transition group focus-visible:outline-none focus-visible:bg-brand-sand"><span class="w-5 h-5 text-brand-ochre flex-shrink-0" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></span><span class="text-sm font-medium text-brand-charcoal group-hover:text-brand-ochre transition">About the Reserve</span></a>
-              <a href="/about/board/" role="menuitem" class="flex items-center gap-3 px-4 py-3 hover:bg-brand-sand transition group focus-visible:outline-none focus-visible:bg-brand-sand"><span class="w-5 h-5 text-brand-ochre flex-shrink-0" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></span><span class="text-sm font-medium text-brand-charcoal group-hover:text-brand-ochre transition">Board</span></a>
-              <a href="/about/staff/" role="menuitem" class="flex items-center gap-3 px-4 py-3 hover:bg-brand-sand transition group focus-visible:outline-none focus-visible:bg-brand-sand"><span class="w-5 h-5 text-brand-ochre flex-shrink-0" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="text-sm font-medium text-brand-charcoal group-hover:text-brand-ochre transition">Staff</span></a>
+            <div
+              x-show="open"
+              x-transition:enter="transition ease-out duration-150"
+              x-transition:enter-start="opacity-0 -translate-y-1"
+              x-transition:enter-end="opacity-100 translate-y-0"
+              x-transition:leave="transition ease-in duration-100"
+              x-transition:leave-start="opacity-100 translate-y-0"
+              x-transition:leave-end="opacity-0 -translate-y-1"
+              class="absolute top-full left-0 mt-2 w-56 bg-white border border-brand-line rounded-xl shadow-lg py-2"
+              role="menu"
+              aria-label="About Us submenu"
+            >
+              <a href="/about/" role="menuitem" class="flex items-center gap-3 px-4 py-3 hover:bg-brand-sand transition group focus-visible:outline-none focus-visible:bg-brand-sand">
+                <span class="w-5 h-5 text-brand-ochre flex-shrink-0" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                </span>
+                <span class="text-sm font-medium text-brand-charcoal group-hover:text-brand-ochre transition">About the Reserve</span>
+              </a>
+              <a href="/about/board/" role="menuitem" class="flex items-center gap-3 px-4 py-3 hover:bg-brand-sand transition group focus-visible:outline-none focus-visible:bg-brand-sand">
+                <span class="w-5 h-5 text-brand-ochre flex-shrink-0" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                </span>
+                <span class="text-sm font-medium text-brand-charcoal group-hover:text-brand-ochre transition">Board</span>
+              </a>
+              <a href="/about/staff/" role="menuitem" class="flex items-center gap-3 px-4 py-3 hover:bg-brand-sand transition group focus-visible:outline-none focus-visible:bg-brand-sand">
+                <span class="w-5 h-5 text-brand-ochre flex-shrink-0" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </span>
+                <span class="text-sm font-medium text-brand-charcoal group-hover:text-brand-ochre transition">Staff</span>
+              </a>
             </div>
           </div>
 
-          <a href="/media/" class="px-3 py-2 text-sm font-medium text-brand-charcoal hover:text-brand-ochre transition rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre">Media</a>
-          <a href="/donate/" class="ml-2 inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-ochre text-white text-sm font-medium rounded-md hover:bg-brand-clay transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre">Donate</a>
-          <a href="/contact/" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 border-2 border-brand-sage text-brand-sage text-sm font-medium rounded-md hover:bg-brand-sage hover:text-white transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre">Contact</a>
+          <a href="/media/" class="px-3 py-2 text-sm font-medium text-brand-charcoal hover:text-brand-ochre transition rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre">
+            Media
+          </a>
+
+          <a href="/donate/" class="ml-2 inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-ochre text-white text-sm font-medium rounded-md hover:bg-brand-clay transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre">
+            Donate
+          </a>
+
+          <a href="/contact/" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 border-2 border-brand-navy text-brand-navy text-sm font-medium rounded-md hover:bg-brand-navy hover:text-white transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre">
+            Contact
+          </a>
+
         </nav>
 
-        <button @click="toggle()" class="lg:hidden p-2 rounded-md text-brand-charcoal hover:text-brand-ochre hover:bg-brand-sand transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre" :aria-expanded="open.toString()" aria-controls="mobile-nav" aria-label="Toggle navigation menu">
+        <!-- Mobile hamburger -->
+        <button
+          @click="toggle()"
+          class="lg:hidden p-2 rounded-md text-brand-charcoal hover:text-brand-ochre hover:bg-brand-sand transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ochre"
+          :aria-expanded="open.toString()"
+          aria-controls="mobile-nav"
+          aria-label="Toggle navigation menu"
+        >
           <svg x-show="!open" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
           <svg x-show="open" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </button>
+
       </div>
     </div>
 
-    <div id="mobile-nav" x-show="open" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" class="lg:hidden border-t border-brand-line bg-brand-bone">
+    <!-- Mobile nav panel -->
+    <div
+      id="mobile-nav"
+      x-show="open"
+      x-transition:enter="transition ease-out duration-200"
+      x-transition:enter-start="opacity-0 -translate-y-2"
+      x-transition:enter-end="opacity-100 translate-y-0"
+      x-transition:leave="transition ease-in duration-150"
+      x-transition:leave-start="opacity-100 translate-y-0"
+      x-transition:leave-end="opacity-0 -translate-y-2"
+      class="lg:hidden border-t border-brand-line bg-white"
+    >
       <nav class="max-w-6xl mx-auto px-4 py-4 space-y-1" aria-label="Mobile navigation">
-        <a href="/" class="block px-4 py-3 text-sm font-medium text-brand-charcoal hover:text-brand-ochre hover:bg-brand-sand rounded-lg transition" @click="close()">Home</a>
-        <div x-data="{ open: true }">
-          <button @click="open = !open" class="flex items-center justify-between w-full px-4 py-3 text-sm font-medium text-brand-ochre bg-brand-sand rounded-lg transition" :aria-expanded="open.toString()">
+
+        <a href="/" class="block px-4 py-3 text-sm font-medium text-brand-ochre bg-brand-sand rounded-lg" aria-current="page" @click="close()">Home</a>
+
+        <div x-data="{ open: false }">
+          <button @click="open = !open" class="flex items-center justify-between w-full px-4 py-3 text-sm font-medium text-brand-charcoal hover:text-brand-ochre hover:bg-brand-sand rounded-lg transition" :aria-expanded="open.toString()">
             What We Do
             <svg class="w-4 h-4 transition-transform" :class="open ? 'rotate-180' : ''" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
@@ -153,9 +277,10 @@
             <a href="/what-we-do/research-partnerships/" class="block px-3 py-2 text-sm text-brand-slate hover:text-brand-ochre hover:bg-brand-sand rounded-lg transition" @click="close()">Research Partnerships</a>
             <a href="/what-we-do/agriculture-share-farming/" class="block px-3 py-2 text-sm text-brand-slate hover:text-brand-ochre hover:bg-brand-sand rounded-lg transition" @click="close()">Agriculture &amp; Share Farming</a>
             <a href="/what-we-do/land-infrastructure/" class="block px-3 py-2 text-sm text-brand-slate hover:text-brand-ochre hover:bg-brand-sand rounded-lg transition" @click="close()">Land &amp; Infrastructure Management</a>
-            <a href="/what-we-do/environmental-management/" class="block px-3 py-2 text-sm text-brand-ochre font-medium bg-brand-sand rounded-lg" aria-current="page" @click="close()">Environmental Management</a>
+            <a href="/what-we-do/environmental-management/" class="block px-3 py-2 text-sm text-brand-slate hover:text-brand-ochre hover:bg-brand-sand rounded-lg transition" @click="close()">Environmental Management</a>
           </div>
         </div>
+
         <div x-data="{ open: false }">
           <button @click="open = !open" class="flex items-center justify-between w-full px-4 py-3 text-sm font-medium text-brand-charcoal hover:text-brand-ochre hover:bg-brand-sand rounded-lg transition" :aria-expanded="open.toString()">
             About Us
@@ -167,13 +292,17 @@
             <a href="/about/staff/" class="block px-3 py-2 text-sm text-brand-slate hover:text-brand-ochre hover:bg-brand-sand rounded-lg transition" @click="close()">Staff</a>
           </div>
         </div>
+
         <a href="/media/" class="block px-4 py-3 text-sm font-medium text-brand-charcoal hover:text-brand-ochre hover:bg-brand-sand rounded-lg transition" @click="close()">Media</a>
+
         <div class="pt-2 pb-1 flex flex-col gap-2">
           <a href="/donate/" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-brand-ochre text-white text-sm font-medium rounded-md hover:bg-brand-clay transition" @click="close()">Donate</a>
-          <a href="/contact/" class="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-brand-sage text-brand-sage text-sm font-medium rounded-md hover:bg-brand-sage hover:text-white transition" @click="close()">Contact</a>
+          <a href="/contact/" class="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-brand-navy text-brand-navy text-sm font-medium rounded-md hover:bg-brand-navy hover:text-white transition" @click="close()">Contact</a>
         </div>
+
       </nav>
     </div>
+
   </header>
   <!-- END HEADER, NAV-VERSION: 1 -->
 
@@ -194,8 +323,8 @@
           height="1620"
           fetchpriority="high"
         >
-        <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/45 to-transparent"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-brand-navyDeep/90 via-brand-navyDeep/55 to-brand-navy/10"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-brand-navyDeep/50 via-transparent to-transparent"></div>
       </div>
       <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 w-full">
         <div class="max-w-2xl">
@@ -423,7 +552,7 @@
     <!-- ============================================================
          CTA BAND
          ============================================================ -->
-    <section class="bg-brand-sage py-20 md:py-28" aria-label="Support environmental work">
+    <section class="bg-brand-navy py-20 md:py-28" aria-label="Support environmental work">
       <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <p class="text-sm uppercase tracking-widest text-white/70 mb-4">Support the work</p>
         <h2 class="font-display font-medium text-3xl sm:text-4xl text-white tracking-tight leading-[1.1] mb-5">Support environmental management on the Reserve</h2>
